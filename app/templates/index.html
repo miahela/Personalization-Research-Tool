@@ -9,15 +9,64 @@
 </select>
 <button id="process-btn">Process Sheet</button>
 
+<div id="sheet-entries" style="display: none;">
+    <h2>Sheet Entries</h2>
+    <table id="entries-table">
+        <thead>
+            <tr id="table-header"></tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+</div>
+
 <div id="profile-container" style="display: none;">
-    <h2 id="profile-name"></h2>
-    <div id="profile-data"></div>
-    <button id="save-btn">Save</button>
-    <button id="next-btn">Next</button>
+    <!-- ... existing profile container content ... -->
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // Add JavaScript to handle button clicks, AJAX calls, and UI updates
+    $(document).ready(function() {
+        $('#process-btn').click(function() {
+            var sheetId = $('#sheet-select').val();
+            $.ajax({
+                url: '/process',
+                method: 'POST',
+                data: { sheet_id: sheetId },
+                success: function(response) {
+                    console.log("Received data:", response);
+                    displaySheetEntries(response);
+                },
+                error: function(error) {
+                    console.error('Error processing sheet:', error);
+                }
+            });
+        });
+    });
+
+    function displaySheetEntries(data) {
+        var $tableHeader = $('#table-header');
+        var $tableBody = $('#table-body');
+        
+        $tableHeader.empty();
+        $tableBody.empty();
+
+        // Add table headers
+        if (data.length > 0) {
+            Object.keys(data[0]).forEach(function(key) {
+                $tableHeader.append('<th>' + key + '</th>');
+            });
+        }
+
+        // Add table rows
+        data.forEach(function(entry) {
+            var $row = $('<tr>');
+            Object.values(entry).forEach(function(value) {
+                $row.append('<td>' + value + '</td>');
+            });
+            $tableBody.append($row);
+        });
+
+        $('#sheet-entries').show();
+    }
 </script>
 {% endblock %}

@@ -1,7 +1,7 @@
 from nameparser import HumanName
 
 def filter_data(data):
-    return [row for row in data if row[2] == '']  # Assuming 'by the way' is the 3rd column
+    return [row for row in data if not row.get('by the way', '').strip()]
 
 def process_name(full_name):
     name = HumanName(full_name)

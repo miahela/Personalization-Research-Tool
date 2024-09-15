@@ -2,6 +2,7 @@ import os
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import Flow
 from google.auth.transport.requests import Request
+import json
 
 SCOPES = [
     'https://www.googleapis.com/auth/drive.readonly',
@@ -11,7 +12,10 @@ SCOPES = [
 def get_credentials():
     creds = None
     if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+        try:
+            creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+        except json.JSONDecodeError:
+            os.remove('token.json')
     
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
@@ -19,7 +23,15 @@ def get_credentials():
         else:
             flow = Flow.from_client_secrets_file(
                 'client_secrets.json', SCOPES)
-            creds = flow.run_local_server(port=0)
+            flow.redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
+            
+            auth_url, _ = flow.authorization_url(prompt='consent')
+            
+            print(f'Please go to this URL and authorize the application: {auth_url}')
+            code = input('Enter the authorization code: ')
+            
+            flow.fetch_token(code=code)
+            creds = flow.credentials
         
         with open('token.json', 'w') as token:
             token.write(creds.to_json())
