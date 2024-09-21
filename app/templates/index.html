@@ -10,17 +10,13 @@
 <button id="process-btn">Process Sheet</button>
 
 <div id="sheet-entries" style="display: none;">
-    <h2>Sheet Entries</h2>
+    <h2>Important Contact Information</h2>
     <table id="entries-table">
         <thead>
             <tr id="table-header"></tr>
         </thead>
         <tbody id="table-body"></tbody>
     </table>
-</div>
-
-<div id="profile-container" style="display: none;">
-    <!-- ... existing profile container content ... -->
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -53,7 +49,7 @@
         // Add table headers
         if (data.length > 0) {
             Object.keys(data[0]).forEach(function(key) {
-                $tableHeader.append('<th>' + key + '</th>');
+                $tableHeader.append('<th>' + key.replace(/_/g, ' ') + '</th>');
             });
         }
 
