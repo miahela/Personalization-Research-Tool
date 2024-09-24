@@ -1,0 +1,15 @@
+<div>
+   <select id="sheet-select"
+           x-model="selectedSheetId"
+           class="select select-bordered mr-2">
+      <option value="">Select a sheet</option>
+      {% for sheet in sheets %}
+         <option value="{{ sheet.id }}">{{ sheet.name }}</option>{% endfor %}
+   </select>
+   <button @click="processSheet"
+           class="btn btn-primary"
+           :disabled="!selectedSheetId || isLoading">
+      <span x-show="!isLoading">Process Sheet</span>
+      <span x-show="isLoading">Processing...</span>
+   </button>
+</div>

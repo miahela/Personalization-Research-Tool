@@ -1,0 +1,8 @@
+{
+  "plugins": [
+    "prettier-plugin-html-template-literals"
+  ],
+  "htmlWhitespaceSensitivity": "ignore",
+  "printWidth": 100,
+  "tabWidth": 3
+}

@@ -1,0 +1,27 @@
+<div x-data="complexList($data.items)">
+   <ul class="list-disc list-outside ml-5">
+      <template x-for="item in items">
+         <li>
+            <template x-if="getItemContent(item).type === 'link'">
+               <p class="truncate">
+                  <a :href="getItemContent(item).url" class="link link-primary" target="_blank" x-text="getItemContent(item).text"></a>
+               </p>
+            </template>
+            <template x-if="getItemContent(item).type === 'text'">
+               <p><span class="font-bold text-sm text-neutral-400">Title: </span><span x-text="getItemContent(item).text"></span></p>
+            </template>
+
+            <template x-if="getSublist(item).length">
+               <ul class="list-disc list-outside ml-5 text-neutral-600 text-sm">
+                  <template x-for="subItem in getSublist(item)" :key="subItem.label">
+                     <li>
+                        <span class="font-bold text-sm text-neutral-400" x-text="subItem.label + ':'"></span>
+                        <span x-text="subItem.value"></span>
+                     </li>
+                  </template>
+               </ul>
+            </template>
+         </li>
+      </template>
+   </ul>
+</div>

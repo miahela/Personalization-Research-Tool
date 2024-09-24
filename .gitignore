@@ -44,3 +44,12 @@ Thumbs.db
 *.bak
 *.tmp
 *.temp
+
+#env files
+.env
+
+# user data 
+user_data
+
+# images
+app/static/images
