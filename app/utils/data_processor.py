@@ -12,7 +12,7 @@ def process_new_connections(data):
     important_fields = [
         'contact_first_name', 'contact_last_name', 'contact_company_name',
         'contact_job_title', 'contact_profile_link', 'contact_image_link', 'contact_email',
-        "messenger_campaign_instance"
+        "messenger_campaign_instance", "hook_name"
     ]
 
     processed_data = []

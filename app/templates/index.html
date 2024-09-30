@@ -9,7 +9,9 @@
    </div>
    <template x-if="entries.length > 0">
       <div class="card bg-base-100 shadow-xl w-full min-h-[85vh] flex items-center justify-center">
+
          <div class="card-body h-full">
+            <h2 class="text-xl font-semibold mb-4" x-text="campaignInstance"></h2>
             <div class="flex items-center space-x-4 h-[20%]">
                <div class="flex-1 flex items-center space-x-4">
                   <div class="w-32" x-show="currentEntry.profile_picture">
@@ -22,8 +24,8 @@
                      <span class="text-xl"
                         x-text="currentEntry.contact_first_name[0] + currentEntry.contact_last_name[0]"></span>
                   </div>
-                  <div>
-                     <h2 class="card-title" x-text="contactTitle"></h2>
+                  <div class="w-3/4">
+                     <h2 class="card-title font-bold" x-text="contactTitle"></h2>
                      <p>
                         <span class="font-bold text-sm text-neutral-400">Headline:</span> <span
                            x-text="currentEntry.headline || 'N/A'"></span>

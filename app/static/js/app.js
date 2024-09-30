@@ -17,7 +17,9 @@ document.addEventListener("alpine:init", () => {
                headers: {
                   "Content-Type": "application/json"
                },
-               body: JSON.stringify({ sheet_id: this.selectedSheetId })
+               body: JSON.stringify({
+                  sheet_id: this.selectedSheetId
+               })
             });
             const data = await response.json();
             this.entries = data.new_connections;
@@ -50,7 +52,13 @@ document.addEventListener("alpine:init", () => {
       },
 
       get contactTitle() {
-         return this.currentEntry.contact_first_name + " " + this.currentEntry.contact_last_name + " + " + this.currentEntry.messenger_campaign_instance;
+         return `${this.currentEntry.contact_first_name} ${this.currentEntry.contact_last_name}`;
+      },
+
+      get campaignInstance() {
+         const hookParts = this.currentEntry.hook_name.split(" - ");
+         const hookName = hookParts.length > 1 ? hookParts.slice(0, 2).join(" - ") : this.currentEntry.hook_name;
+         return `${hookName} : ${this.currentEntry.messenger_campaign_instance}`;
       },
 
       get bio() {
@@ -110,9 +118,9 @@ document.addEventListener("alpine:init", () => {
       },
 
       getItemContent(item) {
-         return item.url
-            ? `<p class="truncate"><a href="${item.url}" class="link link-primary" target="_blank">${item.title || item.url}</a></p>`
-            : `<span>${item.title || item.text}</span>`;
+         return item.url ?
+            `<p class="truncate"><a href="${item.url}" class="link link-primary" target="_blank">${item.title || item.url}</a></p>` :
+            `<span>${item.title || item.text}</span>`;
       },
 
       renderSublist(sublist) {
@@ -126,11 +134,26 @@ document.addEventListener("alpine:init", () => {
 
       getSublist(item) {
          const sublist = [];
-         if (item.title && !item.cause) sublist.push({ label: "Title:", value: item.title });
-         if (item.description) sublist.push({ label: "Description:", value: item.description });
-         if (item.date) sublist.push({ label: "Date:", value: item.date });
-         if (item.cause) sublist.push({ label: "Cause:", value: item.cause });
-         if (item.company) sublist.push({ label: "Company:", value: item.company });
+         if (item.title && !item.cause) sublist.push({
+            label: "Title:",
+            value: item.title
+         });
+         if (item.description) sublist.push({
+            label: "Description:",
+            value: item.description
+         });
+         if (item.date) sublist.push({
+            label: "Date:",
+            value: item.date
+         });
+         if (item.cause) sublist.push({
+            label: "Cause:",
+            value: item.cause
+         });
+         if (item.company) sublist.push({
+            label: "Company:",
+            value: item.company
+         });
          return sublist;
       }
    }));
@@ -139,17 +162,37 @@ document.addEventListener("alpine:init", () => {
       items,
 
       getItemContent(item) {
-         return item.url
-            ? { type: "link", url: item.url, text: item.title || item.url }
-            : { type: "text", text: item.title || item.text };
+         return item.url ? {
+            type: "link",
+            url: item.url,
+            text: item.title || item.url
+         } : {
+            type: "text",
+            text: item.title || item.text
+         };
       },
 
       getSublist(item) {
          return [
-            item.cause ? { label: "Cause", value: item.cause } : { label: "Title", value: item.title },
-            { label: "Description", value: item.description },
-            { label: "Date", value: item.date },
-            { label: "Company", value: item.company }
+            item.cause ? {
+               label: "Cause",
+               value: item.cause
+            } : {
+               label: "Title",
+               value: item.title
+            },
+            {
+               label: "Description",
+               value: item.description
+            },
+            {
+               label: "Date",
+               value: item.date
+            },
+            {
+               label: "Company",
+               value: item.company
+            }
          ].filter(subItem => subItem.value);
       }
    }));
