@@ -147,7 +147,10 @@ def search_person_interviews_podcasts(name, company_name, max_results=10):
     :param max_results: Maximum number of results to return (default 10)
     :return: List of relevant search results
     """
-    search_query = f'"{name}" AND "{company_name}" AND ("Interview" OR "podcast" OR "guest")'
+    # Modify the search query to include a date filter for the last year using the after: parameter
+    one_year_ago = (datetime.now() - timedelta(days=365)).strftime('%Y-%m-%d')
+    search_query = f'"{name}" AND "{company_name}" AND ("Interview" OR "podcast" OR "guest") after:{one_year_ago}'
+    # TODO: Modify the query for better results, currently it's not giving very accurate results
     results = perform_google_search(search_query, "person_media", max_results)
 
     if not results:

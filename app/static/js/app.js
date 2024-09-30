@@ -43,9 +43,9 @@ document.addEventListener("alpine:init", () => {
 
       async nextEntry() {
          if (this.currentEntryIndex < this.entries.length - 1) {
-            this.currentEntryIndex = this.currentEntryIndex + 1;
+            this.currentEntryIndex += 1;
          } else {
-            // All entries processed
+            // Reset if all entries processed
             this.entries = [];
             this.currentEntryIndex = 0;
          }

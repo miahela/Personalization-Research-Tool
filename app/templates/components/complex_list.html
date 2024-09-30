@@ -4,11 +4,13 @@
          <li>
             <template x-if="getItemContent(item).type === 'link'">
                <p class="truncate">
-                  <a :href="getItemContent(item).url" class="link link-primary" target="_blank" x-text="getItemContent(item).text"></a>
+                  <a :href="getItemContent(item).url" class="link link-primary" target="_blank"
+                     x-text="getItemContent(item).url"></a>
                </p>
             </template>
             <template x-if="getItemContent(item).type === 'text'">
-               <p><span class="font-bold text-sm text-neutral-400">Title: </span><span x-text="getItemContent(item).text"></span></p>
+               <p><span class="font-bold text-sm text-neutral-400">Title: </span><span
+                     x-text="getItemContent(item).text"></span></p>
             </template>
 
             <template x-if="getSublist(item).length">

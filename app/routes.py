@@ -83,8 +83,9 @@ def process_sheets():
             for link in media_links:
                 row['interviews_and_podcasts'].append({
                     'url': link.get('url', ''),
-                    'description': link.get('description', ''),
+                    'title': link.get('title', ''),
                     'date': link.get('date', ''),
+                    'description': link.get('description', ''),
                 })
 
     # Nubela API call
