@@ -121,16 +121,21 @@ def extract_best_result(results, contact_info):
 
 def search_company_about_page(company_website, contact_info):
     """Searches for the About Us page of a company website"""
-    search_query = f"site:{company_website} AND {contact_info['contact_last_name']}"
+    search_query = f"site:{company_website} AND inurl:about -inurl:blog -inurl:support -inurl:article -inurl:articles"
     print(search_query)
     results = perform_google_search(search_query, "company_about")
 
     if not results:
         return None
 
-    best_result = extract_best_result(results['organicResults'], contact_info)
-    print(best_result)
-    return best_result
+    # best_result = extract_best_result(results['organicResults'], contact_info)
+    # print(best_result)
+    # return best_result
+
+    if results['organicResults']:
+        return results['organicResults'][0]
+    else:
+        return None
 
 
 def search_person_interviews_podcasts(name, company_name, max_results=10):
