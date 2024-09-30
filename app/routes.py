@@ -5,7 +5,7 @@ from app import app
 from app.utils.google_drive import list_files_in_folder
 from app.utils.google_sheets import get_sheet_data, update_sheet_data, get_sheet_names
 from app.utils.data_processor import filter_data, process_name, extract_personalization_data, process_nubela_data
-from app.utils.external_apis import get_linkedin_data, get_nubela_data_for_user, search_company_about_page, \
+from app.utils.external_apis import get_nubela_data_for_user, search_company_about_page, \
     search_person_interviews_podcasts
 import logging
 

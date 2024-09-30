@@ -288,12 +288,6 @@ def get_nubela_data_for_user(linkedin_profile_url):
         return None
 
 
-def get_linkedin_data(profile_url):
-    # Implement Proxycurl API call
-    # This is a placeholder implementation
-    return {}
-
-
 def get_or_download_image(image_url, username, image_type):
     if not image_url:
         return None
