@@ -7,7 +7,6 @@ from app.utils.google_sheets import get_sheet_data, update_sheet_data, get_sheet
 from app.utils.data_processor import filter_data, process_name, extract_personalization_data, process_nubela_data
 from app.utils.external_apis import get_linkedin_data, get_nubela_data_for_user, search_company_about_page, \
     search_person_interviews_podcasts
-from app.utils.google_drive import process_sheets_in_folder
 import logging
 
 from app.utils.google_drive import list_files_in_folder
@@ -102,7 +101,9 @@ def process_sheets():
     return jsonify({
         'new_connections': important_data,
         'pq_data': pq_important_data,
+        'total_items': len(important_data)  # Add this line
     })
+# TODO: Add total items to the frontend
 
 
 @app.route('/save', methods=['POST'])

@@ -3,7 +3,7 @@
 <div x-data="sheetProcessor">
    <div class="h-[12vh] flex flex-col justify-center items-center">
       <h1 class="text-2xl font-bold leading-7 text-gray-900 mb-4 sm:truncate sm:text-3xl sm:tracking-tight">
-         Google Sheets Processor
+         Personalization Research Tool
       </h1>
       {% include 'components/sheet_selector.html' %}
    </div>
@@ -72,7 +72,7 @@
                      <div class="collapse-content overflow-auto">
                         <ul class="list-disc list-outside ml-5">
                            <li>
-                              <span class="font-bold text-sm text-neutral-400">LinkedIn Profile:</span>
+                              <span class="font-bold text-sm text-neutral-400">LinkedIn Posts:</span>
                               <a :href="currentEntry.contact_profile_link + 'recent-activity/all'"
                                  class="link link-primary" target="_blank"
                                  x-text="currentEntry.contact_profile_link + 'recent-activity/all'"></a>
