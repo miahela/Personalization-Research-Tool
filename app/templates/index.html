@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
    <div x-data="sheetProcessor">
-      <div class="h-[12vh] flex flex-col justify-center items-center">
+      <div class="text-center mt-2">
          <h1 class="text-2xl font-bold leading-7 text-gray-900 mb-4 sm:truncate sm:text-3xl sm:tracking-tight">
             Personalization Research Tool
          </h1>
@@ -120,7 +120,6 @@
                                        </div>
                                     </li>
                                  </div>
-
                               </template>
 
                            </ul>
@@ -150,7 +149,7 @@
                         </div>
                      </label>
 
-                     <template x-for="field in editableFields">
+                     <template x-for="field in currentEntry.editableFields">
                         <label class="form-control w-full max-w-full">
                            <div class="label">
                               <span class="label-text text-lg font-semibold" x-text="field.name"></span>
@@ -161,7 +160,7 @@
                      </template>
                      <div class="card-actions justify-end">
                         <button @click="saveEntry"
-                                :disabled="isLoading"
+                                :disabled="isSaving"
                                 class="btn btn-primary">Save
                         </button>
                         <button @click="nextEntry" class="btn btn-outline">Skip</button>

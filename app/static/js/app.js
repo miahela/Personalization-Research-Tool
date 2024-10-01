@@ -1,46 +1,68 @@
 document.addEventListener("alpine:init", () => {
    // noinspection JSUnresolvedReference
    Alpine.data("sheetProcessor", () => ({
-      selectedSheetId: "",
+      selectedSheetIds: [],
       entries: [],
       currentEntryIndex: 0,
       isLoading: false,
+      isSaving: false,
       btw: "By the way, ",
-      jobTitlePlural: "",
-      editableFields: [],
-      coloredCells: [],
+      processedCount: 0,
+      totalCount: 0,
+      eventSource: null,
 
-      async processSheet() {
-         if (!this.selectedSheetId) return;
+      async processSelectedSheets() {
+         if (this.selectedSheetIds.length === 0) return;
+
          this.reset();
          this.isLoading = true;
-         try {
-            const response = await fetch("/process", {
-               method: "POST",
-               headers: {
-                  "Content-Type": "application/json"
-               },
-               body: JSON.stringify({
-                  sheet_id: this.selectedSheetId
-               })
-            });
-            const data = await response.json();
 
-            this.entries = data.new_connections;
-            this.currentEntryIndex = 0;
-
-            this.coloredCells = data.colored_cells;
-            for (let i = 0; i < this.coloredCells.length; i++) {
-               this.editableFields.push({
-                  name: this.coloredCells[i],
-                  value: this.currentEntry[this.coloredCells[i]] || ""
-               });
-            }
-         } catch (error) {
-            console.error("Error processing sheet:", error);
-         } finally {
-            this.isLoading = false;
+         // Close any existing EventSource
+         if (this.eventSource) {
+            this.eventSource.close();
          }
+
+         // Construct the URL with query parameters
+         const queryParams = this.selectedSheetIds.map(id => `sheet_id=${encodeURIComponent(id)}`).join("&");
+         const url = `/process_stream?${queryParams}`;
+
+         // Create a new EventSource
+         this.eventSource = new EventSource(url);
+
+         this.eventSource.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            console.log(data);
+            if (data.complete) {
+               console.log("Processing complete");
+               this.eventSource.close();
+               this.isLoading = false;
+               return;
+            }
+
+            // Update component state with new data
+            this.entries = this.entries.concat(data.new_connections);
+            this.processedCount = data.processed_count;
+            this.totalCount = data.total_count;
+
+            this.updateEditableFields();
+
+            // Force Alpine to react to changes
+            this.$nextTick(() => {
+            });
+         };
+
+         this.eventSource.onerror = (error) => {
+            console.error("EventSource failed:", error);
+            this.eventSource.close();
+            this.isLoading = false;
+         };
+      },
+
+      updateEditableFields() {
+         this.currentEntry.editableFields = this.currentEntry["colored_cells"].map(cellName => ({
+            name: cellName,
+            value: this.currentEntry[cellName] || ""
+         }));
       },
 
       reset() {
@@ -48,9 +70,11 @@ document.addEventListener("alpine:init", () => {
          this.currentEntryIndex = 0;
          this.isLoading = false;
          this.btw = "By the way, ";
-         this.jobTitlePlural = "";
-         this.editableFields = [];
-         this.coloredCells = [];
+         this.processedCount = 0;
+         this.totalCount = 0;
+         if (this.eventSource) {
+            this.eventSource.close();
+         }
       },
 
       get currentEntry() {
@@ -58,20 +82,20 @@ document.addEventListener("alpine:init", () => {
       },
 
       async saveEntry() {
-         this.isLoading = true;
+         this.isSaving = true;
          const entryData = {};
-         for (let i = 0; i < this.editableFields.length; i++) {
-            entryData[this.editableFields[i].name] = this.editableFields[i].value;
+         for (let field of this.currentEntry.editableFields) {
+            entryData[field.name] = field.value;
          }
 
          entryData["Personalization Date"] = new Date().toLocaleDateString();
          entryData["by the way"] = this.btw;
 
          const body = {
-            sheet_id: this.selectedSheetId,
+            sheet_id: this.currentEntry["spreadsheet_id"],
             entry_data: entryData,
             row_number: this.currentEntry.row_number + 1,
-            username: this.currentEntry['linkedin_username']
+            username: this.currentEntry["linkedin_username"]
          };
          try {
             const response = await fetch("/save", {
@@ -85,16 +109,14 @@ document.addEventListener("alpine:init", () => {
          } catch (error) {
             console.error("Error saving entry:", error);
          } finally {
-            this.isLoading = false;
+            this.isSaving = false;
          }
       },
 
       async nextEntry() {
          this.btw = "By the way, ";
          this.currentEntryIndex += 1;
-         for (let i = 0; i < this.coloredCells.length; i++) {
-            this.editableFields[i].value = this.currentEntry[this.coloredCells[i]] || "";
-         }
+         this.updateEditableFields();
       },
 
       get contactTitle() {

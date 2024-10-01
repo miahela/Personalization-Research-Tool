@@ -291,7 +291,8 @@ def get_or_download_image(image_url, username, image_type):
             ext = '.jpg'
 
         filename = f'{username}_{image_type}{ext}'
-        return file_manager.save_file(response.content, filename, "image", username, is_frontend_image=True)
+        file_manager.save_file(response.content, filename, "image", username, is_frontend_image=True)
+        return file_manager.get_frontend_image_url(filename)
     else:
         logging.error(f"Failed to download {image_type} image for {username}")
         return None

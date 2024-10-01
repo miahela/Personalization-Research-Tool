@@ -1,15 +1,35 @@
-<div>
-   <select id="sheet-select"
-           x-model="selectedSheetId"
-           class="select select-bordered mr-2">
-      <option value="">Select a sheet</option>
-      {% for sheet in sheets %}
-         <option value="{{ sheet.id }}">{{ sheet.name }}</option>{% endfor %}
-   </select>
-   <button @click="processSheet"
+<div class="flex w-[70%] mx-auto justify-center space-x-2">
+   <div class="collapse collapse-arrow bg-base-200 text-left">
+      <input type="checkbox" class="w-full" />
+      <div class="collapse-title text-xl font-medium">
+         Select Sheets
+      </div>
+      <div class="collapse-content">
+         {% for sheet in sheets %}
+            <div
+               class="form-control border-t border-neutral-400 py-2">
+               <label class="cursor-pointer flex justify-start items-center space-x-4">
+                  <input type="checkbox"
+                         value="{{ sheet.id }}"
+                         x-model="selectedSheetIds"
+                         class="checkbox checkbox-accent rounded-sm" />
+                  <div>
+                     <p>
+                        <span class="text-sm text-neutral-400 font-bold">Sheet name:</span> {{ sheet.name }}
+                     </p>
+                     <p class="{{ "text-red-400" if sheet.empty_by_the_way_count == 0 }}">
+                        <span class="text-sm text-neutral-400 font-bold">Profiles to process:</span> {{ sheet.empty_by_the_way_count }}
+                     </p>
+                  </div>
+               </label>
+            </div>
+         {% endfor %}
+      </div>
+   </div>
+   <button @click="processSelectedSheets"
            class="btn btn-primary"
-           :disabled="!selectedSheetId || isLoading">
-      <span x-show="!isLoading">Process Sheet</span>
+           :disabled="selectedSheetIds.length === 0 || isLoading">
+      <span x-show="!isLoading">Process Sheets (<span x-text="selectedSheetIds.length"></span>)</span>
       <span x-show="isLoading">Processing...</span>
    </button>
 </div>
