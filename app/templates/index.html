@@ -1,176 +1,189 @@
 {% extends "base.html" %}
 {% block content %}
-<div x-data="sheetProcessor">
-   <div class="h-[12vh] flex flex-col justify-center items-center">
-      <h1 class="text-2xl font-bold leading-7 text-gray-900 mb-4 sm:truncate sm:text-3xl sm:tracking-tight">
-         Personalization Research Tool
-      </h1>
-      {% include 'components/sheet_selector.html' %}
-   </div>
-   <template x-if="entries.length > 0">
-      <div class="card bg-base-100 shadow-xl w-full min-h-[85vh] flex items-center justify-center">
-
-         <div class="card-body h-full">
-            <h2 class="text-xl font-semibold mb-4" x-text="campaignInstance"></h2>
-            <div class="flex items-center space-x-4 h-[20%]">
-               <div class="flex-1 flex items-center space-x-4">
-                  <div class="w-32" x-show="currentEntry.profile_picture">
-                     <img :src="currentEntry.profile_picture"
-                        :alt="currentEntry.contact_first_name + ' ' + currentEntry.contact_last_name"
-                        class="w-32 rounded-xl">
-                  </div>
-                  <div x-show="!currentEntry.profile_picture"
-                     class="bg-neutral text-neutral-content w-32 h-32 rounded-xl flex items-center justify-center">
-                     <span class="text-xl"
-                        x-text="currentEntry.contact_first_name[0] + currentEntry.contact_last_name[0]"></span>
-                  </div>
-                  <div class="w-3/4">
-                     <h2 class="card-title font-bold" x-text="contactTitle"></h2>
-                     <p>
-                        <span class="font-bold text-sm text-neutral-400">Headline:</span> <span
-                           x-text="currentEntry.headline || 'N/A'"></span>
-                     </p>
-                     <p>
-                        <span class="font-bold text-sm text-neutral-400">Company Website:</span>
-                        <template x-if="companyWebsite">
-                           <a :href="companyWebsite" class="link link-primary" target="_blank"
-                              x-text="companyWebsite"></a>
-                        </template>
-                        <template x-if="!companyWebsite">
-                           <span>N/A</span>
-                        </template>
-                     </p>
-                     <p>
-                        <span class="font-bold text-sm text-neutral-400">Title:</span> <span
-                           x-text="currentEntry.contact_job_title || 'N/A'"></span>
-                     </p>
-                     <p>
-                        <span class="font-bold text-sm text-neutral-400">Languages:</span> <span
-                           x-text="currentEntry.languages.join(', ') || 'N/A'"></span>
-                     </p>
-                  </div>
-               </div>
-               <div class="w-1/3" x-show="currentEntry.banner_picture">
-                  <a :href="currentEntry.banner_picture" target="_blank">
-                     <img :src="currentEntry.banner_picture" alt="Banner" class="rounded-lg w-full h-full object-cover">
-                  </a>
-               </div>
-            </div>
-            <div class="flex w-full flex-row space-x-4 mb-4 min-h-[80%]">
-               <div class="w-[60%]">
-                  <!-- Bio -->
-                  <label class="form-control">
-                     <div class="label">
-                        <span class="label-text text-xl font-bold">Bio</span>
-                     </div>
-                     <textarea x-model="bio"
-                        class="textarea textarea-bordered h-40 disabled:cursor-default disabled:text-black"
-                        :disabled="true"></textarea>
-                  </label>
-                  <!-- Interviews And Podcasts -->
-                  <div class="collapse collapse-arrow border-base-300 border bg-base-200 mt-4">
-                     <input checked type="checkbox" class="w-full">
-                     <div class="collapse-title text-xl font-bold">Interviews And Podcasts</div>
-                     <div x-data="{items: currentEntry.interviews_and_podcasts}" class="collapse-content overflow-auto">
-                        {% include 'components/complex_list.html' %}
-                     </div>
-                  </div>
-                  <!-- Relevant Links -->
-                  <div class="collapse collapse-arrow border-base-300 border bg-base-200 mt-4">
-                     <input checked type="checkbox" class="w-full">
-                     <div class="collapse-title text-xl font-bold">Relevant Links</div>
-                     <div class="collapse-content overflow-auto">
-                        <ul class="list-disc list-outside ml-5">
-                           <li>
-                              <span class="font-bold text-sm text-neutral-400">LinkedIn Posts:</span>
-                              <a :href="currentEntry.contact_profile_link + 'recent-activity/all'"
-                                 class="link link-primary" target="_blank"
-                                 x-text="currentEntry.contact_profile_link + 'recent-activity/all'"></a>
-                           </li>
-                           <template x-if="companyAboutLink">
-                              <li>
-                                 <span class="font-bold text-sm text-neutral-400">Company about us:</span>
-                                 <a :href="currentEntry.company_about_link.url" class="link link-primary"
-                                    target="_blank" x-text="currentEntry.company_about_link.url"></a>
-                                 <ul class="list-disc list-outside ml-5 text-neutral-600 text-sm"
-                                    x-html="renderSublist(getSublist(companyAboutLink))">
-                                 </ul>
-                              </li>
-                           </template>
-                           <template x-if="currentEntry.case_study_links && currentEntry.case_study_links.length">
-                              <li>
-                                 <span class="font-bold text-sm text-neutral-400">Case Studies:</span>
-                                 <ul class="list-disc list-outside ml-5">
-                                    <template x-for="link in currentEntry.case_study_links" :key="link.url">
-                                       <li>
-                                          <a :href="link.url" class="link link-primary" target="_blank" x-text="link.title"></a>
-                                          <p class="text-sm text-neutral-500" x-text="link.description"></p>
-                                       </li>
-                                    </template>
-                                 </ul>
-                              </li>
-                           </template>
-                        </ul>
-                     </div>
-                  </div>
-                  <!-- Volunteer Work -->
-                  <div class="collapse collapse-arrow border-base-300 border bg-base-200 mt-4">
-                     <input checked type="checkbox" class="w-full">
-                     <div class="collapse-title text-xl font-bold">Volunteer Work</div>
-                     <div x-data="{items: volunteerWork}" class="collapse-content overflow-auto">
-                        {% include 'components/complex_list.html' %}
-                     </div>
-                  </div>
-               </div>
-               <div class="w-[40%] flex flex-col justify-start space-y-2">
-                  <!-- By the way -->
-                  <label class="form-control w-full max-w-full">
-                     <div class="label">
-                        <span class="label-text">By the way</span>
-                     </div>
-                     <input type="text" x-model="btw" class="input input-bordered rounded-lg w-full max-w-full">
-                     <div x-show="btwLanguageHint" class="label">
-                        <span class="label-text-alt"></span>
-                        <span class="label-text-alt" x-text="btwLanguageHint"></span>
-                     </div>
-                  </label>
-                  <!-- Company Name -->
-                  <label class="form-control w-full max-w-full">
-                     <div class="label">
-                        <span class="label-text">Company Name</span>
-                     </div>
-                     <input type="text" x-model="company" class="input input-bordered rounded-lg w-full max-w-full">
-                  </label>
-                  <!-- Job Title Plural -->
-                  <label class="form-control w-full max-w-full">
-                     <div class="label">
-                        <span class="label-text">Job Title Plural</span>
-                     </div>
-                     <input type="text" x-model="jobTitlePlural"
-                        class="input input-bordered rounded-lg w-full max-w-full">
-                  </label>
-                  <!-- Industry -->
-                  <label class="form-control w-full max-w-full">
-                     <div class="label">
-                        <span class="label-text">Industry</span>
-                     </div>
-                     <input type="text" x-model="industry" class="input input-bordered rounded-lg w-full max-w-full">
-                  </label>
-
-                  <div class="card-actions justify-end">
-                     <button @click="$dispatch('save-entry', { currentEntry, btw, jobTitlePlural, industry })"
-                        class="btn btn-primary">Save
-                     </button>
-                     <button @click="nextEntry" class="btn btn-outline">Skip</button>
-                  </div>
-               </div>
-            </div>
-
-         </div>
+   <div x-data="sheetProcessor">
+      <div class="h-[12vh] flex flex-col justify-center items-center">
+         <h1 class="text-2xl font-bold leading-7 text-gray-900 mb-4 sm:truncate sm:text-3xl sm:tracking-tight">
+            Personalization Research Tool
+         </h1>
+         {% include 'components/sheet_selector.html' %}
       </div>
-   </template>
-</div>
+      <template x-if="entries.length > 0 && currentEntry">
+         <div class="card bg-base-100 shadow-xl w-full min-h-[85vh] flex items-center justify-center">
+
+            <div class="card-body h-full">
+               <div class="flex justify-between mb-4">
+                  <h2 class="text-xl font-semibold" x-text="campaignInstance"></h2>
+                  <p class="text-xl text-right"><span x-text="currentEntryIndex + 1"></span>/<span
+                     x-text="entries.length"></span></p>
+               </div>
+
+               <div class="flex items-center space-x-4 h-[20%]">
+                  <div class="flex-1 flex items-center space-x-4">
+                     <div class="w-32" x-show="currentEntry.profile_picture">
+                        <img :src="currentEntry.profile_picture"
+                             :alt="currentEntry.contact_first_name + ' ' + currentEntry.contact_last_name"
+                             class="w-32 rounded-xl">
+                     </div>
+                     <div x-show="!currentEntry.profile_picture"
+                          class="bg-neutral text-neutral-content w-32 h-32 rounded-xl flex items-center justify-center">
+                     <span class="text-xl"
+                           x-text="currentEntry.contact_first_name[0] + currentEntry.contact_last_name[0]"></span>
+                     </div>
+                     <div class="w-3/4">
+                        <h2 class="card-title font-bold" x-text="contactTitle"></h2>
+                        <p>
+                           <span class="font-bold text-sm text-neutral-400">Headline:</span> <span
+                           x-text="currentEntry.headline || 'N/A'"></span>
+                        </p>
+                        <p>
+                           <span class="font-bold text-sm text-neutral-400">Company Website:</span>
+                           <template x-if="companyWebsite">
+                              <a :href="companyWebsite" class="link link-primary" target="_blank"
+                                 x-text="companyWebsite"></a>
+                           </template>
+                           <template x-if="!companyWebsite">
+                              <span>N/A</span>
+                           </template>
+                        </p>
+                        <p>
+                           <span class="font-bold text-sm text-neutral-400">Title:</span> <span
+                           x-text="currentEntry.contact_job_title || 'N/A'"></span>
+                        </p>
+                        <p>
+                           <span class="font-bold text-sm text-neutral-400">Languages:</span> <span
+                           x-text="currentEntry.languages.join(', ') || 'N/A'"></span>
+                        </p>
+                     </div>
+                  </div>
+                  <div class="w-1/3" x-show="currentEntry.banner_picture">
+                     <a :href="currentEntry.banner_picture" target="_blank">
+                        <img :src="currentEntry.banner_picture" alt="Banner"
+                             class="rounded-lg w-full h-full object-cover">
+                     </a>
+                  </div>
+               </div>
+               <div class="flex w-full flex-row space-x-4 mb-4 min-h-[80%]">
+                  <div class="w-[60%]">
+                     <!-- Bio -->
+                     <label class="form-control">
+                        <div class="label">
+                           <span class="label-text text-xl font-bold">Bio</span>
+                        </div>
+                        <textarea x-model="bio"
+                                  class="textarea textarea-bordered h-40 disabled:cursor-default disabled:text-black"
+                                  :disabled="true"></textarea>
+                     </label>
+                     <!-- Interviews And Podcasts -->
+                     <div class="collapse collapse-arrow border-base-300 border bg-base-200 mt-4">
+                        <input checked type="checkbox" class="w-full">
+                        <div class="collapse-title text-xl font-bold">Interviews And Podcasts</div>
+                        <div x-data="{items: currentEntry.interviews_and_podcasts}"
+                             class="collapse-content overflow-auto">
+                           {% include 'components/complex_list.html' %}
+                        </div>
+                     </div>
+                     <!-- Relevant Links -->
+                     <div class="collapse collapse-arrow border-base-300 border bg-base-200 mt-4">
+                        <input checked type="checkbox" class="w-full">
+                        <div class="collapse-title text-xl font-bold">Relevant Links</div>
+                        <div class="collapse-content overflow-auto">
+                           <ul class="list-disc list-outside ml-5">
+                              <li>
+                                 <span class="font-bold text-sm text-neutral-400">LinkedIn Posts:</span>
+                                 <a :href="currentEntry.contact_profile_link + 'recent-activity/all'"
+                                    class="link link-primary" target="_blank"
+                                    x-text="currentEntry.contact_profile_link + 'recent-activity/all'"></a>
+                              </li>
+                              <template x-if="companyAboutLink">
+                                 <li>
+                                    <span class="font-bold text-sm text-neutral-400">Company about us:</span>
+                                    <a :href="currentEntry.company_about_link.url" class="link link-primary"
+                                       target="_blank" x-text="currentEntry.company_about_link.url"></a>
+                                    <ul class="list-disc list-outside ml-5 text-neutral-600 text-sm"
+                                        x-html="renderSublist(getSublist(companyAboutLink))">
+                                    </ul>
+                                 </li>
+                              </template>
+                              <template x-if="currentEntry.case_study_links && currentEntry.case_study_links.length">
+                                 <li>
+                                    <span class="font-bold text-sm text-neutral-400">Case Studies:</span>
+                                    <ul class="list-disc list-outside ml-5">
+                                       <template x-for="link in currentEntry.case_study_links" :key="link.url">
+                                          <li>
+                                             <a :href="link.url" class="link link-primary" target="_blank"
+                                                x-text="link.title"></a>
+                                             <p class="text-sm text-neutral-500" x-text="link.description"></p>
+                                          </li>
+                                       </template>
+                                    </ul>
+                                 </li>
+                              </template>
+                           </ul>
+                        </div>
+                     </div>
+                     <!-- Volunteer Work -->
+                     <div class="collapse collapse-arrow border-base-300 border bg-base-200 mt-4">
+                        <input checked type="checkbox" class="w-full">
+                        <div class="collapse-title text-xl font-bold">Volunteer Work</div>
+                        <div x-data="{items: volunteerWork}" class="collapse-content overflow-auto">
+                           {% include 'components/complex_list.html' %}
+                        </div>
+                     </div>
+                  </div>
+                  <div class="w-[40%] flex flex-col justify-start space-y-2">
+                     <!-- By the way -->
+                     <label class="form-control w-full max-w-full">
+                        <div class="label">
+                           <span class="label-text">By the way</span>
+                        </div>
+                        <input type="text" x-model="btw" class="input input-bordered rounded-lg w-full max-w-full">
+                        <div x-show="btwLanguageHint" class="label">
+                           <span class="label-text-alt"></span>
+                           <span class="label-text-alt" x-text="btwLanguageHint"></span>
+                        </div>
+                     </label>
+                     <!-- Company Name -->
+                     <label class="form-control w-full max-w-full">
+                        <div class="label">
+                           <span class="label-text">Company Name</span>
+                        </div>
+                        <input type="text" x-model="company" class="input input-bordered rounded-lg w-full max-w-full">
+                     </label>
+                     <!-- Job Title Plural -->
+                     <label class="form-control w-full max-w-full">
+                        <div class="label">
+                           <span class="label-text">Job Title Plural</span>
+                        </div>
+                        <input type="text" x-model="jobTitlePlural"
+                               class="input input-bordered rounded-lg w-full max-w-full">
+                     </label>
+                     <!-- Industry -->
+                     <label class="form-control w-full max-w-full">
+                        <div class="label">
+                           <span class="label-text">Industry</span>
+                        </div>
+                        <input type="text" x-model="industry" class="input input-bordered rounded-lg w-full max-w-full">
+                     </label>
+
+                     <div class="card-actions justify-end">
+                        <button @click="$dispatch('save-entry', { currentEntry, btw, jobTitlePlural, industry })"
+                                class="btn btn-primary">Save
+                        </button>
+                        <button @click="nextEntry" class="btn btn-outline">Skip</button>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+      </template>
+      <template x-if="entries.length !== 0 && !currentEntry">
+         <div class="text-center">
+            <h2 class="text-2xl font-semibold">No more entries for this sheet, continue with other sheet</h2>
+         </div>
+      </template>
+   </div>
 {% endblock %}
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 {% endblock %}

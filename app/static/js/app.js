@@ -1,4 +1,5 @@
 document.addEventListener("alpine:init", () => {
+   // noinspection JSUnresolvedReference
    Alpine.data("sheetProcessor", () => ({
       selectedSheetId: "",
       entries: [],
@@ -42,13 +43,7 @@ document.addEventListener("alpine:init", () => {
       },
 
       async nextEntry() {
-         if (this.currentEntryIndex < this.entries.length - 1) {
-            this.currentEntryIndex += 1;
-         } else {
-            // Reset if all entries processed
-            this.entries = [];
-            this.currentEntryIndex = 0;
-         }
+         this.currentEntryIndex += 1;
       },
 
       get contactTitle() {
