@@ -159,31 +159,9 @@
                                   class="input input-bordered rounded-lg w-full max-w-full">
                         </label>
                      </template>
-                     <!-- Company Name -->
-{#                     <label class="form-control w-full max-w-full">#}
-{#                        <div class="label">#}
-{#                           <span class="label-text">Company Name</span>#}
-{#                        </div>#}
-{#                        <input type="text" x-model="company" class="input input-bordered rounded-lg w-full max-w-full">#}
-{#                     </label>#}
-{#                     <!-- Job Title Plural -->#}
-{#                     <label class="form-control w-full max-w-full">#}
-{#                        <div class="label">#}
-{#                           <span class="label-text">Job Title Plural</span>#}
-{#                        </div>#}
-{#                        <input type="text" x-model="jobTitlePlural"#}
-{#                               class="input input-bordered rounded-lg w-full max-w-full">#}
-{#                     </label>#}
-{#                     <!-- Industry -->#}
-{#                     <label class="form-control w-full max-w-full">#}
-{#                        <div class="label">#}
-{#                           <span class="label-text">Industry</span>#}
-{#                        </div>#}
-{#                        <input type="text" x-model="industry" class="input input-bordered rounded-lg w-full max-w-full">#}
-{#                     </label>#}
-
                      <div class="card-actions justify-end">
-                        <button @click="$dispatch('save-entry', { currentEntry, btw, jobTitlePlural, industry })"
+                        <button @click="saveEntry"
+                                :disabled="isLoading"
                                 class="btn btn-primary">Save
                         </button>
                         <button @click="nextEntry" class="btn btn-outline">Skip</button>

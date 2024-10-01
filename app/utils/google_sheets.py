@@ -86,17 +86,68 @@ def get_sheet_data(spreadsheet_id, sheet_name='New Connections', range_name='A:Z
     result = sheet.values().get(spreadsheetId=spreadsheet_id,
                                 range=f"'{sheet_name}'!{range_name}").execute()
 
-    return result.get('values', [])
+    values = result.get('values', [])
 
-def update_sheet_data(sheet_id, range_name, values):
+    # Add row numbers to the data
+    numbered_values = [['row_number'] + values[0]]  # Add 'row_number' to headers
+    numbered_values.extend([[i+1] + row for i, row in enumerate(values[1:])])
+
+    return numbered_values
+
+def column_number_to_letter(column_number):
+    """
+    Convert a column number to a column letter (A, B, C, ..., Z, AA, AB, ...).
+
+    :param column_number: The column number (1-indexed)
+    :return: The corresponding column letter(s)
+    """
+    column_letter = ''
+    while column_number > 0:
+        column_number, remainder = divmod(column_number - 1, 26)
+        column_letter = chr(65 + remainder) + column_letter
+    return column_letter
+
+def update_specific_cells(spreadsheet_id, sheet_name, row_number, updates):
+    """
+    Update specific cells in a given row of a Google Spreadsheet.
+
+    :param spreadsheet_id: ID of the Google Spreadsheet
+    :param sheet_name: Name of the sheet within the spreadsheet
+    :param row_number: The row number to update (1-indexed)
+    :param updates: A dictionary where keys are column names and values are the new cell values
+    """
     service = GoogleService.get_instance().get_service('sheets', 'v4')
 
-    body = {'values': values}
-    result = service.spreadsheets().values().update(
-        spreadsheetId=sheet_id, range=range_name,
-        valueInputOption='USER_ENTERED', body=body).execute()
+    # First, get the header row to map column names to column letters
+    header_range = f"'{sheet_name}'!1:1"
+    header_result = service.spreadsheets().values().get(
+        spreadsheetId=spreadsheet_id, range=header_range).execute()
+    header = header_result.get('values', [[]])[0]
 
-    return result
+    # Create a list of updates
+    batch_updates = []
+    for column_name, new_value in updates.items():
+        if column_name in header:
+            column_index = header.index(column_name)
+            column_letter = column_number_to_letter(column_index + 1)
+            cell_range = f"'{sheet_name}'!{column_letter}{row_number}"
+
+            batch_updates.append({
+                'range': cell_range,
+                'values': [[new_value]]
+            })
+
+    # Execute the batch update
+    if batch_updates:
+        body = {
+            'valueInputOption': 'USER_ENTERED',
+            'data': batch_updates
+        }
+        result = service.spreadsheets().values().batchUpdate(
+            spreadsheetId=spreadsheet_id, body=body).execute()
+        return result
+    else:
+        return None
 
 def read_sheet_data(sheet_id, range_name='A1:Z'):
     service = GoogleService.get_instance().get_service('sheets', 'v4')

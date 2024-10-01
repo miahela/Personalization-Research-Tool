@@ -3,7 +3,7 @@ import re
 from flask import render_template, request, jsonify
 from app import app
 from app.utils.google_drive import list_files_in_folder
-from app.utils.google_sheets import get_sheet_data, update_sheet_data, get_sheet_names, get_colored_cells
+from app.utils.google_sheets import get_sheet_data, get_sheet_names, get_colored_cells, update_specific_cells
 from app.utils.data_processor import filter_data, process_name, extract_personalization_data, process_nubela_data
 from app.utils.external_apis import get_nubela_data_for_user, search_company_about_page, \
     search_person_interviews_podcasts, search_company_case_studies  # Add the new import
@@ -13,7 +13,7 @@ from app.utils.google_drive import list_files_in_folder
 from app.utils.google_sheets import get_sheet_data, get_sheet_names
 from app.utils.data_processor import filter_data, process_new_connections, process_pq
 
-FOLDER_ID = '1IEQ4Vm1sxGCVJG2p_nwvH9iE7TDyyUgS'
+FOLDER_ID = '13qlaX_eHBkMV60JaszK_JgqjQVhb1mVI'
 
 
 @app.route('/')
@@ -118,7 +118,8 @@ def process_sheets():
 
 @app.route('/save', methods=['POST'])
 def save_data():
-    sheet_id = request.form['sheet_id']
-    data = request.json['data']
-    result = update_sheet_data(sheet_id, 'A1:Z', data)  # Adjust range as needed
+    sheet_id = request.json.get('sheet_id')
+    row_number = request.json.get('row_number')
+    entry_data = request.json.get('entry_data')
+    result = update_specific_cells(sheet_id, 'New Connections', row_number, entry_data)  # Adjust range as needed
     return jsonify({'success': True, 'updated_cells': result.get('updatedCells')})

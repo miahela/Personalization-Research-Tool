@@ -1,0 +1,7 @@
+user_data
+.vscode
+.idea
+static
+.env
+token.json
+client_secrets.json

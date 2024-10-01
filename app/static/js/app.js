@@ -5,7 +5,7 @@ document.addEventListener("alpine:init", () => {
       entries: [],
       currentEntryIndex: 0,
       isLoading: false,
-      btw: "",
+      btw: "By the way, ",
       jobTitlePlural: "",
       editableFields: [],
       coloredCells: [],
@@ -47,13 +47,39 @@ document.addEventListener("alpine:init", () => {
          return this.entries[this.currentEntryIndex] || null;
       },
 
-      async saveEntry(entryData) {
-         // Implement save logic here
-         console.log("Saving entry:", entryData);
-         await this.nextEntry();
+      async saveEntry() {
+         this.isLoading = true;
+         const entryData = {};
+         for (let i = 0; i < this.editableFields.length; i++) {
+            entryData[this.editableFields[i].name] = this.editableFields[i].value
+         }
+
+         entryData["Personalization Date"] = new Date().toLocaleDateString();
+         entryData['by the way'] = this.btw;
+
+         const body = {
+            sheet_id: this.selectedSheetId,
+            entry_data: entryData,
+            row_number: this.currentEntry.row_number + 1
+         }
+         try {
+            const response = await fetch("/save", {
+               method: "POST",
+               headers: {
+                  "Content-Type": "application/json"
+               },
+               body: JSON.stringify(body)
+            });
+            await this.nextEntry();
+         } catch (error) {
+            console.error("Error saving entry:", error);
+         } finally {
+            this.isLoading = false;
+         }
       },
 
       async nextEntry() {
+         this.btw = "By the way, ";
          this.currentEntryIndex += 1;
          for (let i = 0; i < this.coloredCells.length; i++) {
             this.editableFields[i].value = this.currentEntry[this.coloredCells[i]] || "";
