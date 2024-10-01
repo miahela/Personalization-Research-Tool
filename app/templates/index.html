@@ -90,34 +90,39 @@
                         <div class="collapse-content overflow-auto">
                            <ul class="list-disc list-outside ml-5">
                               <li>
-                                 <span class="font-bold text-sm text-neutral-400">LinkedIn Posts:</span>
+                                 <span class="font-bold text-base text-neutral-600">LinkedIn Posts:</span>
                                  <a :href="currentEntry.contact_profile_link + 'recent-activity/all'"
                                     class="link link-primary" target="_blank"
                                     x-text="currentEntry.contact_profile_link + 'recent-activity/all'"></a>
                               </li>
+
                               <template x-if="companyAboutLink">
-                                 <li>
-                                    <span class="font-bold text-sm text-neutral-400">About us Pages:</span>
-                                    <div x-data="complexList(companyAboutLink)"
-                                         x-effect="updateItems(companyAboutLink)">
-                                       {% include 'components/complex_list.html' %}
-                                    </div>
-                                 </li>
+                                 <div>
+                                    <div class="divider"></div>
+                                    <li>
+                                       <span class="font-bold text-base text-neutral-600">About us Pages:</span>
+                                       <div x-data="complexList(companyAboutLink)"
+                                            x-effect="updateItems(companyAboutLink)">
+                                          {% include 'components/complex_list.html' %}
+                                       </div>
+                                    </li>
+                                 </div>
                               </template>
-                              <template x-if="currentEntry.case_study_links && currentEntry.case_study_links.length">
-                                 <li>
-                                    <span class="font-bold text-sm text-neutral-400">Case Studies:</span>
-                                    <ul class="list-disc list-outside ml-5">
-                                       <template x-for="link in currentEntry.case_study_links" :key="link.url">
-                                          <li>
-                                             <a :href="link.url" class="link link-primary" target="_blank"
-                                                x-text="link.title"></a>
-                                             <p class="text-sm text-neutral-500" x-text="link.description"></p>
-                                          </li>
-                                       </template>
-                                    </ul>
-                                 </li>
+
+                              <template x-if="caseStudyLinks">
+                                 <div>
+                                    <div class="divider"></div>
+                                    <li>
+                                       <span class="font-bold text-base text-neutral-600">Case Studies:</span>
+                                       <div x-data="complexList(caseStudyLinks)"
+                                            x-effect="updateItems(caseStudyLinks)">
+                                          {% include 'components/complex_list.html' %}
+                                       </div>
+                                    </li>
+                                 </div>
+
                               </template>
+
                            </ul>
                         </div>
                      </div>

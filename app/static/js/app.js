@@ -98,7 +98,7 @@ document.addEventListener("alpine:init", () => {
       },
 
       get caseStudyLinks() {
-         return this.currentEntry?.case_study_links || [];
+         return this.currentEntry?.case_study_links || null;
       },
 
       // Card-related methods
