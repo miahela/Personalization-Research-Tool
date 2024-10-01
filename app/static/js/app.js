@@ -102,6 +102,10 @@ document.addEventListener("alpine:init", () => {
          return this.currentEntry?.languages?.length >= 2 ? `What’s the secret to learning ${this.currentEntry.languages.length} languages?` : "";
       },
 
+      get caseStudyLinks() {
+         return this.currentEntry?.case_study_links || [];
+      },
+
       // Card-related methods
       renderListItems(items) {
          if (!items) return "";

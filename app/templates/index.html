@@ -97,6 +97,19 @@
                                  </ul>
                               </li>
                            </template>
+                           <template x-if="currentEntry.case_study_links && currentEntry.case_study_links.length">
+                              <li>
+                                 <span class="font-bold text-sm text-neutral-400">Case Studies:</span>
+                                 <ul class="list-disc list-outside ml-5">
+                                    <template x-for="link in currentEntry.case_study_links" :key="link.url">
+                                       <li>
+                                          <a :href="link.url" class="link link-primary" target="_blank" x-text="link.title"></a>
+                                          <p class="text-sm text-neutral-500" x-text="link.description"></p>
+                                       </li>
+                                    </template>
+                                 </ul>
+                              </li>
+                           </template>
                         </ul>
                      </div>
                   </div>

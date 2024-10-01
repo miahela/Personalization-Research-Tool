@@ -6,7 +6,7 @@ from app.utils.google_drive import list_files_in_folder
 from app.utils.google_sheets import get_sheet_data, update_sheet_data, get_sheet_names
 from app.utils.data_processor import filter_data, process_name, extract_personalization_data, process_nubela_data
 from app.utils.external_apis import get_nubela_data_for_user, search_company_about_page, \
-    search_person_interviews_podcasts
+    search_person_interviews_podcasts, search_company_case_studies  # Add the new import
 import logging
 
 from app.utils.google_drive import list_files_in_folder
@@ -64,18 +64,20 @@ def process_sheets():
 
         if company_website:
             row['company_website'] = company_website
-            # Remove 'https://www.' or 'http://www.' from the beginning of the website URL
             clean_website = re.sub(r'^https?://www\.', '', company_website)
-            # Perform the search
             company_links = search_company_about_page(clean_website, row)
 
             if company_links:
-                # Add the search results to the row data
                 row['company_about_link'] = {
                     'title': company_links.get('title', ''),
                     'url': company_links.get('url', ''),
                     'description': company_links.get('description', ''),
                 }
+
+            case_study_links = search_company_case_studies(clean_website)
+            if case_study_links:
+                row['case_study_links'] = case_study_links  
+                logging.info(f"Case study links for {company_name}: {case_study_links}")  # Add this line
 
         media_links = search_person_interviews_podcasts(full_name, company_name)
         if media_links:

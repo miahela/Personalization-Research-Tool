@@ -137,6 +137,24 @@ def search_company_about_page(company_website, contact_info):
     else:
         return None
 
+def search_company_case_studies(company_website):
+    """Search for case studies, testimonials, projects, reviews, or awards related to a company."""
+    search_query = f"site:{company_website} AND (case study OR testimonial OR projects OR reviews OR award)"
+    results = perform_google_search(search_query, "company_case_studies", max_results=10)
+
+    if not results or 'organicResults' not in results:
+        return []
+
+    # Extract relevant information from organic results
+    case_study_links = []
+    for result in results['organicResults']:
+        case_study_links.append({
+            'url': result['url'],
+            'title': result['title'],
+            'description': result.get('description', '')  # Use .get() to avoid KeyError
+        })
+
+    return case_study_links
 
 def search_person_interviews_podcasts(name, company_name, max_results=10):
     """
