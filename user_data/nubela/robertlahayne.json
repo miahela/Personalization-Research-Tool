@@ -1,0 +1,342 @@
+{
+  "public_identifier": "robertlahayne",
+  "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/robertlahayne/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=1ace29c61936cd46e99a8e4902ec7139c37cc4a8198ae93ce49ac419e5f83618",
+  "background_cover_image_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/robertlahayne/cover?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=98556c885c075fcd69e6876f08f6f1acaf36f552dc0fc924e15125ffdb60710c",
+  "first_name": "Rob",
+  "last_name": "LaHayne",
+  "full_name": "Rob LaHayne",
+  "follower_count": 4404,
+  "occupation": "Founder & CEO at Leap Health",
+  "headline": "Growth oriented CEO, advisor, and investor to digital health and healthcare companies.",
+  "summary": "An experienced digital health and healthcare executive, operator, investor, and advisor who has built and managed multiple early-stage healthcare companies. He applies deep commercial expertise with hands-on strategy and execution to build high performing teams that achieve lasting scale and impact.",
+  "country": "US",
+  "country_full_name": "United States of America",
+  "city": "New York",
+  "state": "New York",
+  "experiences": [
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2024
+      },
+      "ends_at": null,
+      "company": "Leap Health",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/leap-health-inc/",
+      "company_facebook_profile_url": null,
+      "title": "Founder & CEO",
+      "description": "Partnering with large employers, brokers, consultants, TPAs, and PBMs to reduce specialty drug costs and improve the employee/patient experience.",
+      "location": "New York City Metropolitan Area",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/leap-health-inc/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=e5519263912dac8a4e4d217a7960c177ebcc0a12af4ad874b43edce7235bf381"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2023
+      },
+      "ends_at": null,
+      "company": "Primary Venture Partners",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/primary-venture-partners/",
+      "company_facebook_profile_url": null,
+      "title": "Advisor/Expert (Primary Expert Network)",
+      "description": "As a member, I provide tactical advice and guidance to founders and operators within the Primary portfolio. \n\nPrimary VC is a leading VC With the largest portfolio impact team of any NYC Seed investor, its significant talent, finance, and network resources drive measurable results and empower portfolio companies to thrive from Seed to Series A and beyond. Historical successes include seed investments in Jet.com, Coupang, Mirror, Latch, and the firm is proud to back some of the city\u2019s hottest startups\u2014including Alloy, Alma, Chief, Dandy, Electric, K Health, Lunchbox, Slice\u2014among its portfolio. Learn more at http://www.primary.vc.",
+      "location": "New York, United States",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/primary-venture-partners/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=e5f59c85479e8b67f80874210a1598aaad6eb81e623551dee76b0d6015f3ac42"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2023
+      },
+      "ends_at": null,
+      "company": "Redesign Health",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/redesign-health/",
+      "company_facebook_profile_url": null,
+      "title": "Advisor",
+      "description": null,
+      "location": "New York, United States",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/redesign-health/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=67b7c3c02ae3f4f5dc306e3258db2284ec41bcc54010af91b2d163f8be718c18"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 7,
+        "year": 2022
+      },
+      "ends_at": null,
+      "company": "Budgie Health",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/budgie-health/",
+      "company_facebook_profile_url": null,
+      "title": "Advisor",
+      "description": null,
+      "location": "New York, New York, United States",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/budgie-health/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=71d66f8fd19bdad8b9ca27e13cffb06116162892396aa57adc88aa2fdaef3290"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 4,
+        "year": 2021
+      },
+      "ends_at": null,
+      "company": "Digital Health Institute for Transformation (DHIT)",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/dhitglobal/",
+      "company_facebook_profile_url": null,
+      "title": "Board of Directors",
+      "description": "Maximizing health in underserved communities across the nation and beyond by providing equal access to global advancements in care.",
+      "location": null,
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/dhitglobal/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=9eaafaee3ecb7d405c9f0df7a832c9948fdc3c8331709561a254d3886edd2c41"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 2,
+        "year": 2019
+      },
+      "ends_at": null,
+      "company": "Bennie",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/benniehealth/",
+      "company_facebook_profile_url": null,
+      "title": "Advisor",
+      "description": null,
+      "location": "New York, United States",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/benniehealth/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=b39edd589652b7266dd78456ca8fa2fa92d2585791bed61b258ad80031ca5ff0"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2016
+      },
+      "ends_at": null,
+      "company": "Move This World",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/move-this-world/",
+      "company_facebook_profile_url": null,
+      "title": "Board Of Directors",
+      "description": null,
+      "location": "Greater New York City Area",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/move-this-world/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=a7537478320890eaf269474c18ee421fa3aa6961db5a9bd2e1a065c673a778df"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 10,
+        "year": 2021
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 1,
+        "year": 2024
+      },
+      "company": "KOM Growth",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/komgrowth/",
+      "company_facebook_profile_url": null,
+      "title": "President",
+      "description": "www.komgrowth.com\n\nI work with digital health & HR tech founders to create a growth platform and execute on their growth plans by aligning commercial strategy with operational efficiency to meet financial goals. Current and past customers include:\n- Genomics PLC (www.genomicsplc.com)\n- Wellnecity (www.wellnecity.com)\n- Radish Health (www.radish.health)\n- Budgie Health (www.budgie-health.com)\n- Redesign Health (www.redesignhealth.com)\n- Paloma Health (www.palomahealth.com)\n- Paybridge (www.paybridge.com)\n- BenefitsApp (www.benefitsapp.com)\n- Bennie (www.bennie.com)\n- Myri Health (www.Myri Health.com)",
+      "location": "New York, United States",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/komgrowth/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=1da3de554f26d830db513297ce420efa6901593e687a8bc96e22d8a37f4e319a"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 5,
+        "year": 2017
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 7,
+        "year": 2021
+      },
+      "company": "TouchCare",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/touchcare-health/",
+      "company_facebook_profile_url": null,
+      "title": "Founder, CEO",
+      "description": "Private equity owned turn-around. Led the company through a change in product, relocation, capital raise, rebrand, recruitment of a new team and a successful pivot.\n\nDoubled YoY Revenue -- Since 2018, led TouchCare to double its revenue every year. \nBusiness Planning -- Created the five-year business plan and financial model to set the go-to-market strategy and product vision.\nFundraising -- Raised over $5m in outside capital to continue to fund the business.\nRecruited, Selected, and Built a High Performing Team -- Shut down the previous operation in NC and rehired a completely new sales, service, and operating team in NYC. No turnover in core leadership team throughout four years.\nBudget -- Managed a P&L with a mix of revenue and venture capital. Led the company to profitability by the end of 2020 - balancing growth and margins. \nProduct -- Set the product vision and managed a team of engineers in the US and Ukraine.\nPandemic -- Navigated the organization through a global pandemic with great success. Ended 2020 both profitable and with 100% YoY growth.",
+      "location": "New York, NY",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/touchcare-health/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=d4457bd189a3276a58c60bb67bf3452aa148c964a1b87fac0b6ed6677e6af8ef"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2015
+      },
+      "ends_at": {
+        "day": 30,
+        "month": 6,
+        "year": 2017
+      },
+      "company": "Namely",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/namely/",
+      "company_facebook_profile_url": null,
+      "title": "Vice President, Namely Benefits",
+      "description": "Built the Namely Benefits practice and team nationally from the ground up. Established a private exchange that accelerated the growth of the benefits business at Namely to quickly become the fastest growing product line. \n- Grew benefits business from $0 to $10m in revenue\n- Partnered with Sales to grow Namely revenues from $2 to $25m ARR overall\n- Ran point on national relationships with group insurance carriers and oversaw new business and service operations for our team.\n- Hired and managed over 40 employees across three offices",
+      "location": "Greater New York City Area",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/namely/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=288ab94592bf384c1a10e68dd659172a52551b7f1a178d80d449b5f0f9194c81"
+    }
+  ],
+  "education": [
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2002
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 1,
+        "year": 2006
+      },
+      "field_of_study": "Government",
+      "degree_name": "BA",
+      "school": "Georgetown University",
+      "school_linkedin_profile_url": "https://www.linkedin.com/school/georgetown-university/",
+      "school_facebook_profile_url": null,
+      "description": null,
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/georgetown-university/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192106Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=d3be7547a887eba1864b74dd948164d91144b9d8cc17b2ffc393d5e3344d0d87",
+      "grade": null,
+      "activities_and_societies": null
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 1998
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 1,
+        "year": 2002
+      },
+      "field_of_study": null,
+      "degree_name": null,
+      "school": "Glenelg High School",
+      "school_linkedin_profile_url": null,
+      "school_facebook_profile_url": null,
+      "description": null,
+      "logo_url": null,
+      "grade": null,
+      "activities_and_societies": null
+    }
+  ],
+  "languages": [],
+  "accomplishment_organisations": [],
+  "accomplishment_publications": [],
+  "accomplishment_honors_awards": [],
+  "accomplishment_patents": [],
+  "accomplishment_courses": [],
+  "accomplishment_projects": [],
+  "accomplishment_test_scores": [],
+  "volunteer_work": [
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 8,
+        "year": 2010
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 1,
+        "year": 2015
+      },
+      "title": "Young Trustee",
+      "cause": "EDUCATION",
+      "company": "Move This World",
+      "company_linkedin_profile_url": null,
+      "description": "Founding member of Move This World, Inc. board of young trustees. Responsible for fundraising, community outreach, awareness building and board development. Partner with Move This World staff and board members to plan and host fundraising events. Coordinate with Move This World staff and partners to organize community outreach projects. Utilize events, community events, and social media to raise awareness of Move This World.\n\nwww.movethisworld.org",
+      "logo_url": null
+    }
+  ],
+  "certifications": [
+    {
+      "starts_at": null,
+      "ends_at": null,
+      "name": "Life and Health Insurance licensed producer in all 50 states.",
+      "license_number": null,
+      "display_source": null,
+      "authority": null,
+      "url": null
+    }
+  ],
+  "connections": 500,
+  "people_also_viewed": [
+    {
+      "link": "https://www.linkedin.com/in/brett-shaheen-20a9282",
+      "name": "Brett Shaheen",
+      "summary": "CEO at Redesign Health",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/saralahayne",
+      "name": "Sara Potler LaHayne",
+      "summary": "Founder & CEO at Move This World",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/valerie-gersten-128020126",
+      "name": "Valerie Gersten",
+      "summary": "Chief Executive Officer at Stealth Venture with Redesign Health",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/matt-s-2ab989190",
+      "name": "Matt S.",
+      "summary": "Founder/CEO at Bennie",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/zach-fredericks",
+      "name": "Zach Fredericks",
+      "summary": "Principal at Primary Venture Partners",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/annalenhardt",
+      "name": "Anna L.",
+      "summary": "Founder & CEO @ Lenhardt Partners | HR for Startups",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/joshua-goldstein-53a13517",
+      "name": "Joshua Goldstein",
+      "summary": "Co-founder and Chief of Staff at TempoPay",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/george-spurling-b974aa6",
+      "name": "George Spurling",
+      "summary": "Co-Founder & CEO at Budgie Health",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/kevin-hill-1a040a8",
+      "name": "Kevin Hill",
+      "summary": "Private Healthcare Investor/Advisor",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/kirawampler",
+      "name": "Kira Wampler",
+      "summary": "Builder, Board Member and Advisor",
+      "location": null
+    }
+  ],
+  "recommendations": [],
+  "activities": [],
+  "similarly_named_profiles": [],
+  "articles": [],
+  "groups": [],
+  "skills": [],
+  "inferred_salary": null,
+  "gender": "Male",
+  "birth_date": null,
+  "industry": "Insurance",
+  "extra": null,
+  "interests": [
+    "Education"
+  ],
+  "personal_emails": [],
+  "personal_numbers": []
+}

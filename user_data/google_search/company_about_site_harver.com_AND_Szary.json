@@ -1,0 +1,35 @@
+{
+  "#debug": {
+    "requestId": "GgWs1pfj2sMVQQe",
+    "url": "http://www.google.com/search?q=site%3Aharver.com+AND+Szary&num=5",
+    "loadedUrl": "http://www.google.com/search?q=site%3Aharver.com+AND+Szary&num=5",
+    "method": "GET",
+    "retryCount": 0,
+    "errorMessages": [],
+    "statusCode": 200
+  },
+  "#error": false,
+  "searchQuery": {
+    "term": "site:harver.com AND Szary",
+    "url": "http://www.google.com/search?q=site%3Aharver.com+AND+Szary&num=5",
+    "device": "DESKTOP",
+    "page": 1,
+    "type": "SEARCH",
+    "domain": "google.com",
+    "countryCode": "US",
+    "languageCode": null,
+    "locationUule": null,
+    "resultsPerPage": "5"
+  },
+  "url": "http://www.google.com/search?q=site%3Aharver.com+AND+Szary&num=5",
+  "hasNextPage": false,
+  "serpProviderCode": "N",
+  "resultsTotal": 0,
+  "relatedQueries": [],
+  "paidResults": [],
+  "paidProducts": [],
+  "organicResults": [],
+  "suggestedResults": [],
+  "peopleAlsoAsk": [],
+  "customData": null
+}

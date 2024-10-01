@@ -1,0 +1,125 @@
+{
+  "#debug": {
+    "requestId": "uKq1GsAcU77wVdM",
+    "url": "http://www.google.com/search?q=%22Rob+LaHayne%22+AND+%22primary+venture%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29",
+    "loadedUrl": "http://www.google.com/search?q=%22Rob+LaHayne%22+AND+%22primary+venture%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29",
+    "method": "GET",
+    "retryCount": 0,
+    "errorMessages": [],
+    "statusCode": 200
+  },
+  "#error": false,
+  "searchQuery": {
+    "term": "\"Rob LaHayne\" AND \"primary venture\" AND (\"Interview\" OR \"podcast\" OR \"guest\")",
+    "url": "http://www.google.com/search?q=%22Rob+LaHayne%22+AND+%22primary+venture%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29",
+    "device": "DESKTOP",
+    "page": 1,
+    "type": "SEARCH",
+    "domain": "google.com",
+    "countryCode": "US",
+    "languageCode": null,
+    "locationUule": null,
+    "resultsPerPage": 10
+  },
+  "url": "http://www.google.com/search?q=%22Rob+LaHayne%22+AND+%22primary+venture%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29",
+  "hasNextPage": true,
+  "serpProviderCode": "L",
+  "resultsTotal": 135000,
+  "relatedQueries": [],
+  "paidResults": [],
+  "paidProducts": [],
+  "organicResults": [],
+  "suggestedResults": [
+    {
+      "title": "Rob LaHayne's Post - healthcare #innovation #startup",
+      "url": "https://www.linkedin.com/posts/robertlahayne_healthcare-innovation-startup-activity-7155161228397395969-sWgs",
+      "displayedUrl": "https://www.linkedin.com \u203a posts \u203a robertlahayne_health...",
+      "description": "Excited to be back to building. Big things ahead in 2024 and beyond with Hani Elias and the team at Anchor. #healthcare #innovation #startup | 42 comments\u00a0...",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {}
+    },
+    {
+      "title": "Rob LaHayne - digitalhealth",
+      "url": "https://www.linkedin.com/posts/robertlahayne_digitalhealth-activity-7069323857559474176-tw-A",
+      "displayedUrl": "https://www.linkedin.com \u203a posts \u203a robertlahayne_digital...",
+      "description": "Reminder to my NY based network. Please join us this Thursday in NYC as we launch the first in our series of Digital Health Happy Hours in NYC.",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {}
+    },
+    {
+      "title": "Survival Tips for Early-Career Product Managers",
+      "url": "https://podcasters.spotify.com/pod/show/iwalola-sobowale/episodes/Survival-Tips-for-Early-Career-Product-Managers-e2ki1ru",
+      "displayedUrl": "https://podcasters.spotify.com \u203a pod \u203a show \u203a episodes",
+      "description": "On this episode of the podcast, we spotlight the one and only Emmanuel Faith, a wonderful HR expert. Follow him on LinkedIn and Twitter. We talked about: His HR\u00a0...",
+      "emphasizedKeywords": [
+        "podcast"
+      ],
+      "siteLinks": [],
+      "productInfo": {}
+    },
+    {
+      "title": "Latest Podcasts \u2013 Anesthesia Guidebook",
+      "url": "https://anesthesiaguidebook.com/podcast-2/",
+      "displayedUrl": "https://anesthesiaguidebook.com \u203a podcast-2",
+      "description": "Jennifer Heiden is completing her Doctor of Nursing Practice in anesthesiology at the University of Arizona and this podcast is part of her doctoral work. In\u00a0...",
+      "emphasizedKeywords": [
+        "podcast"
+      ],
+      "siteLinks": [],
+      "productInfo": {}
+    },
+    {
+      "title": "A New Road in Fusion | Dr. Tihiro Ohkawa",
+      "url": "https://fusion-holy-grail.net/a-new-road-in-fusion",
+      "displayedUrl": "https://fusion-holy-grail.net \u203a a-new-road-in-fusion",
+      "description": "Ohkawa's work on the development of fusion power marked him as a truly significant scientist of the 20th century and earned him the prestigious James Clerk\u00a0...",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {}
+    },
+    {
+      "title": "African leaders, U.S. business executives take part in CEO ...",
+      "url": "https://www.liberty.edu/news/2023/10/11/african-leaders-u-s-business-executives-take-part-in-ceo-summit-at-liberty-university/",
+      "displayedUrl": "https://www.liberty.edu \u203a news \u203a 2023/10/11 \u203a african-le...",
+      "description": "Prominent government leaders in Africa as well as experts in business and industry in the US spoke about the importance of investing in the continent.",
+      "date": "2023-10-11T12:00:00.000Z",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {}
+    },
+    {
+      "title": "National Center for Supercomputing ... - Campus Calendar",
+      "url": "https://calendars.illinois.edu/list/7097",
+      "displayedUrl": "https://calendars.illinois.edu \u203a list",
+      "description": "This is a group for those interested in distributed ledger technology, including blockchains, cryptocurrency, cryptography, smart contracts, DApps, and more.",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {}
+    },
+    {
+      "title": "Traveling Towards Totality",
+      "url": "https://countryroadsmagazine.com/travel/getaways/april-2024-eclipse-from-louisiana/",
+      "displayedUrl": "https://countryroadsmagazine.com \u203a travel \u203a getaways",
+      "description": "Traveling Towards Totality. Gearing up for the Great American Eclipse this month. by Jordan LaHaye Fontenot. March 26, 2024.",
+      "date": "2024-03-26T12:00:00.000Z",
+      "emphasizedKeywords": [
+        "LaHaye"
+      ],
+      "siteLinks": [],
+      "productInfo": {}
+    },
+    {
+      "title": "Staff, Columnists and Contributing Writers",
+      "url": "https://www.edsurge.com/writers",
+      "displayedUrl": "https://www.edsurge.com \u203a writers",
+      "description": "Find articles writen by EdSurge Staff, EdSurge Alumni, Columnists and one of the more than eight hundred Contributing Writers.",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {}
+    }
+  ],
+  "peopleAlsoAsk": [],
+  "customData": null
+}

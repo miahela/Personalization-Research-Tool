@@ -1,0 +1,97 @@
+{
+  "#debug": {
+    "requestId": "HylYF69UFSP6GkS",
+    "url": "http://www.google.com/search?q=site%3Alaw360.com+AND+Hilal&num=5",
+    "loadedUrl": "http://www.google.com/search?q=site%3Alaw360.com+AND+Hilal&num=5",
+    "method": "GET",
+    "retryCount": 0,
+    "errorMessages": [],
+    "statusCode": 200
+  },
+  "#error": false,
+  "searchQuery": {
+    "term": "site:law360.com AND Hilal",
+    "url": "http://www.google.com/search?q=site%3Alaw360.com+AND+Hilal&num=5",
+    "device": "DESKTOP",
+    "page": 1,
+    "type": "SEARCH",
+    "domain": "google.com",
+    "countryCode": "US",
+    "languageCode": null,
+    "locationUule": null,
+    "resultsPerPage": "5"
+  },
+  "url": "http://www.google.com/search?q=site%3Alaw360.com+AND+Hilal&num=5",
+  "hasNextPage": true,
+  "serpProviderCode": "N",
+  "resultsTotal": 10800,
+  "relatedQueries": [],
+  "paidResults": [],
+  "paidProducts": [],
+  "organicResults": [
+    {
+      "title": "In Re: Hilal Khalil Homaidan",
+      "url": "https://www.law360.com/cases/5ef3d39f786e9700342feed5?article_sidebar=1",
+      "displayedUrl": "https://www.law360.com \u203a cases",
+      "description": "Parties, docket activity and news coverage of federal case In Re: Hilal Khalil Homaidan, case number 20-1981, from Appellate - 2nd Circuit Court.",
+      "emphasizedKeywords": [
+        "Hilal"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 1
+    },
+    {
+      "title": "Making Legal Cents: Engaging A Remote, Evolving ...",
+      "url": "https://www.law360.com/pulse/articles/1846157/making-legal-cents-engaging-a-remote-evolving-workforce",
+      "displayedUrl": "https://www.law360.com \u203a pulse \u203a articles \u203a making-leg...",
+      "description": "This article is part of a quarterly column that answers law firm leaders' questions on how to navigate through common business issues and industry trends.",
+      "date": "2024-06-13T12:00:00.000Z",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 2
+    },
+    {
+      "title": "In-House : Law360 Pulse : Legal News & Analysis",
+      "url": "https://www.law360.com/pulse/in-house",
+      "displayedUrl": "https://www.law360.com \u203a pulse \u203a in-house",
+      "description": "The North Carolina Department of Justice agreed to settle a Black attorney's lawsuit alleging she was passed over for promotion in favor of a less qualified\u00a0...",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 3
+    },
+    {
+      "title": "Law Firm Strategies For Successfully Navigating 2024 ...",
+      "url": "https://www.law360.com/articles/1779352/law-firm-strategies-for-successfully-navigating-2024-trends",
+      "displayedUrl": "https://www.law360.com \u203a articles \u203a law-firm-strategies...",
+      "description": "This article serves as a playbook for navigating the current trends that will define and differentiate the law firms of 2024.",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 4
+    },
+    {
+      "title": "Making Legal Cents: How To Adapt As Clients Tighten ...",
+      "url": "https://www.law360.com/pulse/articles/1814897/making-legal-cents-how-to-adapt-as-clients-tighten-budgets",
+      "displayedUrl": "https://www.law360.com \u203a pulse \u203a articles \u203a making-leg...",
+      "description": "Amid a dip in corporate legal spending and client pushback on bills, Shireen Hilal at Maior Consultants highlights specific in-house counsel\u00a0...",
+      "date": "2024-03-20T12:00:00.000Z",
+      "emphasizedKeywords": [
+        "Hilal"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 5
+    }
+  ],
+  "suggestedResults": [],
+  "peopleAlsoAsk": [],
+  "customData": null
+}

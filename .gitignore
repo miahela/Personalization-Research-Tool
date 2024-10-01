@@ -48,8 +48,8 @@ Thumbs.db
 #env files
 .env
 
-# user data 
-user_data
+# # user data 
+# user_data
 
-# images
-app/static/images
+# # images
+# app/static/images

@@ -1,0 +1,616 @@
+{
+  "public_identifier": "axel-hoos",
+  "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/axel-hoos/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=ea2f9089490a7443647ac57f75cec6401833dd2bed9565c55215c3b5ef95c646",
+  "background_cover_image_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/axel-hoos/cover?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8b7008cc0dc4444e3e175308be90fa3d1412e73da3f4e64ada5b7bcefffdac04",
+  "first_name": "Axel",
+  "last_name": "Hoos",
+  "full_name": "Axel Hoos",
+  "follower_count": 11379,
+  "occupation": "Former CEO at Scorpion Therapeutics",
+  "headline": "Physician-scientist, biopharma leader, entrepreneur",
+  "summary": "Dr. Axel Hoos is a physician-scientist, biopharma leader and entrepreneur. His interests focus on transformational drug development and building of life science organizations. \n\nMost recently, Dr. Hoos served as CEO of Scorpion Therapeutics, a next-generation biotechnology company focused on Precision Oncology 2.0 to optimize small molecule drug design, where he led its growth from an early discovery to a clinical-stage organization. Previously, he was Senior Vice President, R&D Governance Chair, and Therapeutic Area (TA) Head for Oncology at GSK, overseeing the re-building of the Oncology Division after its divestment to Novartis in 2015. Recent business partnerships, acquisitions, and licensing deals included AstraZeneca, Pierre Fabre, Tesaro, Merck-Serono, Adaptimmune, Lyell, Immatics, Ideaya, Surface Oncology, and iTeos.\n\nFurther, Dr. Hoos served as Executive Chair of the Board of the Sabin Vaccine Institute (SVI), a global health organization, overseeing its organizational re-structuring and renewal of R&D strategy, and as the Global Medical Lead in Immunology/Oncology at Bristol-Myers Squibb (BMS), where he and his team developed Yervoy\u00ae (ipilimumab), the first checkpoint inhibitor drug, and created the term Immuno-Oncology together with a new development paradigm to characterize the interplay of the immune system and cancer in the context of immunotherapy drug development (Nat. Rev. Drug Discovery 2016, 15(4): 235-47). The discovery of ipilimumab\u2019s scientific mechanism was honored with the Nobel Prize for Physiology or Medicine to Dr. James Allison in 2018.\n  \nDr. Hoos also served as Director on the Boards of biotechnology companies NextPoint Therapeutics, and TCR2, and Co-Founder and Director of Imugene. He further served as Co-Director of the Cancer Immunotherapy Consortium (CIC), Scientific Advisory Board Member of the Cancer Research Institute (CRI), and Co-Founder and Executive Committee member of the Partnership for Accelerating Cancer Therapies (PACT) of the Biden Cancer Moonshot. \n\nDr. Hoos holds an MD from Ruprecht-Karls-University and a PhD in molecular oncology from the German Cancer Research Center (DKFZ) under Nobel Laureate Harald zur Hausen, in Heidelberg, Germany. He further trained at the Technical University in Munich and at Memorial Sloan-Kettering Cancer Center in New York City. He is an alumnus of the Program for Leadership Development at Harvard Business School.",
+  "country": "US",
+  "country_full_name": "United States",
+  "city": "Boston",
+  "state": "Massachusetts",
+  "experiences": [
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 7,
+        "year": 2021
+      },
+      "ends_at": null,
+      "company": "Scorpion Therapeutics",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/scorpiontherapeutics",
+      "company_facebook_profile_url": null,
+      "title": "Former CEO",
+      "description": null,
+      "location": "Boston, Massachusetts, United States",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/scorpiontherapeutics/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=49ff175eee71cf419fb7f0803804c93af03a72a4de7eb6bd443f0ead3411ca70"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 3,
+        "year": 2023
+      },
+      "ends_at": null,
+      "company": "NextPoint Therapeutics, Inc.",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/nextpoint-therapeutics",
+      "company_facebook_profile_url": null,
+      "title": "Director, Board of Directors",
+      "description": null,
+      "location": "Boston, Massachusetts, United States",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/nextpoint-therapeutics/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=eac2bcfac31838594e7876b1685d164563735bf01031737a616ad796feda33d7"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 2,
+        "year": 2012
+      },
+      "ends_at": null,
+      "company": "GSK",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/gsk",
+      "company_facebook_profile_url": null,
+      "title": "Former SVP and R&D Governance Chair, Oncology",
+      "description": null,
+      "location": null,
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/gsk/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=cf8879997d55535063890fa319747f47ea609eb8386594d1fd33eb838ec2ae89"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2006
+      },
+      "ends_at": null,
+      "company": "Sabin Vaccine Institute",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/sabin-vaccine-institute",
+      "company_facebook_profile_url": null,
+      "title": "Member, Board of Trustees",
+      "description": null,
+      "location": "Washington, DC",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/sabin-vaccine-institute/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=ffb6c7ab59dc26a8245ccd4efec3f52584672925be3134069650d1f8c3d0ff6c"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2004
+      },
+      "ends_at": null,
+      "company": "Cancer Research Institute (CRI)",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/the-cancer-research-institute",
+      "company_facebook_profile_url": null,
+      "title": "Co-Director Cancer Immunotherapy Consortium",
+      "description": null,
+      "location": "Greater New York City Area",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/the-cancer-research-institute/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=3abd29389859147c63b333543d8edaedd02656360a146cfcf7f71ec10c7e0fc1"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2014
+      },
+      "ends_at": null,
+      "company": "Cancer Research Institute (CRI)",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/the-cancer-research-institute",
+      "company_facebook_profile_url": null,
+      "title": "Scientific Advisory Board Member",
+      "description": null,
+      "location": "Greater New York City Area",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/the-cancer-research-institute/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=3abd29389859147c63b333543d8edaedd02656360a146cfcf7f71ec10c7e0fc1"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 8,
+        "year": 2021
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 1,
+        "year": 2024
+      },
+      "company": "Scorpion Therapeutics",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/scorpiontherapeutics",
+      "company_facebook_profile_url": null,
+      "title": "Chief Executive Officer (CEO)",
+      "description": null,
+      "location": "Boston, Massachusetts, United States",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/scorpiontherapeutics/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=49ff175eee71cf419fb7f0803804c93af03a72a4de7eb6bd443f0ead3411ca70"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 4,
+        "year": 2020
+      },
+      "ends_at": {
+        "day": 30,
+        "month": 6,
+        "year": 2023
+      },
+      "company": "TCR\u00b2 Therapeutics Inc.",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/tcr2-inc-",
+      "company_facebook_profile_url": null,
+      "title": "Director, Board of Directors",
+      "description": "TCR2 joined Adaptimmune to form the preeminent T-Cell Receptor company in our industry. ",
+      "location": "Cambridge, Massachusetts, United States",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/tcr2-inc-/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=8b80620306600d2fe52f6481da5bef3cb7b171e8bc77145245e4f92a4c5a7f88"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2012
+      },
+      "ends_at": {
+        "day": 30,
+        "month": 11,
+        "year": 2021
+      },
+      "company": "Imugene Limited",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/imugene",
+      "company_facebook_profile_url": null,
+      "title": "Co-Founder, and Non-Executive Director",
+      "description": null,
+      "location": "Sydney, Australia",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/imugene/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=b14dc5ff5857b43c5a2ae2d03cfaac642fe145a9465da6fe6fe0fd1049f33a5f"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2018
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 7,
+        "year": 2021
+      },
+      "company": "GSK",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/gsk",
+      "company_facebook_profile_url": null,
+      "title": "Senior Vice President, R&D Governance Chair, and Therapeutic Area Head Oncology",
+      "description": null,
+      "location": "Philadelphia, London",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/gsk/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=cf8879997d55535063890fa319747f47ea609eb8386594d1fd33eb838ec2ae89"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2014
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 12,
+        "year": 2020
+      },
+      "company": "Sabin Vaccine Institute",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/sabin-vaccine-institute",
+      "company_facebook_profile_url": null,
+      "title": "Executive Chairman, Board of Trustees",
+      "description": null,
+      "location": "Washington D.C. Metro Area",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/sabin-vaccine-institute/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=ffb6c7ab59dc26a8245ccd4efec3f52584672925be3134069650d1f8c3d0ff6c"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2015
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 12,
+        "year": 2018
+      },
+      "company": "GSK",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/gsk",
+      "company_facebook_profile_url": null,
+      "title": "Senior Vice President, Therapeutic Area Head, Oncology R&D",
+      "description": null,
+      "location": "Collegeville, PA",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/gsk/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=cf8879997d55535063890fa319747f47ea609eb8386594d1fd33eb838ec2ae89"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2012
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 12,
+        "year": 2015
+      },
+      "company": "GSK",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/gsk",
+      "company_facebook_profile_url": null,
+      "title": "Vice President, Immuno-Oncology",
+      "description": null,
+      "location": "Philadelphia, London",
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/gsk/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=cf8879997d55535063890fa319747f47ea609eb8386594d1fd33eb838ec2ae89"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2005
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 12,
+        "year": 2012
+      },
+      "company": "Bristol Myers Squibb",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/bristol-myers-squibb",
+      "company_facebook_profile_url": null,
+      "title": "Global Medical Lead, Immunology/Oncology",
+      "description": null,
+      "location": null,
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/bristol-myers-squibb/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=c822acc899b3164975891894013d0a02b454fd5dac6bb9522360a124dd9073b5"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2001
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 12,
+        "year": 2005
+      },
+      "company": "Agenus",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/agenus",
+      "company_facebook_profile_url": null,
+      "title": "Senior Director, Clinical Development",
+      "description": null,
+      "location": null,
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/agenus/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=53e131a8d6a037b2b9cb4c2aa316918ba8e7f4fbc1d52c0282a9efe3f0551469"
+    }
+  ],
+  "education": [
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2008
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 12,
+        "year": 2009
+      },
+      "field_of_study": "General",
+      "degree_name": "Business Administration and Management",
+      "school": "Harvard Business School",
+      "school_linkedin_profile_url": "https://www.linkedin.com/company/4867/",
+      "school_facebook_profile_url": null,
+      "description": null,
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/harvard-business-school/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=b1ca5f3b6ae3da8ffd17dc2de8a9bbb9b78fbb150d17548f94b53998c1a92297",
+      "grade": null,
+      "activities_and_societies": null
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 3,
+        "year": 1999
+      },
+      "ends_at": {
+        "day": 30,
+        "month": 6,
+        "year": 2001
+      },
+      "field_of_study": "Cancer Research",
+      "degree_name": "Fellowship",
+      "school": "Memorial Sloan Kettering Cancer Center (MSKCC)",
+      "school_linkedin_profile_url": null,
+      "school_facebook_profile_url": null,
+      "description": null,
+      "logo_url": null,
+      "grade": null,
+      "activities_and_societies": null
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 3,
+        "year": 1997
+      },
+      "ends_at": {
+        "day": 28,
+        "month": 2,
+        "year": 1999
+      },
+      "field_of_study": "General Surgery Residency Program",
+      "degree_name": "Residency",
+      "school": "Technical University of Munich",
+      "school_linkedin_profile_url": "https://www.linkedin.com/company/166283/",
+      "school_facebook_profile_url": null,
+      "description": null,
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/technische-universitat-munchen/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=3d247c5fa338a4c91ce393a0e8158b521c864a8b8cc15bad40013a7c246a81b6",
+      "grade": null,
+      "activities_and_societies": null
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 1993
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 12,
+        "year": 1997
+      },
+      "field_of_study": "Cancer & Immunology Research",
+      "degree_name": "PhD",
+      "school": "DKFZ German Cancer Research Center",
+      "school_linkedin_profile_url": "https://www.linkedin.com/company/654743/",
+      "school_facebook_profile_url": null,
+      "description": null,
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/dkfz-de/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=70a2397eef6b4acc68d0427800e6622dbfc55d33ef1fd827016ef7e8d3b74915",
+      "grade": null,
+      "activities_and_societies": null
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 1990
+      },
+      "ends_at": {
+        "day": 31,
+        "month": 12,
+        "year": 1997
+      },
+      "field_of_study": "Medicine",
+      "degree_name": "MD",
+      "school": "Heidelberg University",
+      "school_linkedin_profile_url": "https://www.linkedin.com/company/15091827/",
+      "school_facebook_profile_url": null,
+      "description": null,
+      "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/uni-heidelberg/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20240921%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20240921T192109Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=c419d3c3ad35fea9ffa313928e86552a15e48aa85bc01f37e789a9875bd6a9d7",
+      "grade": null,
+      "activities_and_societies": null
+    }
+  ],
+  "languages": [],
+  "accomplishment_organisations": [],
+  "accomplishment_publications": [],
+  "accomplishment_honors_awards": [],
+  "accomplishment_patents": [],
+  "accomplishment_courses": [],
+  "accomplishment_projects": [],
+  "accomplishment_test_scores": [],
+  "volunteer_work": [],
+  "certifications": [],
+  "connections": 11028,
+  "people_also_viewed": [
+    {
+      "link": "https://www.linkedin.com/in/dr-tony-wood",
+      "name": "Tony Wood",
+      "summary": "Chief Scientific Officer, R&D, GSK",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/adam-friedman-md-phd-15aa2915",
+      "name": "Adam Friedman, MD, PhD",
+      "summary": "President & CEO, Scorpion Therapeutics",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/darrinstuart",
+      "name": "Darrin Stuart",
+      "summary": "Chief Scientific Officer at Scorpion Therapeutics",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/omeara64",
+      "name": "Michael O'Meara",
+      "summary": "Experienced Clinical Development/Operations Professional",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/guzman-perez-angel-b4903a4",
+      "name": "Guzman-Perez Angel",
+      "summary": "Head of Chemistry at Scorpion Therapeutics",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/leena-gandhi-96abb66",
+      "name": "Leena Gandhi",
+      "summary": "Immuno-Oncology Drug Development/CMO, Nextpoint Therapeutics",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/davestjean",
+      "name": "Dave St. Jean",
+      "summary": "VP of Chemistry at Scorpion Therapeutics",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/weixue-wang-977b8720",
+      "name": "Weixue Wang",
+      "summary": "Senior Director of Biochemistry at Scorpion Therapeutics",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/melissa-hayes-1495b49",
+      "name": "Melissa Hayes",
+      "summary": "Immuno Oncology",
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/amy-finan-14a1a4102",
+      "name": "Amy Finan",
+      "summary": "CEO, Sabin Vaccine Institute",
+      "location": null
+    }
+  ],
+  "recommendations": [],
+  "activities": [
+    {
+      "title": "Yesterday, my magnificent aunt Meri\u00e7 S\u00fcmen turned a vigorous and healthy 80. Her life has been a constant striving for excellence in the art of\u2026",
+      "link": "https://www.linkedin.com/posts/cenksumen_ballet-activity-7067919805688729600-Hk80",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "25 years ago, Seagen set out with a singular mission: to make a meaningful impact on the lives of people with cancer. Today, we celebrate the many\u2026",
+      "link": "https://www.linkedin.com/posts/seagen_seagen25-activity-7064999598477475840-amkN",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "During the #COVID19 pandemic, the world saw a decline in life-course immunizations. This had a particularly negative impact on remote\u2026",
+      "link": "https://www.linkedin.com/posts/sabin-vaccine-institute_covid19-varn2023-vaccineswork-activity-7068903888585641985-nBOT",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "The first letter of the genetic code was cracked #OnThisDay in 1961 at 3 am by Marshall Nirenberg (right) and Heinrich Matthaei (left) at the\u2026",
+      "link": "https://www.linkedin.com/posts/nobelprize_onthisday-activity-7068094475352305665-zBWr",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "How can cancer cells manipulate their protein degradation machinery to suppress anti-tumor immunity? CRI CLIP Investigator Dr. Yifat Merbl of\u2026",
+      "link": "https://www.linkedin.com/posts/the-cancer-research-institute_the-proteasome-regulator-psme4-modulates-activity-7068224581932589057-dgtq",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "Are vaccine patches the future of immunization? Learn how this innovative tech could protect against deadly diseases without the need for syringes:\u2026",
+      "link": "https://www.linkedin.com/posts/gavi_are-vaccine-patches-the-future-of-immunization-activity-7067393907398955008-zdv1",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "What is the difference between immunotherapy and chemotherapy, and how can you receive immunotherapy treatment? Review answers to the most frequently\u2026",
+      "link": "https://www.linkedin.com/posts/the-cancer-research-institute_what-is-immunotherapy-cancer-research-activity-7068591501609431040-n9LQ",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "\"Don't talk about the product!\"Watch the genius behind Apple's 'Think Different' campaign. (Steve Jobs, 1997)",
+      "link": "https://www.linkedin.com/posts/daniel-abrahams_dont-talk-about-the-product-watch-the-activity-7066340146551422976-P78C",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "It is TODAY ! \ud83d\udcab\ud83d\udca5\ud83d\udca5\ud83d\udca5 300 registrations ! The @Alliance of Pancreatic Cancer Consortia (APaCC) and the European Liquid Biopsy Society (ELBS) (ELBS)\u2026",
+      "link": "https://www.linkedin.com/posts/catherine-alix-panabi%C3%A8res-b5969942_liquidbiopsy-exosomes-evs-activity-7067408471255592961-VWwz",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "Cancer touches all our lives\u2014and that is why, at Pfizer, nothing is more personal or urgent than our goal to translate cutting-edge science into\u2026",
+      "link": "https://www.linkedin.com/posts/chris-boshoff_cancer-asco23-asco23-activity-7067607824888946688-QJpc",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "Survival data continues to improve; engineered TCR cell therapy continues to advance as the next generation of cancer treatment, with Adaptimmune at\u2026",
+      "link": "https://www.linkedin.com/posts/jlunger_survival-data-continues-to-improve-engineered-activity-7067842967780122624-wvTp",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "Efficiencies in the approval process will provide benefits to patients in the UK - happy to read this!",
+      "link": "https://www.linkedin.com/posts/elaine-paul-79ab65a_efficiencies-in-the-approval-process-will-activity-7068222898385129472-nObn",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "How are T cells impacted by the brain tumor microenvironment? Research from CRI Lloyd J. Old STAR Dr. Enrico Lugli of Humanitas Research Hospital\u2026",
+      "link": "https://www.linkedin.com/posts/the-cancer-research-institute_phenotypic-diversity-of-t-cells-in-human-activity-7067488470008487936-6QIU",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "Great speaking with Sheila Gujrathi, MD on her decision to leave medicine and pursue a career in biotech. Appreciated hearing about her experiences\u2026",
+      "link": "https://www.linkedin.com/posts/nimish-shah-4a379b_take-the-road-less-traveled-activity-7067530353535528961-J98-",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "Janhavi is a bright young lady who means a lot to me. She has recently graduated with a Masters degree from NC State University. I would truly\u2026",
+      "link": "https://www.linkedin.com/posts/elaine-paul-79ab65a_janhavi-is-a-bright-young-lady-who-means-activity-7062391585304428544-4yIl",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "\"What did you feel when you heard you were receiving the Rising Star Award?\"Sangwe Clovis Nchinjoh, MD, MPH, MSc (Rural Doctors) is a public health\u2026",
+      "link": "https://www.linkedin.com/posts/sabin-vaccine-institute_what-did-you-feel-when-you-heard-you-were-activity-7067200110501224449-zqIK",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "Had a great time discussing the challenges and proposed solutions developing the next-generation of cell therapy products.  Thank you to FOCR for the\u2026",
+      "link": "https://www.linkedin.com/posts/jonathan-jazayeri-9b7b5216_had-a-great-time-discussing-the-challenges-activity-7066587733476958208-jtJX",
+      "activity_status": "Liked by Axel Hoos"
+    },
+    {
+      "title": "Proud to have been part of this journey!  Congratulations to the AbbVie and Genmab colleagues on both sides of the Atlantic who worked tirelessly to\u2026",
+      "link": "https://www.linkedin.com/posts/henry-gosebruch-3834608_proud-to-have-been-part-of-this-journey-activity-7066915317519695872-4A8C",
+      "activity_status": "Liked by Axel Hoos"
+    }
+  ],
+  "similarly_named_profiles": [
+    {
+      "name": "Axel Hoos, MD, PhD",
+      "link": "https://www.linkedin.com/in/axel-hoos-md-phd-0b872a",
+      "summary": null,
+      "location": "New York, NY"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Relentless scientific pursuit to improve  cancer treatment",
+      "link": "https://www.linkedin.com/pulse/relentless-scientific-pursuit-improve-cancer-treatment-axel-hoos",
+      "published_date": {
+        "day": 9,
+        "month": 1,
+        "year": 2021
+      },
+      "author": "By Axel Hoos",
+      "image_url": "https://media.licdn.com/dms/image/C4E12AQEz1jttRkE1NQ/article-cover_image-shrink_180_320/0/1623244475827?e=2147483647&v=beta&t=4tfgllAZRg5dSdT8RF_8tjLSDB08ncFc4bE1L4xLOBw"
+    },
+    {
+      "title": "Myeloma Action Month: Marking the Resilience of the Myeloma Community",
+      "link": "https://www.linkedin.com/pulse/myeloma-action-month-marking-resilience-community-axel-hoos",
+      "published_date": {
+        "day": 26,
+        "month": 1,
+        "year": 2021
+      },
+      "author": "By Axel Hoos",
+      "image_url": "https://media.licdn.com/dms/image/C4E12AQGjoocooiL1Ag/article-cover_image-shrink_180_320/0/1616789492495?e=2147483647&v=beta&t=J3nfQMydpGmOh2poMV1hCuqLsfL0G0eOEgX7s0MCvWI"
+    },
+    {
+      "title": "Forging new paths in the journey to overcome cancer",
+      "link": "https://www.linkedin.com/pulse/forging-new-paths-journey-overcome-cancer-axel-hoos",
+      "published_date": {
+        "day": 1,
+        "month": 1,
+        "year": 2020
+      },
+      "author": "By Axel Hoos",
+      "image_url": "https://media.licdn.com/dms/image/C4D12AQFQnRzhX7rttw/article-cover_image-shrink_600_2000/0/1591047460783?e=2147483647&v=beta&t=gP47-9GW1VIbSIDTzDi6y-aOPRtDolbcRhob-dqfDjk"
+    }
+  ],
+  "groups": [
+    {
+      "profile_pic_url": "https://media.licdn.com/dms/image/v2/C5607AQFws6pTPtBgpA/group-logo_image-shrink_48x48/group-logo_image-shrink_48x48/0/1635947717993?e=1725966000&v=beta&t=agZypUecPnxcddXz1zDzXhV_FZQSh8pd5yKKW2ll6pU",
+      "name": "The Global Leaders (TGL)",
+      "url": "https://www.linkedin.com/groups/4096990"
+    },
+    {
+      "profile_pic_url": "https://media.licdn.com/dms/image/v2/C4E07AQGyFhIwpzP0Kw/group-logo_image-shrink_48x48/group-logo_image-shrink_48x48/0/1548071095223?e=1725966000&v=beta&t=fPjKq_AvvYi1NXvnDBLTEiz2K9ORRBejVb3iRLeMoDw",
+      "name": "CRISPR Forum",
+      "url": "https://www.linkedin.com/groups/5064109"
+    }
+  ],
+  "skills": [],
+  "inferred_salary": null,
+  "gender": null,
+  "birth_date": null,
+  "industry": null,
+  "extra": null,
+  "interests": [],
+  "personal_emails": [],
+  "personal_numbers": []
+}

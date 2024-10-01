@@ -1,0 +1,275 @@
+{
+  "#debug": {
+    "requestId": "FZy1sjbTObMpJu1",
+    "url": "http://www.google.com/search?q=%22Collin+O%27Mara%22+AND+%22national+wildlife+federation%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29",
+    "loadedUrl": "http://www.google.com/search?q=%22Collin+O%27Mara%22+AND+%22national+wildlife+federation%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29",
+    "method": "GET",
+    "retryCount": 0,
+    "errorMessages": [],
+    "statusCode": 200
+  },
+  "#error": false,
+  "searchQuery": {
+    "term": "\"Collin O'Mara\" AND \"national wildlife federation\" AND (\"Interview\" OR \"podcast\" OR \"guest\")",
+    "url": "http://www.google.com/search?q=%22Collin+O%27Mara%22+AND+%22national+wildlife+federation%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29",
+    "device": "DESKTOP",
+    "page": 1,
+    "type": "SEARCH",
+    "domain": "google.com",
+    "countryCode": "US",
+    "languageCode": null,
+    "locationUule": null,
+    "resultsPerPage": 10
+  },
+  "url": "http://www.google.com/search?q=%22Collin+O%27Mara%22+AND+%22national+wildlife+federation%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29",
+  "hasNextPage": true,
+  "serpProviderCode": "L",
+  "resultsTotal": 3470,
+  "relatedQueries": [
+    {
+      "title": "Matt Meyer",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=Matt+Meyer&stick=H4sIAAAAAAAAAOMwVGI0-MXIsIGF4RULPxevfrq-oWGyoXmJaUVKPEIkKysl16K4PPcVCw8Xl36uvkGVhWVOhuErFl4ubhDX0MAiJc-8CC5daZZmWoikP72q0DglKbkAycRCg_QM8_KkRaxcvoklJQq-qZWpRbfYJBm6n_YYB8aHFLxTaT4odWjPkqcmP9fNLvNetYhDLCA1vyAnVSExpzhfoTg1sSg5QyEtv2gFByMAYhgH0sYAAAA&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQs9oBKAB6BAgtEAk"
+    },
+    {
+      "title": "Debbie Harrington",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=Debbie+Harrington&stick=H4sIAAAAAAAAAOMwVGI0_MXIsIGF4RULPxevfrq-oWGyoXmJaUVKPEIkKysl16K4PPcVCw8Xl36uvkGVhWVOhuErFl4ubhDX0MAiJc-8CC5daZZmWoikP72q0DglKbkAycRCg_QM8_KkRayCLqlJSZmpCh6JRUWZeekl-Xm32CQZup_2GAfGhxS8U2k-KHVoz5KnJj_XzS7zXrWIQywgNb8gJ1UhMac4X6E4NbEoOUMhLb9oBQcjAOLwYpzNAAAA&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQs9oBKAB6BAgtEA4"
+    },
+    {
+      "title": "Bethany Hall\u2011Long",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=Bethany+Hall-Long&stick=H4sIAAAAAAAAAOMwVGI0-sXIsIGF4RULPxevfrq-oWGyoXmJaUVKPEIkKysl16K4PPcVCw8Xl36uvkGVhWVOhuErFl4ubhDX0MAiJc-8CC5daZZmWoikP72q0DglKbkAycRCg_QM8_KkRayCTqklGYl5lQoeiTk5uj75eem32CQZup_2GAfGhxS8U2k-KHVoz5KnJj_XzS7zXrWIQywgNb8gJ1UhMac4X6E4NbEoOUMhLb9oBQcjABXD1kzNAAAA&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQs9oBKAB6BAgtEBM"
+    },
+    {
+      "title": "Sarah McBride",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=Sarah+McBride&stick=H4sIAAAAAAAAAOMwVGI0_sXIsIGF4RULPxevfrq-oWGyoXmJaUVKPEIkKysl16K4PPcVCw8Xl36uvkGVhWVOhuErFl4ubhDX0MAiJc-8CC5daZZmWoikP72q0DglKbkAycRCg_QM8_KkRay8wYlFiRkKvslORZkpqbfYJBm6n_YYB8aHFLxTaT4odWjPkqcmP9fNLvNetYhDLCA1vyAnVSExpzhfoTg1sSg5QyEtv2gFByMAoUafGskAAAA&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQs9oBKAB6BAgtEBg"
+    },
+    {
+      "title": "Mike Ramone",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=Mike+Ramone&stick=H4sIAAAAAAAAAOMwVGI0-cXIsIGF4RULPxevfrq-oWGyoXmJaUVKPEIkKysl16K4PPcVCw8Xl36uvkGVhWVOhuErFl4ubhDX0MAiJc-8CC5daZZmWoikP72q0DglKbkAycRCg_QM8_KkRazcvpnZqQpBibn5eam32CQZup_2GAfGhxS8U2k-KHVoz5KnJj_XzS7zXrWIQywgNb8gJ1UhMac4X6E4NbEoOUMhLb9oBQcjAI8OSy3HAAAA&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQs9oBKAB6BAgtEB0"
+    },
+    {
+      "title": "Colleen Davis",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=Colleen+Davis&stick=H4sIAAAAAAAAAOMwVGI0_cXIsIGF4RULPxevfrq-oWGyoXmJaUVKPEIkKysl16K4PPcVCw8Xl36uvkGVhWVOhuErFl4ubhDX0MAiJc-8CC5daZZmWoikP72q0DglKbkAycRCg_QM8_KkRay8zvk5OampeQouiWWZxbfYJBm6n_YYB8aHFLxTaT4odWjPkqcmP9fNLvNetYhDLCA1vyAnVSExpzhfoTg1sSg5QyEtv2gFByMAfyUnUckAAAA&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQs9oBKAB6BAgtECI"
+    },
+    {
+      "title": "Collin o mara and national wildlife federation and interview podcast guest youtube",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=Collin+o+mara+and+national+wildlife+federation+and+interview+podcast+guest+youtube&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAg3EAE"
+    },
+    {
+      "title": "National Wildlife Federation CEO",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+CEO&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAg2EAE"
+    },
+    {
+      "title": "National Wildlife Federation staff",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+staff&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAgwEAE"
+    },
+    {
+      "title": "National Wildlife Federation calendar",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+calendar&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAg1EAE"
+    },
+    {
+      "title": "Native wildlife Federation",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=Native+wildlife+Federation&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAg0EAE"
+    },
+    {
+      "title": "National Wildlife Federation email",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+email&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAgyEAE"
+    },
+    {
+      "title": "National Wildlife Federation phone number",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+phone+number&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAgzEAE"
+    },
+    {
+      "title": "National Wildlife Federation login",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+login&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAgxEAE"
+    },
+    {
+      "title": "Collin o mara and national wildlife federation and interview podcast guest youtube",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=Collin+o+mara+and+national+wildlife+federation+and+interview+podcast+guest+youtube&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAg3EAE"
+    },
+    {
+      "title": "National Wildlife Federation CEO",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+CEO&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAg2EAE"
+    },
+    {
+      "title": "National Wildlife Federation staff",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+staff&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAgwEAE"
+    },
+    {
+      "title": "National Wildlife Federation calendar",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+calendar&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAg1EAE"
+    },
+    {
+      "title": "Native wildlife Federation",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=Native+wildlife+Federation&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAg0EAE"
+    },
+    {
+      "title": "National Wildlife Federation email",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+email&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAgyEAE"
+    },
+    {
+      "title": "National Wildlife Federation phone number",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+phone+number&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAgzEAE"
+    },
+    {
+      "title": "National Wildlife Federation login",
+      "url": "https://www.google.com/search?sca_esv=5a20e3b79a064c59&sca_upv=1&gl=us&hl=en&q=National+Wildlife+Federation+login&sa=X&ved=2ahUKEwiFxJT6o9WIAxWm8MkDHVweEXIQ1QJ6BAgxEAE"
+    }
+  ],
+  "paidResults": [],
+  "paidProducts": [],
+  "organicResults": [
+    {
+      "title": "Seeds Of Culture Change",
+      "url": "https://www.nwf.org/About-Us/DEIJ/SeedsOfCultureChange",
+      "displayedUrl": "https://www.nwf.org \u203a About-Us \u203a DEIJ \u203a SeedsOfCultur...",
+      "description": "While this podcast aims to tell an honest story of where the National Wildlife Federation ... We're closing out the season with NWF President and CEO Collin O'\u00a0...",
+      "emphasizedKeywords": [
+        "podcast",
+        "National Wildlife Federation",
+        "Collin O'"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 1
+    },
+    {
+      "title": "What's Your Dream NWF? | Seeds of Culture Change",
+      "url": "https://www.nwf.org/About-Us/DEIJ/SeedsOfCultureChange/Whats-Your-Dream-NWF",
+      "displayedUrl": "https://www.nwf.org \u203a About-Us \u203a DEIJ \u203a Whats-Your-...",
+      "description": "National Wildlife Federation will look like? We're closing out the season with NWF President and CEO Collin O'Mara ... podcast where we're\u00a0...",
+      "date": "2022-11-23T12:00:00.000Z",
+      "emphasizedKeywords": [
+        "National Wildlife Federation",
+        "Collin O'Mara",
+        "podcast"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 2
+    },
+    {
+      "title": "Collin O'Mara - National Wildlife Federation - Spirit of the I.E.",
+      "url": "https://omny.fm/shows/eye-on-the-community/collin-omara-national-wildlife-federation?in_playlist=podcast&cloudflare-language=",
+      "displayedUrl": "https://omny.fm \u203a shows \u203a eye-on-the-community \u203a colli...",
+      "description": "Follow podcast ... Collin O'Mara - National Wildlife Federation. 08 ... Spirit of the I.E.. Spirit of the I.E. with Vicki Pepper. Social links. Website. Follow\u00a0...",
+      "emphasizedKeywords": [
+        "podcast",
+        "Collin O'Mara",
+        "National Wildlife Federation"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 3
+    },
+    {
+      "title": "President's View: Focusing on What We Share",
+      "url": "https://www.nwf.org/en/Magazines/National-Wildlife/2024/Winter/Conservation/Winter24-President-View",
+      "displayedUrl": "https://www.nwf.org \u203a Winter \u203a Winter24-President-View",
+      "description": "National Wildlife Federation president and CEO Collin O'Mara reflects on the common ground of land, water and wildlife.",
+      "date": "2023-12-30T12:00:00.000Z",
+      "emphasizedKeywords": [
+        "National Wildlife Federation",
+        "Collin O'Mara"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 4
+    },
+    {
+      "title": "Collin O'Mara, National Wildlife Federation HD",
+      "url": "https://www.youtube.com/watch?v=pG9SKRsy2tA",
+      "displayedUrl": "270+ views  \u00b7  9 years ago",
+      "description": "",
+      "emphasizedKeywords": [],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 5
+    },
+    {
+      "title": "Collin O'Mara - National Wildlife Federation",
+      "url": "https://music.amazon.com/podcasts/62133ca2-7cb3-4592-b780-9504a15f2b54/episodes/2edefca8-fdaa-4983-9964-a72e3feb91aa/san-diego-syndicated-collin-o%27mara---national-wildlife-federation",
+      "displayedUrl": "https://music.amazon.com \u203a podcasts \u203a episodes \u203a san-d...",
+      "description": "Collin O'Mara, CEO of the National Wildlife Federation, discusses the Recovering America's Wildlife Act ... Collin O'Mara ... The Why Files: Operation Podcast. The\u00a0...",
+      "emphasizedKeywords": [
+        "Collin O'Mara",
+        "National Wildlife Federation",
+        "Collin O'Mara",
+        "Podcast"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 6
+    },
+    {
+      "title": "Collin O'Mara - National Wildlife Federation",
+      "url": "https://omny.fm/shows/san-diego-syndicated-1/collin-omara-national-wildlife-federation?in_playlist=podcast",
+      "displayedUrl": "https://omny.fm \u203a shows \u203a san-diego-syndicated-1 \u203a colli...",
+      "description": "Collin O'Mara - National Wildlife Federation. View ... Follow podcast. Error loading playlist. Description ... Audio syndicated for all Audacy San Diego stations.",
+      "emphasizedKeywords": [
+        "Collin O'Mara",
+        "National Wildlife Federation",
+        "podcast"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 7
+    },
+    {
+      "title": "INTERVIEW: Collin O'Mara",
+      "url": "https://search.proquest.com/openview/a4a4d68f0e779d309c006800363925b8/1?pq-origsite=gscholar&cbl=46452",
+      "displayedUrl": "https://search.proquest.com \u203a openview",
+      "description": "INTERVIEW: Collin O'Mara. Abstract. Prior to joining the National Wildlife Federation, O'Mara served as the cabinet secretary of Delaware's Department of\u00a0...",
+      "emphasizedKeywords": [
+        "INTERVIEW",
+        "Collin O'Mara",
+        "National Wildlife Federation"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 8
+    },
+    {
+      "title": "Conservation Federation Podcast Episode 2",
+      "url": "https://confedmo.org/conservation-federation-podcast-episode-2/",
+      "displayedUrl": "https://confedmo.org \u203a conservation-federation-podcast...",
+      "description": "Brandon Butler interviews Collin O'Mara, CEO of the National Wildlife Federation (NWF), which is America's largest wildlife conservation organization.",
+      "date": "2016-12-19T12:00:00.000Z",
+      "emphasizedKeywords": [
+        "Collin O'Mara",
+        "National Wildlife Federation"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 9
+    },
+    {
+      "title": "Jeff Crane, Collin O'Mara, and Recovering America's Wildlife",
+      "url": "https://poddtoppen.se/podcast/1403554700/national-wildlife-federation-outdoors/jeff-crane-collin-omara-and-recovering-americas-wildlife",
+      "displayedUrl": "https://poddtoppen.se \u203a podcast \u203a jeff-crane-collin-oma...",
+      "description": "... National Wildlife Federation President and CEO Collin O'Mara. ... The National Wildlife Federation Outdoors Podcast is supported by Hunt To Eat. ... An interview\u00a0...",
+      "emphasizedKeywords": [
+        "National Wildlife Federation",
+        "Collin O'Mara",
+        "National Wildlife Federation",
+        "Podcast",
+        "interview"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 10
+    }
+  ],
+  "suggestedResults": [],
+  "peopleAlsoAsk": [],
+  "customData": null
+}

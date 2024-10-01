@@ -1,0 +1,148 @@
+{
+    "#debug": {
+        "requestId": "93Fejeuw8TS6oRY",
+        "url": "http://www.google.com/search?q=%22Ahmad+Shaath%22+AND+%22beacon+securities%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-01",
+        "loadedUrl": "http://www.google.com/search?q=%22Ahmad+Shaath%22+AND+%22beacon+securities%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-01",
+        "method": "GET",
+        "retryCount": 0,
+        "errorMessages": [],
+        "statusCode": 200
+    },
+    "#error": false,
+    "searchQuery": {
+        "term": "\"Ahmad Shaath\" AND \"beacon securities\" AND (\"Interview\" OR \"podcast\" OR \"guest\") after:2023-10-01",
+        "url": "http://www.google.com/search?q=%22Ahmad+Shaath%22+AND+%22beacon+securities%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-01",
+        "device": "DESKTOP",
+        "page": 1,
+        "type": "SEARCH",
+        "domain": "google.com",
+        "countryCode": "US",
+        "languageCode": null,
+        "locationUule": null,
+        "resultsPerPage": 10
+    },
+    "url": "http://www.google.com/search?q=%22Ahmad+Shaath%22+AND+%22beacon+securities%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-01",
+    "hasNextPage": true,
+    "serpProviderCode": "N",
+    "resultsTotal": 30,
+    "relatedQueries": [],
+    "paidResults": [],
+    "paidProducts": [],
+    "organicResults": [],
+    "suggestedResults": [
+        {
+            "title": "Conflict Echoes | Palestine: A Nation In Exile is a 1976 ...",
+            "url": "https://www.instagram.com/conflictechoes/p/C2-mzEZM2z9/",
+            "displayedUrl": "https://www.instagram.com › conflictechoes",
+            "description": "In an interview with Ahmed Alnaouq, she illustrates its adaptation and manipulation tactics over time. Khalik outlines how Hasbara shifts its stories and ...",
+            "emphasizedKeywords": [
+                "interview",
+                "Ahmed"
+            ],
+            "siteLinks": [],
+            "productInfo": {}
+        },
+        {
+            "title": "Bibliography & Filmography 4:23",
+            "url": "https://librarianswithpalestine.org/wp-content/uploads/2024/05/bibliography_filmography_4_23_5.18.24_final.pdf",
+            "displayedUrl": "https://librarianswithpalestine.org › 2024/05 › bi...",
+            "description": "The book proposes a visionary approach to the Israeli-Palestinian conflict—one state for two peoples. Abunimah shows how the two are by now so intertwined ...",
+            "date": "2024-05-19T12:00:00.000Z",
+            "emphasizedKeywords": [],
+            "siteLinks": [],
+            "productInfo": {}
+        },
+        {
+            "title": "Noura Erakat: Colonial law and the erasure of Palestine",
+            "url": "https://therealnews.com/noura-erakat-colonial-law-and-the-erasure-of-palestine",
+            "displayedUrl": "https://therealnews.com › noura-erakat-colonial-law-an...",
+            "description": "For a century, international law derived from British colonial rule has been premised on the non-existence of Palestinians as a people.",
+            "date": "2024-02-02T12:00:00.000Z",
+            "emphasizedKeywords": [],
+            "siteLinks": [],
+            "productInfo": {}
+        },
+        {
+            "title": "Brown University's Choices Curriculum: - CAMERA.org",
+            "url": "https://www.camera.org/wp-content/uploads/2024/01/CAMERA-Report-Brown-Universitys-Choices-Curriculum-Platform-for-Anti-Zionist-Narrative.pdf",
+            "displayedUrl": "https://www.camera.org › uploads › 2024/01 › C...",
+            "description": "The Choices Program was established in 1988 at Brown University's Watson Institute for International and Public Affairs to teach high school students – and ...",
+            "date": "2024-01-30T12:00:00.000Z",
+            "emphasizedKeywords": [],
+            "siteLinks": [],
+            "productInfo": {}
+        },
+        {
+            "title": "Lettera aperta del personale accademico e amministrativo ...",
+            "url": "https://ilmanifesto.it/lettera-aperta-del-personale-accademico-e-amministrativo-delle-universita-di-gaza-al-mondo",
+            "displayedUrl": "https://ilmanifesto.it › lettera-aperta-del-personale-accad...",
+            "description": "Ci siamo riuniti come accademici palestinesi e personale delle università di Gaza per affermare la nostra esistenza, quella dei nostri colleghi e dei nostri ...",
+            "date": "2024-05-29T12:00:00.000Z",
+            "emphasizedKeywords": [],
+            "siteLinks": [],
+            "productInfo": {}
+        },
+        {
+            "title": "Content Posted in 2023 - LVHN Scholarly Works",
+            "url": "https://scholarlyworks.lvhn.org/2023.2.html",
+            "displayedUrl": "https://scholarlyworks.lvhn.org › 2023.2.html",
+            "description": "Cholesterol granulomas presenting as sellar masses: a similar, but clinically distinct entity from craniopharyngioma and Rathke's cleft cyst.",
+            "date": "2023-10-25T12:00:00.000Z",
+            "emphasizedKeywords": [],
+            "siteLinks": [],
+            "productInfo": {}
+        },
+        {
+            "title": "Santa Fe New Mexican, Jan. 7, 2024",
+            "url": "https://issuu.com/sfnewmexican/docs/sfnm_010724",
+            "displayedUrl": "https://issuu.com › sfnewmexican › docs › sfnm_010724",
+            "description": "The situation in Rafah is a total misery,” said Mohammed Shaath, 68, a retired engineer from the southern city of Khan Younis who has been helping a group with ...",
+            "date": "2024-01-07T12:00:00.000Z",
+            "emphasizedKeywords": [
+                "Shaath"
+            ],
+            "siteLinks": [],
+            "productInfo": {}
+        },
+        {
+            "title": "news_vocab_sorted.txt",
+            "url": "https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15122-s14/www/14-interfaces/news_vocab_sorted.txt",
+            "displayedUrl": "https://www.cs.cmu.edu › class › www › 14-interfaces",
+            "description": "ahmad ahmadian ahmadinejad ahmadinejhad ahmadiyya ahmadiyyas ahmed ... beacon beacons bead beads beady beam beamed beaming beams beamte bean beans bear ...",
+            "date": "2024-05-23T12:00:00.000Z",
+            "emphasizedKeywords": [
+                "ahmad",
+                "ahmadinejhad",
+                "ahmed",
+                "beacon"
+            ],
+            "siteLinks": [],
+            "productInfo": {}
+        },
+        {
+            "title": "Lawrence Journal-World 05-22-11",
+            "url": "https://issuu.com/lawrencejournal-world/docs/ljw_052211_01",
+            "displayedUrl": "https://issuu.com › docs › ljw_052211_01",
+            "description": "It is the big bet at Lawrence City Hall. Someday the economy will improve, and builders will start constructing homes at a pace faster than they are today.",
+            "date": "2023-11-21T12:00:00.000Z",
+            "emphasizedKeywords": [],
+            "siteLinks": [],
+            "productInfo": {}
+        },
+        {
+            "title": "titles.txt",
+            "url": "http://resources.codingthematrix.com/titles.txt",
+            "displayedUrl": "http://resources.codingthematrix.com › titles",
+            "description": "ahmad shah durrani akkadian empire ajax alaric ii alboin afonso de ... securities and exchange commission kennedy family pierre schaeffer lz 129 ...",
+            "date": "2023-11-04T12:00:00.000Z",
+            "emphasizedKeywords": [
+                "ahmad",
+                "securities"
+            ],
+            "siteLinks": [],
+            "productInfo": {}
+        }
+    ],
+    "peopleAlsoAsk": [],
+    "customData": null
+}
