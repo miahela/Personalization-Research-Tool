@@ -18,7 +18,7 @@ FOLDER_ID = '1IEQ4Vm1sxGCVJG2p_nwvH9iE7TDyyUgS'
 
 @app.route('/')
 def index():
-    sheets = list_files_in_folder(FOLDER_ID) 
+    sheets = list_files_in_folder(FOLDER_ID)
     return render_template('index.html', sheets=sheets)
 
 
@@ -68,15 +68,18 @@ def process_sheets():
             company_links = search_company_about_page(clean_website, row)
 
             if company_links:
-                row['company_about_link'] = {
-                    'title': company_links.get('title', ''),
-                    'url': company_links.get('url', ''),
-                    'description': company_links.get('description', ''),
-                }
+                row['company_about_link'] = []
+                for link in company_links[:3]:
+                    row['company_about_link'].append({
+                        'title': link.get('title', ''),
+                        'url': link.get('url', ''),
+                        'description': link.get('description', ''),
+                    })
+                    logging.info(f"About page links for {company_name}: {link.get('url')}")  # Add this line
 
             case_study_links = search_company_case_studies(clean_website)
             if case_study_links:
-                row['case_study_links'] = case_study_links  
+                row['case_study_links'] = case_study_links
                 logging.info(f"Case study links for {company_name}: {case_study_links}")  # Add this line
 
         media_links = search_person_interviews_podcasts(full_name, company_name)
@@ -106,6 +109,8 @@ def process_sheets():
         'pq_data': pq_important_data,
         'total_items': len(important_data)  # Add this line
     })
+
+
 # TODO: Add total items to the frontend
 
 

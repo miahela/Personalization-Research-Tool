@@ -157,8 +157,14 @@ document.addEventListener("alpine:init", () => {
       }
    }));
 
-   Alpine.data("complexList", (items) => ({
-      items,
+   Alpine.data("complexList", (initialItems, showTitleInSublist = true) => ({
+      items: initialItems,
+      showTitleInSublist,
+
+      updateItems(newItems) {
+         console.log("Updating items:", newItems);
+         this.items = [...newItems]; // Create a new array to trigger reactivity
+      },
 
       getItemContent(item) {
          if (!item) return "";

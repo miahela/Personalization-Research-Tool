@@ -14,6 +14,7 @@ from datetime import datetime, timedelta, timezone
 DATA_DIR = 'user_data'
 IMAGE_DIR = 'app/static/images'
 
+
 def load_json_file(filename):
     with open(filename, 'rb') as f:
         return orjson.loads(f.read())
@@ -133,9 +134,10 @@ def search_company_about_page(company_website, contact_info):
     # return best_result
 
     if results['organicResults']:
-        return results['organicResults'][0]
+        return results['organicResults']
     else:
         return None
+
 
 def search_company_case_studies(company_website):
     """Search for case studies, testimonials, projects, reviews, or awards related to a company."""
@@ -155,6 +157,7 @@ def search_company_case_studies(company_website):
         })
 
     return case_study_links
+
 
 def search_person_interviews_podcasts(name, company_name, max_results=10):
     """

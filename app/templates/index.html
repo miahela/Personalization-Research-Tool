@@ -97,12 +97,11 @@
                               </li>
                               <template x-if="companyAboutLink">
                                  <li>
-                                    <span class="font-bold text-sm text-neutral-400">Company about us:</span>
-                                    <a :href="currentEntry.company_about_link.url" class="link link-primary"
-                                       target="_blank" x-text="currentEntry.company_about_link.url"></a>
-                                    <ul class="list-disc list-outside ml-5 text-neutral-600 text-sm"
-                                        x-html="renderSublist(getSublist(companyAboutLink))">
-                                    </ul>
+                                    <span class="font-bold text-sm text-neutral-400">About us Pages:</span>
+                                    <div x-data="complexList(companyAboutLink)"
+                                         x-effect="updateItems(companyAboutLink)">
+                                       {% include 'components/complex_list.html' %}
+                                    </div>
                                  </li>
                               </template>
                               <template x-if="currentEntry.case_study_links && currentEntry.case_study_links.length">
