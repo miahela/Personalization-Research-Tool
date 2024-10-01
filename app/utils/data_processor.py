@@ -28,7 +28,10 @@ def process_new_connections(data):
                 processed_row[field] = basename(row.get(field, ''))
             else:
                 processed_row[field] = row.get(field, '')
-
+        linkedin_profile_url = processed_row.get('contact_profile_link', '')
+        LINKEDIN_USERNAME = linkedin_profile_url.split('/')[-2] if linkedin_profile_url.endswith('/') else \
+            linkedin_profile_url.split('/')[-1]
+        processed_row['linkedin_username'] = LINKEDIN_USERNAME
         if processed_row['contact_first_name'] and processed_row['contact_last_name']:
             processed_data.append(processed_row)
 

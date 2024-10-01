@@ -12,7 +12,7 @@ document.addEventListener("alpine:init", () => {
 
       async processSheet() {
          if (!this.selectedSheetId) return;
-
+         this.reset();
          this.isLoading = true;
          try {
             const response = await fetch("/process", {
@@ -33,7 +33,7 @@ document.addEventListener("alpine:init", () => {
             for (let i = 0; i < this.coloredCells.length; i++) {
                this.editableFields.push({
                   name: this.coloredCells[i],
-                  value: this.currentEntry[this.coloredCells[i]] || "",
+                  value: this.currentEntry[this.coloredCells[i]] || ""
                });
             }
          } catch (error) {
@@ -41,6 +41,16 @@ document.addEventListener("alpine:init", () => {
          } finally {
             this.isLoading = false;
          }
+      },
+
+      reset() {
+         this.entries = [];
+         this.currentEntryIndex = 0;
+         this.isLoading = false;
+         this.btw = "By the way, ";
+         this.jobTitlePlural = "";
+         this.editableFields = [];
+         this.coloredCells = [];
       },
 
       get currentEntry() {
@@ -51,17 +61,18 @@ document.addEventListener("alpine:init", () => {
          this.isLoading = true;
          const entryData = {};
          for (let i = 0; i < this.editableFields.length; i++) {
-            entryData[this.editableFields[i].name] = this.editableFields[i].value
+            entryData[this.editableFields[i].name] = this.editableFields[i].value;
          }
 
          entryData["Personalization Date"] = new Date().toLocaleDateString();
-         entryData['by the way'] = this.btw;
+         entryData["by the way"] = this.btw;
 
          const body = {
             sheet_id: this.selectedSheetId,
             entry_data: entryData,
-            row_number: this.currentEntry.row_number + 1
-         }
+            row_number: this.currentEntry.row_number + 1,
+            username: this.currentEntry['linkedin_username']
+         };
          try {
             const response = await fetch("/save", {
                method: "POST",

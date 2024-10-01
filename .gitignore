@@ -53,3 +53,4 @@ Thumbs.db
 
 # # images
 # app/static/images
+/repopack-output.txt

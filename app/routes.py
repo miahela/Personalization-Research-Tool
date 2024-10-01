@@ -2,6 +2,7 @@ import re
 
 from flask import render_template, request, jsonify
 from app import app
+from app.utils.file_manager import get_file_manager
 from app.utils.google_drive import list_files_in_folder
 from app.utils.google_sheets import get_sheet_data, get_sheet_names, get_colored_cells, update_specific_cells
 from app.utils.data_processor import filter_data, process_name, extract_personalization_data, process_nubela_data
@@ -78,12 +79,12 @@ def process_sheets():
                     })
                     logging.info(f"About page links for {company_name}: {link.get('url')}")  # Add this line
 
-            case_study_links = search_company_case_studies(clean_website)
+            case_study_links = search_company_case_studies(clean_website, row['linkedin_username'])
             if case_study_links:
                 row['case_study_links'] = case_study_links
                 logging.info(f"Case study links for {company_name}: {case_study_links}")  # Add this line
 
-        media_links = search_person_interviews_podcasts(full_name, company_name)
+        media_links = search_person_interviews_podcasts(full_name, company_name, row['linkedin_username'])
         if media_links:
             row['interviews_and_podcasts'] = []
             for link in media_links:
@@ -122,4 +123,9 @@ def save_data():
     row_number = request.json.get('row_number')
     entry_data = request.json.get('entry_data')
     result = update_specific_cells(sheet_id, 'New Connections', row_number, entry_data)  # Adjust range as needed
+
+    username = request.json.get('username')
+    file_manager = get_file_manager()
+    file_manager.delete_all_files_by_user(username)
+
     return jsonify({'success': True, 'updated_cells': result.get('updatedCells')})

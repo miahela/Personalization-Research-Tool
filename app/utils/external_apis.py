@@ -1,61 +1,20 @@
-from glob import glob
 from mimetypes import guess_extension
-from typing import IO, List, Dict
-from apify_client import ApifyClient
 from dateutil.relativedelta import relativedelta
 from flask import current_app
 import requests
-import orjson
-import os
 import logging
 import re
 from datetime import datetime, timedelta, timezone
-
-DATA_DIR = 'user_data'
-IMAGE_DIR = 'app/static/images'
+from app.utils.file_manager import get_file_manager
 
 
-def load_json_file(filename):
-    with open(filename, 'rb') as f:
-        return orjson.loads(f.read())
+def perform_google_search(search_query, search_type, username, max_results=5):
+    file_manager = get_file_manager()
 
-
-def get_or_load_data(folder, filename, process_func=None):
-    full_path = os.path.join(folder, filename)
-    data = load_json_file(full_path)
-    return process_func(data) if process_func else data
-
-
-def save_json_file(data, filename):
-    with open(filename, 'wb') as f:
-        f.write(orjson.dumps(data))
-
-
-def sanitize_filename(filename):
-    """
-    Sanitize the filename by replacing problematic characters with underscores
-    and truncating if necessary.
-    """
-    # Replace any non-alphanumeric characters (except underscores) with underscores
-    sanitized = re.sub(r'[^\w\-_. ]', '_', filename)
-    # Replace spaces with underscores
-    sanitized = sanitized.replace(' ', '_')
-    # Truncate to a reasonable length if needed (e.g., 200 characters)
-    return sanitized[:200]
-
-
-def perform_google_search(search_query, search_type, max_results=5):
-    # Create a subdirectory for Google search results
-    SUB_FOLDER = 'google_search'
-    os.makedirs(f'{DATA_DIR}/{SUB_FOLDER}', exist_ok=True)
-
-    # Generate a filename based on the search query
-    sanitized_query = sanitize_filename(search_query)
-    filename = f'{DATA_DIR}/{SUB_FOLDER}/{search_type}_{sanitized_query}.json'
-
-    # Check if we already have data for this search
-    if os.path.exists(filename):
-        return load_json_file(filename)
+    filename = f'{username}_{search_type}_google.json'
+    existing_data = file_manager.load_json_file(filename)
+    if existing_data:
+        return existing_data
 
     run_input = {
         "queries": search_query,
@@ -76,7 +35,7 @@ def perform_google_search(search_query, search_type, max_results=5):
         results = item
 
     # Save the results to a file
-    save_json_file(results, filename)
+    file_manager.save_file(results, filename, "json", username)
 
     return results
 
@@ -124,7 +83,7 @@ def search_company_about_page(company_website, contact_info):
     """Searches for the About Us page of a company website"""
     search_query = f"site:{company_website} AND inurl:about -inurl:blog -inurl:support -inurl:article -inurl:articles"
     print(search_query)
-    results = perform_google_search(search_query, "company_about")
+    results = perform_google_search(search_query, "company_about", contact_info['linkedin_username'])
 
     if not results:
         return None
@@ -139,10 +98,10 @@ def search_company_about_page(company_website, contact_info):
         return None
 
 
-def search_company_case_studies(company_website):
+def search_company_case_studies(company_website, username):
     """Search for case studies, testimonials, projects, reviews, or awards related to a company."""
     search_query = f"site:{company_website} AND (case study OR testimonial OR projects OR reviews OR award)"
-    results = perform_google_search(search_query, "company_case_studies", max_results=10)
+    results = perform_google_search(search_query, "company_case_studies", username, max_results=10)
 
     if not results or 'organicResults' not in results:
         return []
@@ -159,12 +118,13 @@ def search_company_case_studies(company_website):
     return case_study_links
 
 
-def search_person_interviews_podcasts(name, company_name, max_results=10):
+def search_person_interviews_podcasts(name, company_name, username, max_results=10):
     """
     Searches for interviews, podcasts, and articles featuring a person from a specific company.
 
     :param name: Full name of the person
     :param company_name: Name of the company
+    :param username: Username of the user making the request
     :param max_results: Maximum number of results to return (default 10)
     :return: List of relevant search results
     """
@@ -172,7 +132,7 @@ def search_person_interviews_podcasts(name, company_name, max_results=10):
     one_year_ago = (datetime.now() - timedelta(days=365)).strftime('%Y-%m-%d')
     search_query = f'"{name}" AND "{company_name}" AND ("Interview" OR "podcast" OR "guest") after:{one_year_ago}'
     # TODO: Modify the query for better results, currently it's not giving very accurate results
-    results = perform_google_search(search_query, "person_media", max_results)
+    results = perform_google_search(search_query, "person_media", username, max_results)
 
     if not results:
         return []
@@ -239,10 +199,10 @@ def process_media_results(results, max_results):
     return processed_results[:max_results]
 
 
-def search_person_info(person_name, company_name):
+def search_person_info(person_name, company_name, username):
     """Searches for information about a person related to a company"""
     search_query = f'"{person_name}" AND "{company_name}"'
-    return perform_google_search(search_query, "person_info")
+    return perform_google_search(search_query, "person_info", username)
 
 
 # Additional helper function to extract potential contact information
@@ -271,16 +231,17 @@ def get_nubela_data_for_user(linkedin_profile_url):
         linkedin_profile_url.split('/')[-1]
 
     """Fetch user data from API or local storage"""
-    filename = f'{DATA_DIR}/{SUB_FOLDER}/{LINKEDIN_USERNAME}.json'
+    filename = f'{LINKEDIN_USERNAME}_nubela.json'
+    file_manager = get_file_manager()
 
     # Check if we already have data for this user
-    if os.path.exists(filename):
-        data = load_json_file(filename)
-        data['local_profile_pic_url'] = get_or_download_image(data.get('profile_pic_url'), LINKEDIN_USERNAME,
-                                                              'profile')
-        data['local_banner_pic_url'] = get_or_download_image(data.get('background_cover_image_url'),
-                                                             LINKEDIN_USERNAME, 'banner')
-        return data
+    existing_data = file_manager.load_json_file(filename)
+    if existing_data:
+        existing_data['local_profile_pic_url'] = get_or_download_image(existing_data.get('profile_pic_url'),
+                                                                       LINKEDIN_USERNAME, 'profile')
+        existing_data['local_banner_pic_url'] = get_or_download_image(existing_data.get('background_cover_image_url'),
+                                                                      LINKEDIN_USERNAME, 'banner')
+        return existing_data
 
     params = {
         "linkedin_profile_url": linkedin_profile_url,
@@ -298,10 +259,7 @@ def get_nubela_data_for_user(linkedin_profile_url):
         data = response.json()
 
         # Store the data locally
-        os.makedirs(DATA_DIR, exist_ok=True)
-        os.makedirs(f'{DATA_DIR}/{SUB_FOLDER}', exist_ok=True)
-
-        save_json_file(data, filename)
+        file_manager.save_file(data, filename, "json", LINKEDIN_USERNAME)
 
         data['local_profile_pic_url'] = get_or_download_image(data.get('profile_pic_url'), LINKEDIN_USERNAME, 'profile')
         data['local_banner_pic_url'] = get_or_download_image(data.get('background_cover_image_url'), LINKEDIN_USERNAME,
@@ -316,11 +274,10 @@ def get_or_download_image(image_url, username, image_type):
     if not image_url:
         return None
 
-    # Check if we already have a file for this user and image type
-    existing_files = glob(os.path.join(IMAGE_DIR, f'{username}_{image_type}.*'))
-    if existing_files:
-        # Return the path of the first matching file
-        return f'/static/images/{os.path.basename(existing_files[0])}'
+    file_manager = get_file_manager()
+    existing_image = file_manager.get_frontend_image_url(f'{username}_{image_type}.*')
+    if existing_image:
+        return existing_image
 
     # If no existing file, download the image
     response = requests.get(image_url)
@@ -334,14 +291,7 @@ def get_or_download_image(image_url, username, image_type):
             ext = '.jpg'
 
         filename = f'{username}_{image_type}{ext}'
-        filepath = os.path.join(IMAGE_DIR, filename)
-
-        os.makedirs(IMAGE_DIR, exist_ok=True)
-
-        with open(filepath, 'wb') as f:
-            f.write(response.content)
-
-        return f'/static/images/{filename}'
+        return file_manager.save_file(response.content, filename, "image", username, is_frontend_image=True)
     else:
         logging.error(f"Failed to download {image_type} image for {username}")
         return None
