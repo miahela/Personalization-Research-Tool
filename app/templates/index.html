@@ -77,7 +77,8 @@
                      <div class="collapse collapse-arrow border-base-300 border bg-base-200 mt-4">
                         <input checked type="checkbox" class="w-full">
                         <div class="collapse-title text-xl font-bold">Interviews And Podcasts</div>
-                        <div x-data="{items: currentEntry.interviews_and_podcasts}"
+                        <div x-data="complexList(interviewsAndPodcasts)"
+                             x-effect="updateItems(interviewsAndPodcasts)"
                              class="collapse-content overflow-auto">
                            {% include 'components/complex_list.html' %}
                         </div>
@@ -125,7 +126,9 @@
                      <div class="collapse collapse-arrow border-base-300 border bg-base-200 mt-4">
                         <input checked type="checkbox" class="w-full">
                         <div class="collapse-title text-xl font-bold">Volunteer Work</div>
-                        <div x-data="{items: volunteerWork}" class="collapse-content overflow-auto">
+                        <div x-data="complexList(volunteerWork, false)"
+                             x-effect="updateItems(volunteerWork)"
+                             class="collapse-content overflow-auto">
                            {% include 'components/complex_list.html' %}
                         </div>
                      </div>

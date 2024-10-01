@@ -161,6 +161,7 @@ document.addEventListener("alpine:init", () => {
       items,
 
       getItemContent(item) {
+         if (!item) return "";
          return item.url ? {
             type: "link",
             url: item.url,
@@ -172,13 +173,15 @@ document.addEventListener("alpine:init", () => {
       },
 
       getSublist(item) {
+         if (!item) return [];
          return [
-            item.cause ? {
-               label: "Cause",
-               value: item.cause
-            } : {
+            this.showTitleInSublist && {
                label: "Title",
                value: item.title
+            },
+            {
+               label: "Cause",
+               value: item.cause
             },
             {
                label: "Description",
