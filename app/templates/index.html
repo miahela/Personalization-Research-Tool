@@ -141,7 +141,7 @@
                      <!-- By the way -->
                      <label class="form-control w-full max-w-full">
                         <div class="label">
-                           <span class="label-text">By the way</span>
+                           <span class="label-text text-lg font-semibold">By the way</span>
                         </div>
                         <input type="text" x-model="btw" class="input input-bordered rounded-lg w-full max-w-full">
                         <div x-show="btwLanguageHint" class="label">
@@ -149,28 +149,38 @@
                            <span class="label-text-alt" x-text="btwLanguageHint"></span>
                         </div>
                      </label>
+
+                     <template x-for="field in editableFields">
+                        <label class="form-control w-full max-w-full">
+                           <div class="label">
+                              <span class="label-text text-lg font-semibold" x-text="field.name"></span>
+                           </div>
+                           <input type="text" x-model="field.value"
+                                  class="input input-bordered rounded-lg w-full max-w-full">
+                        </label>
+                     </template>
                      <!-- Company Name -->
-                     <label class="form-control w-full max-w-full">
-                        <div class="label">
-                           <span class="label-text">Company Name</span>
-                        </div>
-                        <input type="text" x-model="company" class="input input-bordered rounded-lg w-full max-w-full">
-                     </label>
-                     <!-- Job Title Plural -->
-                     <label class="form-control w-full max-w-full">
-                        <div class="label">
-                           <span class="label-text">Job Title Plural</span>
-                        </div>
-                        <input type="text" x-model="jobTitlePlural"
-                               class="input input-bordered rounded-lg w-full max-w-full">
-                     </label>
-                     <!-- Industry -->
-                     <label class="form-control w-full max-w-full">
-                        <div class="label">
-                           <span class="label-text">Industry</span>
-                        </div>
-                        <input type="text" x-model="industry" class="input input-bordered rounded-lg w-full max-w-full">
-                     </label>
+{#                     <label class="form-control w-full max-w-full">#}
+{#                        <div class="label">#}
+{#                           <span class="label-text">Company Name</span>#}
+{#                        </div>#}
+{#                        <input type="text" x-model="company" class="input input-bordered rounded-lg w-full max-w-full">#}
+{#                     </label>#}
+{#                     <!-- Job Title Plural -->#}
+{#                     <label class="form-control w-full max-w-full">#}
+{#                        <div class="label">#}
+{#                           <span class="label-text">Job Title Plural</span>#}
+{#                        </div>#}
+{#                        <input type="text" x-model="jobTitlePlural"#}
+{#                               class="input input-bordered rounded-lg w-full max-w-full">#}
+{#                     </label>#}
+{#                     <!-- Industry -->#}
+{#                     <label class="form-control w-full max-w-full">#}
+{#                        <div class="label">#}
+{#                           <span class="label-text">Industry</span>#}
+{#                        </div>#}
+{#                        <input type="text" x-model="industry" class="input input-bordered rounded-lg w-full max-w-full">#}
+{#                     </label>#}
 
                      <div class="card-actions justify-end">
                         <button @click="$dispatch('save-entry', { currentEntry, btw, jobTitlePlural, industry })"

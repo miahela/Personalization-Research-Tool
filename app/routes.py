@@ -3,7 +3,7 @@ import re
 from flask import render_template, request, jsonify
 from app import app
 from app.utils.google_drive import list_files_in_folder
-from app.utils.google_sheets import get_sheet_data, update_sheet_data, get_sheet_names
+from app.utils.google_sheets import get_sheet_data, update_sheet_data, get_sheet_names, get_colored_cells
 from app.utils.data_processor import filter_data, process_name, extract_personalization_data, process_nubela_data
 from app.utils.external_apis import get_nubela_data_for_user, search_company_about_page, \
     search_person_interviews_podcasts, search_company_case_studies  # Add the new import
@@ -28,6 +28,7 @@ def process_sheets():
 
     # Process New Connections sheet
     new_connections_data = get_sheet_data(spreadsheet_id, 'New Connections', 'A:ZZ')
+    colored_cells = get_colored_cells(spreadsheet_id, 'New Connections')
 
     if new_connections_data is None or len(new_connections_data) < 2:
         return jsonify({'error': 'No data found in New Connections sheet or sheet does not exist'}), 404
@@ -106,6 +107,7 @@ def process_sheets():
 
     return jsonify({
         'new_connections': important_data,
+        'colored_cells': colored_cells,
         'pq_data': pq_important_data,
         'total_items': len(important_data)  # Add this line
     })

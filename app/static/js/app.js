@@ -7,6 +7,8 @@ document.addEventListener("alpine:init", () => {
       isLoading: false,
       btw: "",
       jobTitlePlural: "",
+      editableFields: [],
+      coloredCells: [],
 
       async processSheet() {
          if (!this.selectedSheetId) return;
@@ -23,8 +25,17 @@ document.addEventListener("alpine:init", () => {
                })
             });
             const data = await response.json();
+
             this.entries = data.new_connections;
             this.currentEntryIndex = 0;
+
+            this.coloredCells = data.colored_cells;
+            for (let i = 0; i < this.coloredCells.length; i++) {
+               this.editableFields.push({
+                  name: this.coloredCells[i],
+                  value: this.currentEntry[this.coloredCells[i]] || "",
+               });
+            }
          } catch (error) {
             console.error("Error processing sheet:", error);
          } finally {
@@ -44,6 +55,9 @@ document.addEventListener("alpine:init", () => {
 
       async nextEntry() {
          this.currentEntryIndex += 1;
+         for (let i = 0; i < this.coloredCells.length; i++) {
+            this.editableFields[i].value = this.currentEntry[this.coloredCells[i]] || "";
+         }
       },
 
       get contactTitle() {
