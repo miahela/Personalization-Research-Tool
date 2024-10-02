@@ -7,7 +7,6 @@ document.addEventListener("alpine:init", () => {
       isLoading: false,
       isSaving: false,
       btw: "By the way, ",
-      processedCount: 0,
       _totalCount: -1,
       eventSource: null,
       sheets: window.initialSheets || [], // Use the global variable
@@ -46,9 +45,7 @@ document.addEventListener("alpine:init", () => {
             }
 
             // Update component state with new data
-            this.entries = this.entries.concat(data.new_connections);
-            this.processedCount = data.processed_count;
-            this.totalCount = data.totalProfilesToProcess;
+            this.entries = this.entries.concat(data);
 
             this.updateEditableFields();
 

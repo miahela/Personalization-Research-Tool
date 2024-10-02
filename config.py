@@ -9,3 +9,7 @@ class Config:
     APIFY_CLIENT = ApifyClient(token=os.environ.get('APIFY_API_KEY'))
     FILE_STORAGE_PATH = 'file_storage'
     GOOGLE_DRIVE_FOLDER_ID = '13qlaX_eHBkMV60JaszK_JgqjQVhb1mVI'
+
+    REDIS_HOST = os.environ.get('REDIS_HOST') or 'localhost'
+    REDIS_PORT = int(os.environ.get('REDIS_PORT') or 6379)
+    REDIS_DB = int(os.environ.get('REDIS_DB') or 0)

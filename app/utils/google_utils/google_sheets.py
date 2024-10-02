@@ -1,7 +1,7 @@
 from app.utils.google_utils.google_auth import GoogleService
 
 
-def get_sheet_names(spreadsheet_id):
+def fetch_sheet_names_from_google(spreadsheet_id):
     service = GoogleService.get_instance().get_service('sheets', 'v4')
 
     sheet_metadata = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
@@ -9,7 +9,10 @@ def get_sheet_names(spreadsheet_id):
     return [sheet['properties']['title'] for sheet in sheets]
 
 
-def get_colored_cells(spreadsheet_id, sheet_name, range_name='A:ZZ'):
+def fetch_colored_cells_from_google(spreadsheet_id, sheet_name, range_name='A:ZZ'):
+    if not _sheet_exists(spreadsheet_id, sheet_name):
+        return None
+
     EXCLUDED_VALUES = ['by the way', 'personalization date']
     service = GoogleService.get_instance().get_service('sheets', 'v4')
 
@@ -48,7 +51,7 @@ def get_colored_cells(spreadsheet_id, sheet_name, range_name='A:ZZ'):
     return colored_cells_values
 
 
-def get_sheet_data(spreadsheet_id, sheet_name='New Connections', range_name='A:ZZ'):
+def fetch_sheet_data_from_google(spreadsheet_id, sheet_name='New Connections', range_name='A:ZZ'):
     if not _sheet_exists(spreadsheet_id, sheet_name):
         return None
 
