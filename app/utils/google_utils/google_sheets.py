@@ -1,17 +1,4 @@
-from fontTools.subset.svg import ranges
-
-from app.utils.google_auth import GoogleService
-
-
-def sheet_exists(spreadsheet_id, sheet_name):
-    service = GoogleService.get_instance().get_service('sheets', 'v4')
-
-    sheet_metadata = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
-    sheets = sheet_metadata.get('sheets', '')
-    for sheet in sheets:
-        if sheet['properties']['title'] == sheet_name:
-            return True
-    return False
+from app.utils.google_utils.google_auth import GoogleService
 
 
 def get_sheet_names(spreadsheet_id):
@@ -26,28 +13,6 @@ def get_colored_cells(spreadsheet_id, sheet_name, range_name='A:ZZ'):
     EXCLUDED_VALUES = ['by the way', 'personalization date']
     service = GoogleService.get_instance().get_service('sheets', 'v4')
 
-    # # Get the gridProperties to determine the number of rows and columns
-    # sheet_metadata = service.spreadsheets().get(
-    #     spreadsheetId=spreadsheet_id,
-    #     fields='sheets.properties'
-    # ).execute()
-    #
-    # sheet_id = None
-    # num_rows = 0
-    # num_cols = 0
-    #
-    # for sheet in sheet_metadata.get('sheets', ''):
-    #     if sheet['properties']['title'] == sheet_name:
-    #         sheet_id = sheet['properties']['sheetId']
-    #         grid_props = sheet['properties'].get('gridProperties', {})
-    #         num_rows = grid_props.get('rowCount', 1000)  # Default to 1000 if not specified
-    #         num_cols = grid_props.get('columnCount', 26)  # Default to 26 if not specified
-    #         break
-    #
-    # if not sheet_id:
-    #     return []
-
-    # Request cell data including formatting
     request = service.spreadsheets().get(
         spreadsheetId=spreadsheet_id,
         ranges=[f'{sheet_name}'],
@@ -84,7 +49,7 @@ def get_colored_cells(spreadsheet_id, sheet_name, range_name='A:ZZ'):
 
 
 def get_sheet_data(spreadsheet_id, sheet_name='New Connections', range_name='A:ZZ'):
-    if not sheet_exists(spreadsheet_id, sheet_name):
+    if not _sheet_exists(spreadsheet_id, sheet_name):
         return None
 
     service = GoogleService.get_instance().get_service('sheets', 'v4')
@@ -100,20 +65,6 @@ def get_sheet_data(spreadsheet_id, sheet_name='New Connections', range_name='A:Z
     numbered_values.extend([[i + 1] + row for i, row in enumerate(values[1:])])
 
     return numbered_values
-
-
-def column_number_to_letter(column_number):
-    """
-    Convert a column number to a column letter (A, B, C, ..., Z, AA, AB, ...).
-
-    :param column_number: The column number (1-indexed)
-    :return: The corresponding column letter(s)
-    """
-    column_letter = ''
-    while column_number > 0:
-        column_number, remainder = divmod(column_number - 1, 26)
-        column_letter = chr(65 + remainder) + column_letter
-    return column_letter
 
 
 def update_specific_cells(spreadsheet_id, sheet_name, row_number, updates):
@@ -138,7 +89,7 @@ def update_specific_cells(spreadsheet_id, sheet_name, row_number, updates):
     for column_name, new_value in updates.items():
         if column_name in header:
             column_index = header.index(column_name)
-            column_letter = column_number_to_letter(column_index + 1)
+            column_letter = _column_number_to_letter(column_index + 1)
             cell_range = f"'{sheet_name}'!{column_letter}{row_number}"
 
             batch_updates.append({
@@ -159,11 +110,26 @@ def update_specific_cells(spreadsheet_id, sheet_name, row_number, updates):
         return None
 
 
-def read_sheet_data(sheet_id, range_name='A1:Z'):
+def _sheet_exists(spreadsheet_id, sheet_name):
     service = GoogleService.get_instance().get_service('sheets', 'v4')
 
-    sheet = service.spreadsheets()
-    result = sheet.values().get(spreadsheetId=sheet_id, range=range_name).execute()
-    values = result.get('values', [])
+    sheet_metadata = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
+    sheets = sheet_metadata.get('sheets', '')
+    for sheet in sheets:
+        if sheet['properties']['title'] == sheet_name:
+            return True
+    return False
 
-    return values
+
+def _column_number_to_letter(column_number):
+    """
+    Convert a column number to a column letter (A, B, C, ..., Z, AA, AB, ...).
+
+    :param column_number: The column number (1-indexed)
+    :return: The corresponding column letter(s)
+    """
+    column_letter = ''
+    while column_number > 0:
+        column_number, remainder = divmod(column_number - 1, 26)
+        column_letter = chr(65 + remainder) + column_letter
+    return column_letter

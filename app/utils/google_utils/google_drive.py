@@ -1,5 +1,4 @@
-from app.utils.google_auth import GoogleService
-from app.utils.google_sheets import read_sheet_data
+from app.utils.google_utils.google_auth import GoogleService
 
 
 def list_files_in_folder(folder_id):

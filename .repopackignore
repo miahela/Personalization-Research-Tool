@@ -1,7 +1,13 @@
-user_data
+file_storage
 .vscode
 .idea
-static
+images
 .env
 token.json
 client_secrets.json
+file_metadata.db
+.git
+__pycache__
+.gitignore
+.repopackignore
+.prettierrc
