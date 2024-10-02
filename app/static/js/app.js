@@ -10,33 +10,32 @@ document.addEventListener("alpine:init", () => {
       _totalCount: -1,
       eventSource: null,
       sheets: window.initialSheets || [], // Use the global variable
+      awaitingUserAction: false,
+      processingPaused: false,
 
       get totalCount() {
          if (this._totalCount === -1) this._totalCount = this.sheets.filter(sheet => this.selectedSheetIds.includes(sheet.id)).reduce((total, sheet) => total + sheet.empty_by_the_way_count, 0);
          return this._totalCount;
       },
 
-      async processSelectedSheets(totalProfilesToProcess) {
+      processSelectedSheets() {
          if (this.selectedSheetIds.length === 0) return;
 
          this.reset();
          this.isLoading = true;
 
-         // Close any existing EventSource
          if (this.eventSource) {
             this.eventSource.close();
          }
 
-         // Construct the URL with query parameters
          const queryParams = this.selectedSheetIds.map(id => `sheet_id=${encodeURIComponent(id)}`).join("&");
-         const url = `/process_stream?${queryParams}`;
+         const url = `/process_stream?${queryParams}&small_batch_size=2&large_batch_size=10`;
 
-         // Create a new EventSource
          this.eventSource = new EventSource(url);
 
          this.eventSource.onmessage = (event) => {
             const data = JSON.parse(event.data);
-            console.log(data);
+
             if (data.complete) {
                console.log("Processing complete");
                this.eventSource.close();
@@ -44,13 +43,26 @@ document.addEventListener("alpine:init", () => {
                return;
             }
 
-            // Update component state with new data
-            this.entries = this.entries.concat(data);
+            if (data.waiting_for_user_action) {
+               this.awaitingUserAction = true;
+               console.log("Awaiting user action");
+               // Don't automatically continue, wait for user input
+               return;
+            }
 
-            this.updateEditableFields();
+            if (data.await_user_action) {
+               this.processingPaused = true;
+               console.log("Processing paused. Waiting for user action.");
+               return;
+            }
 
-            // Force Alpine to react to changes
+            if (data.contacts) {
+               this.entries = this.entries.concat(data.contacts);
+               this.updateEditableFields();
+            }
+
             this.$nextTick(() => {
+               // Any UI updates after processing contacts
             });
          };
 
@@ -59,6 +71,24 @@ document.addEventListener("alpine:init", () => {
             this.eventSource.close();
             this.isLoading = false;
          };
+      },
+
+      async continueProcessing() {
+         if (this.processingPaused) {
+            try {
+               const response = await fetch("/continue_processing", {
+                  method: "POST",
+                  headers: {
+                     "Content-Type": "application/json"
+                  }
+               });
+               const result = await response.json();
+               console.log("Continue processing result:", result);
+               this.processingPaused = false;
+            } catch (error) {
+               console.error("Error continuing processing:", error);
+            }
+         }
       },
 
       updateEditableFields() {
@@ -116,10 +146,21 @@ document.addEventListener("alpine:init", () => {
          }
       },
 
+      async checkAndContinueProcessing() {
+         const remainingEntries = this.entries.length - this.currentEntryIndex;
+         const thresholdForContinue = 4; // Adjust this value as needed
+
+         if (remainingEntries <= thresholdForContinue && this.processingPaused) {
+            console.log(`Only ${remainingEntries} entries left. Continuing processing...`);
+            await this.continueProcessing();
+         }
+      },
+
       async nextEntry() {
          this.btw = "By the way, ";
          this.currentEntryIndex += 1;
          this.updateEditableFields();
+         await this.checkAndContinueProcessing();
       },
 
       get contactTitle() {
@@ -158,7 +199,7 @@ document.addEventListener("alpine:init", () => {
       },
 
       get companyWebsite() {
-         return this.currentEntry?.company_website || null;
+         return this.currentEntry?.company?.website || null;
       },
 
       get interviewsAndPodcasts() {
@@ -170,7 +211,7 @@ document.addEventListener("alpine:init", () => {
       },
 
       get companyAboutLink() {
-         return this.currentEntry?.company_about_link || null;
+         return this.currentEntry?.company?.about_links || null;
       },
 
       get btwLanguageHint() {
@@ -178,7 +219,7 @@ document.addEventListener("alpine:init", () => {
       },
 
       get caseStudyLinks() {
-         return this.currentEntry?.case_study_links || null;
+         return this.currentEntry?.company?.case_study_links || null;
       },
 
       // Card-related methods
@@ -242,7 +283,6 @@ document.addEventListener("alpine:init", () => {
       showTitleInSublist,
 
       updateItems(newItems) {
-         console.log("Updating items:", newItems);
          this.items = [...newItems]; // Create a new array to trigger reactivity
       },
 

@@ -1,3 +1,4 @@
+import re
 from datetime import datetime
 from typing import List, Dict, Optional
 
@@ -8,6 +9,31 @@ from app.models import ContactData, CompanyData
 from app.models.sheet_models import SheetRow
 
 
+def clean_name(full_string) -> Dict[str, str]:
+    # Split the string into name and qualifications
+    parts = re.split(r',\s*(?=[A-Z]{2,})', full_string, 1)
+    name_part = parts[0]
+    qualifications = parts[1] if len(parts) > 1 else ''
+
+    # Parse the name
+    name = HumanName(name_part)
+
+    # If the parsed name looks incorrect, try alternative parsing
+    if not name.first or not name.last:
+        words = name_part.split()
+        if len(words) >= 2:
+            name.first = words[0]
+            name.last = words[-1]
+            name.middle = ' '.join(words[1:-1]) if len(words) > 2 else ''
+
+    return {
+        'first_name': name.first,
+        'middle_name': name.middle,
+        'last_name': name.last,
+        'qualifications': qualifications.strip()
+    }
+
+
 def filter_unprocessed_rows(rows: List[SheetRow]) -> List[SheetRow]:
     return [
         row for row in rows
@@ -15,21 +41,22 @@ def filter_unprocessed_rows(rows: List[SheetRow]) -> List[SheetRow]:
     ]
 
 
-def process_contact_data(row: SheetRow, company_data: CompanyData, spreadsheet_id: str,
-                         colored_cells: List[str]) -> ContactData:
+def initialize_contact_data(row: SheetRow, company_data: CompanyData, spreadsheet_id: str,
+                            colored_cells: List[str]) -> ContactData:
     full_name = f"{row.get('contact_first_name', '')} {row.get('contact_last_name', '')}".strip()
-    parsed_name = HumanName(full_name)
+    parsed_name = clean_name(full_name)
+    print(parsed_name)
 
     linkedin_profile_url = row.get('contact_profile_link', '')
     linkedin_username = linkedin_profile_url.split('/')[-2] if linkedin_profile_url.endswith('/') else \
         linkedin_profile_url.split('/')[-1]
 
     return ContactData(
-        contact_first_name=parsed_name.first,
-        contact_last_name=parsed_name.last,
+        contact_first_name=parsed_name['first_name'],
+        contact_last_name=parsed_name['last_name'],
         contact_job_title=row.get('contact_job_title', ''),
         parsed_name=full_name,
-        contact_company_name=row.get('contact_company_name', ''),
+        contact_company_name=basename(row.get('contact_company_name', '')),
         hook_name=row.get('hook_name', ''),
         messenger_campaign_instance=row.get('messenger_campaign_instance', ''),
         company=company_data,

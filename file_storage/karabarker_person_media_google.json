@@ -1,1 +1,64 @@
-{"#debug":{"requestId":"OjTj7Cz8bNW29ee","url":"http://www.google.com/search?q=%22MHR+Kara+Barker%22+AND+%22empowher+consulting%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-03","loadedUrl":"http://www.google.com/search?q=%22MHR+Kara+Barker%22+AND+%22empowher+consulting%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-03","method":"GET","retryCount":0,"errorMessages":[],"statusCode":200},"#error":false,"searchQuery":{"term":"\"MHR Kara Barker\" AND \"empowher consulting\" AND (\"Interview\" OR \"podcast\" OR \"guest\") after:2023-10-03","url":"http://www.google.com/search?q=%22MHR+Kara+Barker%22+AND+%22empowher+consulting%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-03","device":"DESKTOP","page":1,"type":"SEARCH","domain":"google.com","countryCode":"US","languageCode":null,"locationUule":null,"resultsPerPage":10},"url":"http://www.google.com/search?q=%22MHR+Kara+Barker%22+AND+%22empowher+consulting%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-03","hasNextPage":false,"serpProviderCode":"N","resultsTotal":0,"relatedQueries":[],"paidResults":[],"paidProducts":[],"organicResults":[],"suggestedResults":[],"peopleAlsoAsk":[],"customData":null}
+{
+  "#debug": {
+    "requestId": "xp8GKtteSpxGmop",
+    "url": "http://www.google.com/search?q=%22Kara+Barker%2CMHR%2CCPCU%2C+CLU%22+AND+%22EmpowHER+Consulting%2C+LLC+%C2%AE%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-03",
+    "loadedUrl": "http://www.google.com/search?q=%22Kara+Barker%2CMHR%2CCPCU%2C+CLU%22+AND+%22EmpowHER+Consulting%2C+LLC+%C2%AE%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-03",
+    "method": "GET",
+    "retryCount": 0,
+    "errorMessages": [],
+    "statusCode": 200
+  },
+  "#error": false,
+  "searchQuery": {
+    "term": "\"Kara Barker,MHR,CPCU, CLU\" AND \"EmpowHER Consulting, LLC ®\" AND (\"Interview\" OR \"podcast\" OR \"guest\") after:2023-10-03",
+    "url": "http://www.google.com/search?q=%22Kara+Barker%2CMHR%2CCPCU%2C+CLU%22+AND+%22EmpowHER+Consulting%2C+LLC+%C2%AE%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-03",
+    "device": "DESKTOP",
+    "page": 1,
+    "type": "SEARCH",
+    "domain": "google.com",
+    "countryCode": "US",
+    "languageCode": null,
+    "locationUule": null,
+    "resultsPerPage": 10
+  },
+  "url": "http://www.google.com/search?q=%22Kara+Barker%2CMHR%2CCPCU%2C+CLU%22+AND+%22EmpowHER+Consulting%2C+LLC+%C2%AE%22+AND+%28%22Interview%22+OR+%22podcast%22+OR+%22guest%22%29+after%3A2023-10-03",
+  "hasNextPage": false,
+  "serpProviderCode": "N",
+  "resultsTotal": 2,
+  "relatedQueries": [],
+  "paidResults": [],
+  "paidProducts": [],
+  "organicResults": [
+    {
+      "title": "Self-Care: Healthy Choices",
+      "url": "https://www.linkedin.com/pulse/self-care-healthy-choices-jane-meier-hamilton-rvy1c",
+      "displayedUrl": "8 reactions",
+      "description": "By Kara Barker, Life Coach, EmpowHER Consulting LLC. Kara Barker,MHR,CPCU, CLU 3y. STRESSING WISELY. Dr. Robyne Hanley-Dafoe 2y. Building a self-care toolkit.",
+      "emphasizedKeywords": [
+        "EmpowHER Consulting LLC",
+        "Kara Barker,MHR,CPCU, CLU"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 1
+    },
+    {
+      "title": "Discovering Wellness Wisdom from Ramadan: Insights into ...",
+      "url": "https://www.linkedin.com/pulse/discovering-wellness-wisdom-from-ramadan-insights-seton-walsh-rose-jxkcc",
+      "displayedUrl": "8 reactions",
+      "description": "By Kara Barker, Life Coach, EmpowHER Consulting LLC. Kara Barker,MHR,CPCU, CLU 3y. Why \"Return to Normal\" Cannot Be the Goal. Jon Robison, PhD 4y ...",
+      "emphasizedKeywords": [
+        "EmpowHER Consulting LLC",
+        "Kara Barker,MHR,CPCU, CLU"
+      ],
+      "siteLinks": [],
+      "productInfo": {},
+      "type": "organic",
+      "position": 2
+    }
+  ],
+  "suggestedResults": [],
+  "peopleAlsoAsk": [],
+  "customData": null
+}

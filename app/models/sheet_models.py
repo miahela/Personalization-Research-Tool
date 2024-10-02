@@ -1,3 +1,5 @@
+from os.path import basename
+
 from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 
@@ -12,6 +14,9 @@ class SheetRow(BaseModel):
     def update(self, new_data: Dict[str, Any]):
         self.data.update(new_data)
 
+    def get_lowercase_values(self) -> List[str]:
+        return [basename(str(value).lower().strip()) for value in self.data.values()]
+
 
 class SheetData(BaseModel):
     headers: List[str]
@@ -20,6 +25,10 @@ class SheetData(BaseModel):
 
     def get_row(self, row_number: int) -> Optional[SheetRow]:
         return next((row for row in self.rows if row.row_number == row_number), None)
+
+    def get_row_by_text(self, text: str) -> Optional[SheetRow]:
+        text_lower = text.lower().strip()
+        return next((row for row in self.rows if text_lower in row.get_lowercase_values()), None)
 
     def update_row(self, row_number: int, new_data: Dict[str, Any]):
         row = self.get_row(row_number)

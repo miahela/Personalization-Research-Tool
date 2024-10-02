@@ -1,25 +1,54 @@
 import logging
+from os.path import basename
 from typing import List, Generator
 
 from app.models import SpreadsheetData, SheetData, ContactData, CompanyData, SheetRow
-from app.services.data_processor import filter_unprocessed_rows, process_contact_data
+from app.services.data_processor import filter_unprocessed_rows, initialize_contact_data
 from app.services.sheet_listing_service import get_or_fetch_sheet_data
 from app.utils.external_apis import get_nubela_data_for_user, search_person_interviews_podcasts, \
     search_company_case_studies, search_company_about_page
 from app.utils.google_utils.google_sheets import fetch_colored_cells_from_google, fetch_sheet_names_from_google
+from flask import current_app
 
 
 class SpreadsheetProcessor:
-    def __init__(self, spreadsheet_id: str, batch_size: int = 2):
+    def __init__(self, spreadsheet_id: str, small_batch_size: int = 2):
         self.spreadsheet_id = spreadsheet_id
-        self.batch_size = batch_size
+        self.small_batch_size = small_batch_size
         self.spreadsheet_data = SpreadsheetData(id=spreadsheet_id, new_connections=SheetData(headers=[], rows=[]),
                                                 pq_data=SheetData(headers=[], rows=[]))
-        self.processed_contacts: List[ContactData] = []
+        self.unprocessed_rows = []
+        self.processed_row_numbers = set()
+        self.is_data_loaded = False
 
-    def process(self) -> Generator[List[ContactData], None, None]:
-        self._load_spreadsheet_data()
-        yield from self._process_contacts_in_batches()
+    def _load_data_if_needed(self):
+        if not self.is_data_loaded:
+            self._load_spreadsheet_data()
+            self.unprocessed_rows = filter_unprocessed_rows(self.spreadsheet_data.new_connections.rows)
+            self.is_data_loaded = True
+
+    def process_small_batch(self) -> List[ContactData]:
+        self._load_data_if_needed()
+
+        batch = []
+        for _ in range(self.small_batch_size):
+            if not self.unprocessed_rows:
+                break
+            row = self.unprocessed_rows.pop(0)
+            if row.row_number in self.processed_row_numbers:
+                continue
+            try:
+                processed_contact = self._process_contact(row)
+                batch.append(processed_contact)
+                self.processed_row_numbers.add(row.row_number)
+            except Exception as e:
+                current_app.logger.error(f"Error processing contact: {str(e)}")
+
+        return batch
+
+    def has_more_contacts(self) -> bool:
+        self._load_data_if_needed()
+        return bool(self.unprocessed_rows)
 
     def _load_spreadsheet_data(self):
         self._load_new_connections_sheet()
@@ -34,55 +63,44 @@ class SpreadsheetProcessor:
 
     def _load_pq_sheet(self):
         sheet_names = fetch_sheet_names_from_google(self.spreadsheet_id)
-        pq_sheet_name = next((name for name in sheet_names if name.lower().endswith('pq')), None)
-        if pq_sheet_name:
-            pq_data = get_or_fetch_sheet_data(self.spreadsheet_id, pq_sheet_name, 'A:ZZ')
-            if pq_data:
-                self.spreadsheet_data.pq_data = pq_data
+        pq_sheet_names = [name for name in sheet_names if name.lower().endswith('pq')]
+
+        if pq_sheet_names:
+            all_pq_data = []
+            headers = None
+            for pq_sheet_name in pq_sheet_names:
+                pq_data = get_or_fetch_sheet_data(self.spreadsheet_id, pq_sheet_name, 'A:ZZ')
+                if pq_data and pq_data.rows:
+                    if headers is None:
+                        headers = pq_data.headers
+                        all_pq_data.extend(pq_data.rows)
+                    else:
+                        all_pq_data.extend(pq_data.rows)
+                else:
+                    logging.warning(
+                        f"No data found in PQ sheet '{pq_sheet_name}' for spreadsheet {self.spreadsheet_id}")
+
+            if all_pq_data:
+                self.spreadsheet_data.pq_data = SheetData(headers=headers, rows=all_pq_data)
             else:
-                logging.warning(f"No data found in PQ sheet for spreadsheet {self.spreadsheet_id}")
+                logging.warning(f"No data found in any PQ sheets for spreadsheet {self.spreadsheet_id}")
         else:
-            logging.warning(f"No PQ sheet found for spreadsheet {self.spreadsheet_id}")
-
-    def _process_contacts_in_batches(self) -> Generator[List[ContactData], None, None]:
-        unprocessed_rows = filter_unprocessed_rows(self.spreadsheet_data.new_connections.rows)
-        for i in range(0, len(unprocessed_rows), self.batch_size):
-            batch = unprocessed_rows[i:i + self.batch_size]
-            processed_batch = []
-            for row in batch:
-                try:
-                    processed_contact = self._process_contact(row)
-                    processed_batch.append(processed_contact)
-                except Exception as e:
-                    logging.error(f"Error processing contact: {str(e)}")
-                    # You might want to create a special ContactData object to represent errors
-                    # error_contact = ContactData(
-                    #     first_name="Error",
-                    #     last_name="Processing Contact",
-                    #     job_title="N/A",
-                    #     company=CompanyData(name="N/A", website="N/A"),
-                    #     linkedin_url="N/A",
-                    #     linkedin_username="N/A",
-                    #     error_message=str(e)
-                    # )
-                    # processed_batch.append(error_contact)
-            self.processed_contacts.extend(processed_batch)
-            yield processed_batch
-
-        self._log_processing_results()
+            logging.warning(f"No PQ sheets found for spreadsheet {self.spreadsheet_id}")
 
     def _process_contact(self, row: SheetRow) -> ContactData:
         company_data = self._get_company_data(row)
-        contact_data = process_contact_data(row, company_data, self.spreadsheet_id,
-                                            self.spreadsheet_data.new_connections.colored_cells)
+        contact_data = initialize_contact_data(row, company_data, self.spreadsheet_id,
+                                               self.spreadsheet_data.new_connections.colored_cells)
         self._enrich_contact_data(contact_data)
         return contact_data
 
     def _get_company_data(self, row: SheetRow) -> CompanyData:
-        company_name = row.data.get('contact_company_name', '').strip().lower()
-        company_website = next((r.data.get('Website URL') for r in self.spreadsheet_data.pq_data.rows if
-                                r.data.get('Company Name', '').strip().lower() == company_name), '')
-        return CompanyData(name=company_name, website=company_website)
+        company_name = basename(row.data.get('contact_company_name', ''))
+        pq_row = self.spreadsheet_data.pq_data.get_row_by_text(company_name)
+        if pq_row:
+            company_website = pq_row.data.get('Website URL', '')
+            return CompanyData(name=company_name, website=company_website)
+        return CompanyData(name=company_name)
 
     @staticmethod
     def _enrich_contact_data(contact_data: ContactData):
@@ -117,7 +135,3 @@ class SpreadsheetProcessor:
                 contact_data.languages = linkedin_data.get('languages', [])
                 contact_data.experiences = linkedin_data.get('experiences', [])
                 contact_data.volunteer_work = linkedin_data.get('volunteer_work', [])
-
-    def _log_processing_results(self):
-        logging.info(f"Spreadsheet {self.spreadsheet_id}: Processed {len(self.processed_contacts)} contacts")
-        logging.info(f"Spreadsheet {self.spreadsheet_id}: PQ data rows: {len(self.spreadsheet_data.pq_data.rows)}")

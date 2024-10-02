@@ -4,7 +4,7 @@ from typing import List, Optional
 
 class CompanyData(BaseModel):
     name: str
-    website: str
+    website: Optional[str] = None
     about_links: List[dict] = Field(default_factory=list)
     case_study_links: List[dict] = Field(default_factory=list)
 
