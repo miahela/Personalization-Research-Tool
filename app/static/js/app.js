@@ -8,10 +8,16 @@ document.addEventListener("alpine:init", () => {
       isSaving: false,
       btw: "By the way, ",
       processedCount: 0,
-      totalCount: 0,
+      _totalCount: -1,
       eventSource: null,
+      sheets: window.initialSheets || [], // Use the global variable
 
-      async processSelectedSheets() {
+      get totalCount() {
+         if (this._totalCount === -1) this._totalCount = this.sheets.filter(sheet => this.selectedSheetIds.includes(sheet.id)).reduce((total, sheet) => total + sheet.empty_by_the_way_count, 0);
+         return this._totalCount;
+      },
+
+      async processSelectedSheets(totalProfilesToProcess) {
          if (this.selectedSheetIds.length === 0) return;
 
          this.reset();
@@ -42,7 +48,7 @@ document.addEventListener("alpine:init", () => {
             // Update component state with new data
             this.entries = this.entries.concat(data.new_connections);
             this.processedCount = data.processed_count;
-            this.totalCount = data.total_count;
+            this.totalCount = data.totalProfilesToProcess;
 
             this.updateEditableFields();
 
@@ -71,7 +77,7 @@ document.addEventListener("alpine:init", () => {
          this.isLoading = false;
          this.btw = "By the way, ";
          this.processedCount = 0;
-         this.totalCount = 0;
+         this._totalCount = -1;
          if (this.eventSource) {
             this.eventSource.close();
          }
@@ -139,6 +145,10 @@ document.addEventListener("alpine:init", () => {
 
       get industry() {
          return this.currentEntry?.industry || "";
+      },
+
+      get languages() {
+         return this.currentEntry?.languages || [];
       },
 
       // Card-related computed properties

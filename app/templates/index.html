@@ -8,13 +8,13 @@
          {% include 'components/sheet_selector.html' %}
       </div>
       <template x-if="entries.length > 0 && currentEntry">
-         <div class="card bg-base-100 shadow-xl w-full min-h-[85vh] flex items-center justify-center">
+         <div class="mt-4 card bg-base-100 shadow-xl w-full min-h-[85vh] flex items-center justify-center">
 
-            <div class="card-body h-full">
+            <div class="card-body h-full w-full">
                <div class="flex justify-between mb-4">
                   <h2 class="text-xl font-semibold" x-text="campaignInstance"></h2>
                   <p class="text-xl text-right"><span x-text="currentEntryIndex + 1"></span>/<span
-                     x-text="entries.length"></span></p>
+                     x-text="totalCount"></span></p>
                </div>
 
                <div class="flex items-center space-x-4 h-[20%]">
@@ -51,7 +51,7 @@
                         </p>
                         <p>
                            <span class="font-bold text-sm text-neutral-400">Languages:</span> <span
-                           x-text="currentEntry.languages.join(', ') || 'N/A'"></span>
+                           x-text="currentEntry.languages?.join(', ') || 'N/A'"></span>
                         </p>
                      </div>
                   </div>
@@ -180,4 +180,8 @@
 {% endblock %}
 {% block scripts %}
    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+   <script>
+      // Render Jinja2 data into a global variable
+      window.initialSheets = {{ sheets | tojson | safe }};
+   </script>
 {% endblock %}
