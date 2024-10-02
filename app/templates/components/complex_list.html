@@ -1,5 +1,5 @@
 <ul class="list-disc list-outside ml-5">
-   <template x-for="item in items" :key="item.url || item.title">
+   <template x-for="item in items" :key="Math.random()">
       <li>
          <template x-if="getItemContent(item).type === 'link'">
             <p class="truncate">
