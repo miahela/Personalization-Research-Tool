@@ -7,9 +7,14 @@ import requests
 import logging
 import re
 from datetime import datetime, timedelta, timezone
+
+from jiter.jiter import from_json
+import orjson
+
+from app.models.nubela_response_models import NubelaResponse
 from app.utils.file_manager import get_file_manager
 from app.models import ContactData, CompanyData
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Union, Any
 
 
 def perform_google_search(search_query: str, search_type: str, username: str, max_results: int = 5) -> Dict:
@@ -144,7 +149,7 @@ def determine_priority(result_date: Optional[datetime], current_date: datetime) 
         return 1  # Within the last 3 months
 
 
-def get_nubela_data_for_user(linkedin_profile_url: str) -> Optional[Dict]:
+def get_nubela_data_for_contact(linkedin_profile_url: str) -> Optional[Union[Dict[str, Any], None]]:
     SUB_FOLDER = 'nubela'
     API_ENDPOINT = "https://nubela.co/proxycurl/api/v2/linkedin"
     LINKEDIN_USERNAME = linkedin_profile_url.split('/')[-2] if linkedin_profile_url.endswith('/') else \
@@ -160,7 +165,17 @@ def get_nubela_data_for_user(linkedin_profile_url: str) -> Optional[Dict]:
                                                                        LINKEDIN_USERNAME, 'profile')
         existing_data['local_banner_pic_url'] = get_or_download_image(existing_data.get('background_cover_image_url'),
                                                                       LINKEDIN_USERNAME, 'banner')
-        return existing_data
+
+        # Convert the dictionary to JSON string, then to Pydantic model
+        nubela_response = NubelaResponse.model_validate_json(orjson.dumps(existing_data))
+
+        full_response = {
+            "nubela_response": nubela_response,
+            "local_profile_pic_url": existing_data['local_profile_pic_url'],
+            "local_banner_pic_url": existing_data['local_banner_pic_url'],
+        }
+
+        return full_response
 
     params = {
         "linkedin_profile_url": linkedin_profile_url,
@@ -178,11 +193,18 @@ def get_nubela_data_for_user(linkedin_profile_url: str) -> Optional[Dict]:
         # Store the data locally
         file_manager.save_file(data, filename, "json", LINKEDIN_USERNAME)
 
-        data['local_profile_pic_url'] = get_or_download_image(data.get('profile_pic_url'), LINKEDIN_USERNAME, 'profile')
-        data['local_banner_pic_url'] = get_or_download_image(data.get('background_cover_image_url'), LINKEDIN_USERNAME,
-                                                             'banner')
+        local_profile_pic_url = get_or_download_image(data.get('profile_pic_url'), LINKEDIN_USERNAME, 'profile')
+        local_banner_pic_url = get_or_download_image(data.get('background_cover_image_url'), LINKEDIN_USERNAME,
+                                                     'banner')
 
-        return data
+        # Convert the dictionary to JSON string, then to Pydantic model
+        nubela_response = NubelaResponse.model_validate_json(orjson.dumps(data))
+
+        return {
+            "nubela_response": nubela_response,
+            "local_profile_pic_url": local_profile_pic_url,
+            "local_banner_pic_url": local_banner_pic_url,
+        }
     else:
         logging.error(f"Failed to fetch Nubela data for {linkedin_profile_url}: {response.status_code}")
         return None

@@ -1,23 +1,11 @@
-# app/services/stream_processed_spreadsheet_service.py
-import asyncio
-import time
-from datetime import datetime
 from threading import Event
+from typing import List
 
-from app.services.spreadsheet_processor import SpreadsheetProcessor
-from app.models import ContactData, CompanyData
 import orjson
-import traceback
-from typing import List, Dict, Any
 from flask import current_app
 
-
-def _custom_default_serialization(obj):
-    if isinstance(obj, datetime):
-        return obj.isoformat()
-    if isinstance(obj, (ContactData, CompanyData)):
-        return obj.dict()
-    raise TypeError
+from app.services.spreadsheet_processor import SpreadsheetProcessor
+from app.utils.json_utils import dumps
 
 
 def ensure_bytes(data):
@@ -27,28 +15,6 @@ def ensure_bytes(data):
         return data.encode('utf-8')
     else:
         return str(data).encode('utf-8')
-
-
-def _serialize_contact(contact: ContactData) -> Dict[str, Any]:
-    try:
-        return contact.dict()
-    except Exception as e:
-        return {
-            'error': f'Error serializing contact: {str(e)}',
-            'traceback': traceback.format_exc(),
-            'contact_data': str(contact)
-        }
-
-
-def _process_spreadsheet(spreadsheet_id: str) -> List[Dict[str, Any]]:
-    try:
-        processor = SpreadsheetProcessor(spreadsheet_id)
-        return [_serialize_contact(contact) for batch in processor.process() for contact in batch]
-    except Exception as e:
-        return [{
-            'error': f'Spreadsheet {spreadsheet_id} generated an exception: {str(e)}',
-            'traceback': traceback.format_exc()
-        }]
 
 
 def stream_processed_spreadsheets(spreadsheet_ids: List[str], continue_event: Event, small_batch_size: int = 2,
@@ -65,7 +31,7 @@ def stream_processed_spreadsheets(spreadsheet_ids: List[str], continue_event: Ev
             batch = processor.process_small_batch()
             if batch:
                 total_processed += len(batch)
-                yield f"data: {orjson.dumps({'contacts': [contact.dict() for contact in batch]}).decode('utf-8')}\n\n"
+                yield f"data: {dumps({'contacts': [contact.model_dump() for contact in batch]})}\n\n"
 
             if total_processed >= large_batch_size:
                 current_app.logger.info(f"Processed {total_processed} contacts. Waiting for user action.")

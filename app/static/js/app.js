@@ -96,6 +96,13 @@ document.addEventListener("alpine:init", () => {
             name: cellName,
             value: this.currentEntry[cellName] || ""
          }));
+
+         if (this.currentEntry.relevant_experiences && this.currentEntry.relevant_experiences.title_mismatch) {
+            this.currentEntry.editableFields.push({
+               name: "Corrected Job Title",
+               value: this.currentEntry.relevant_experiences.most_likely_current_title
+            });
+         }
       },
 
       reset() {
@@ -108,10 +115,15 @@ document.addEventListener("alpine:init", () => {
          if (this.eventSource) {
             this.eventSource.close();
          }
+
       },
 
       get currentEntry() {
          return this.entries[this.currentEntryIndex] || null;
+      },
+
+      get currentEntryToJSON() {
+         return JSON.stringify(this.currentEntry, null, 2);
       },
 
       async saveEntry() {
@@ -165,6 +177,42 @@ document.addEventListener("alpine:init", () => {
 
       get contactTitle() {
          return `${this.currentEntry.contact_first_name} ${this.currentEntry.contact_last_name}`;
+      },
+
+      calculateDuration(startDate, endDate) {
+         const start = new Date(startDate.year, startDate.month - 1, startDate.day);
+         const end = endDate ? new Date(endDate.year, endDate.month - 1, endDate.day) : new Date();
+         const diffTime = Math.abs(end - start);
+         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+         const years = Math.floor(diffDays / 365);
+         const months = Math.floor((diffDays % 365) / 30);
+         return `${years} yr${years !== 1 ? 's' : ''} ${months} mo${months !== 1 ? 's' : ''}`;
+      },
+
+      formatDate(date) {
+         if (!date) return '';
+         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+         return `${months[date.month - 1]} ${date.year}`;
+      },
+
+      formatExperience(exp) {
+         return {
+            ...exp,
+            duration: this.calculateDuration(exp.starts_at, exp.ends_at),
+            isCurrent: !exp.ends_at,
+            formattedStartDate: this.formatDate(exp.starts_at),
+            formattedEndDate: this.formatDate(exp.ends_at),
+            employmentType: exp.employment_type || 'Full-time', // Assuming a default if not provided
+            location: exp.location || 'Location not specified'
+         };
+      },
+
+      get relevantExperiences() {
+         if (!this.currentEntry || !this.currentEntry.relevant_experiences) {
+            return [];
+         }
+
+         return this.currentEntry.relevant_experiences.experiences.map(exp => this.formatExperience(exp));
       },
 
       get campaignInstance() {

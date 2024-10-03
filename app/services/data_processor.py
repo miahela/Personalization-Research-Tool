@@ -45,7 +45,6 @@ def initialize_contact_data(row: SheetRow, company_data: CompanyData, spreadshee
                             colored_cells: List[str]) -> ContactData:
     full_name = f"{row.get('contact_first_name', '')} {row.get('contact_last_name', '')}".strip()
     parsed_name = clean_name(full_name)
-    print(parsed_name)
 
     linkedin_profile_url = row.get('contact_profile_link', '')
     linkedin_username = linkedin_profile_url.split('/')[-2] if linkedin_profile_url.endswith('/') else \

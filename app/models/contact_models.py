@@ -1,5 +1,13 @@
+from typing import List
+from typing import Optional
 from pydantic import BaseModel, Field
-from typing import List, Optional
+from .nubela_response_models import NubelaResponse, Experience, VolunteeringExperience, Language
+
+
+class ExperiencesWithMetadata(BaseModel):
+    experiences: List[Experience]
+    title_mismatch: bool
+    most_likely_current_title: str
 
 
 class CompanyData(BaseModel):
@@ -23,12 +31,13 @@ class ContactData(BaseModel):
     company: CompanyData
     contact_profile_link: str
     linkedin_username: str
-    profile_picture: Optional[str] = None
     bio: Optional[str] = None
     headline: Optional[str] = None
     industry: Optional[str] = None
+    profile_picture: Optional[str] = None
     banner_picture: Optional[str] = None
-    languages: List[str] = Field(default_factory=list)
-    experiences: List[dict] = Field(default_factory=list)
-    volunteer_work: List[dict] = Field(default_factory=list)
+    languages: Optional[List[str]] = None
+    relevant_experiences: Optional[ExperiencesWithMetadata] = None
+    volunteer_work: Optional[List[VolunteeringExperience]] = None
     interviews_and_podcasts: List[dict] = Field(default_factory=list)
+    nubela_response: Optional[NubelaResponse] = None

@@ -125,6 +125,41 @@
                            </ul>
                         </div>
                      </div>
+
+                     <!-- Relevant Experiences -->
+                     <div class="collapse collapse-arrow border-base-300 border bg-base-200 mt-4">
+                        <input checked type="checkbox" class="w-full">
+                        <div class="collapse-title text-xl font-bold">Relevant Experiences</div>
+                        <div class="collapse-content overflow-auto">
+                           <template x-if="relevantExperiences.length > 0">
+                              <div class="space-y-4">
+                                 <template x-for="exp in relevantExperiences" :key="exp.title + exp.company">
+                                    <div class="bg-white shadow-md rounded-lg p-4">
+                                       <div class="flex items-start">
+                                          <div class="flex-grow">
+                                             <h3 class="text-lg font-semibold" x-text="exp.title"></h3>
+                                             <p class="text-gray-600" x-text="exp.company"></p>
+                                             <p class="text-sm text-gray-500" x-text="exp.employmentType"></p>
+                                             <p class="text-sm text-gray-500">
+                                                <span x-text="exp.formattedStartDate"></span> -
+                                                <span x-text="exp.isCurrent ? 'Present' : exp.formattedEndDate"></span>
+                                                ·
+                                                <span x-text="exp.duration"></span>
+                                             </p>
+                                             <p class="text-sm text-gray-500" x-text="exp.location"></p>
+                                             <p class="mt-2 text-gray-700"
+                                                x-text="exp.description || 'No description available'"></p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </template>
+                              </div>
+                           </template>
+                           <template x-if="relevantExperiences.length === 0">
+                              <p class="text-gray-500">No relevant experiences found.</p>
+                           </template>
+                        </div>
+                     </div>
                      <!-- Volunteer Work -->
                      <div class="collapse collapse-arrow border-base-300 border bg-base-200 mt-4">
                         <input checked type="checkbox" class="w-full">
@@ -149,6 +184,17 @@
                         </div>
                      </label>
 
+                     <template
+                        x-if="currentEntry.relevant_experiences && currentEntry.relevant_experiences.title_mismatch">
+                        <label class="form-control w-full max-w-full">
+                           <div class="label">
+                              <span class="label-text text-lg font-semibold">Corrected Job Title</span>
+                           </div>
+                           <input type="text" x-model="currentEntry.relevant_experiences.most_likely_current_title"
+                                  class="input input-bordered rounded-lg w-full max-w-full">
+                        </label>
+                     </template>
+
                      <template x-for="field in currentEntry.editableFields">
                         <label class="form-control w-full max-w-full">
                            <div class="label">
@@ -170,6 +216,7 @@
 
             </div>
          </div>
+
       </template>
       <template x-if="entries.length !== 0 && !currentEntry">
          <div class="text-center">

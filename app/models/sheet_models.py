@@ -4,6 +4,12 @@ from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 
 
+class PqKeywords(BaseModel):
+    titles: List[str] = Field(default_factory=list)
+    seniority: List[str] = Field(default_factory=list)
+    negative_keywords: List[str] = Field(default_factory=list)
+
+
 class SheetRow(BaseModel):
     row_number: int
     data: Dict[str, Any]
@@ -52,3 +58,4 @@ class SpreadsheetData(BaseModel):
     id: str
     new_connections: SheetData
     pq_data: SheetData
+    keywords: PqKeywords
