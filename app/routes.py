@@ -1,21 +1,26 @@
-import asyncio
 from threading import Event
 
-from flask import render_template, request, jsonify, Response, stream_with_context, current_app
+from flask import render_template, request, jsonify, Response, stream_with_context
+
 from app import app
-from app.services.stream_processed_spreadsheet_service import stream_processed_spreadsheets, ensure_bytes
-from app.services.sheet_listing_service import get_all_spreadsheets_in_drive, update_sheet_data
-from app.services.spreadsheet_save_data import save_entry
-from flask_sse import sse
-import time
+from app.services.spreadsheet_service import SpreadsheetService
+from app.services.process_and_stream_contacts import process_and_stream_contacts
+from app.utils.file_manager import get_file_manager
 
 
 @app.route('/')
 def index():
-    start_time = time.time()
-    sheets = get_all_spreadsheets_in_drive()
-    print("--- Get All Spreadsheets in Drive in %s seconds ---" % (time.time() - start_time))
-    return render_template('index.html', sheets=sheets)
+    spreadsheets = SpreadsheetService.get_instance().get_all_spreadsheets_in_drive()
+    spreadsheets_response = []
+    for spreadsheet in spreadsheets:
+        calculated_spreadsheet = {
+            'id': spreadsheet.id,
+            'name': spreadsheet.name,
+            'empty_by_the_way_count': len(SpreadsheetService.get_instance().calculate_unprocessed_rows_in_sheet(
+                spreadsheet.new_connections))
+        }
+        spreadsheets_response.append(calculated_spreadsheet)
+    return render_template('index.html', sheets=spreadsheets_response)
 
 
 continue_event = Event()
@@ -31,7 +36,7 @@ def process_sheets_stream():
         return jsonify({"error": "No spreadsheet IDs provided"}), 400
 
     def generate():
-        stream = stream_processed_spreadsheets(spreadsheet_ids, continue_event, small_batch_size, large_batch_size)
+        stream = process_and_stream_contacts(spreadsheet_ids, continue_event, small_batch_size, large_batch_size)
         for item in stream:
             yield item
 
@@ -53,5 +58,12 @@ def stop_processing():
 @app.route('/save', methods=['POST'])
 def save_data():
     data = request.json
-    result = save_entry(data)
+    spreadsheet_id = data.get('sheet_id')
+    row_number = data.get('row_number')
+    entry_data = data.get('entry_data')
+    username = data.get('username')
+    result = SpreadsheetService.get_instance().update_row(spreadsheet_id, "New Connections", row_number, entry_data)
+
+    file_manager = get_file_manager()
+    file_manager.delete_all_files_by_user(username)
     return jsonify(result)

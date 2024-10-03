@@ -4,9 +4,12 @@ from app.utils.google_utils.google_auth import GoogleService
 def fetch_sheet_names_from_google(spreadsheet_id):
     service = GoogleService.get_instance().get_service('sheets', 'v4')
 
-    sheet_metadata = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
-    sheets = sheet_metadata.get('sheets', '')
-    return [sheet['properties']['title'] for sheet in sheets]
+    try:
+        sheet_metadata = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
+        sheets = sheet_metadata.get('sheets', '')
+        return [sheet['properties']['title'] for sheet in sheets]
+    except Exception as e:
+        return []
 
 
 def fetch_colored_cells_from_google(spreadsheet_id, sheet_name, range_name='A:ZZ'):
@@ -70,7 +73,7 @@ def fetch_sheet_data_from_google(spreadsheet_id, sheet_name='New Connections', r
     return numbered_values
 
 
-def update_specific_cells(spreadsheet_id, sheet_name, row_number, updates):
+def update_sheet_rows(spreadsheet_id, sheet_name, row_number, updates):
     """
     Update specific cells in a given row of a Google Spreadsheet.
 
@@ -114,14 +117,16 @@ def update_specific_cells(spreadsheet_id, sheet_name, row_number, updates):
 
 
 def _sheet_exists(spreadsheet_id, sheet_name):
-    service = GoogleService.get_instance().get_service('sheets', 'v4')
+    try:
+        service = GoogleService.get_instance().get_service('sheets', 'v4')
 
-    sheet_metadata = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
-    sheets = sheet_metadata.get('sheets', '')
-    for sheet in sheets:
-        if sheet['properties']['title'] == sheet_name:
-            return True
-    return False
+        sheet_metadata = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
+        sheets = sheet_metadata.get('sheets', '')
+        for sheet in sheets:
+            if sheet['properties']['title'] == sheet_name:
+                return True
+    except Exception as e:
+        return False
 
 
 def _column_number_to_letter(column_number):

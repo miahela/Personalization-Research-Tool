@@ -5,7 +5,7 @@ from .nubela_response_models import NubelaResponse, Experience, VolunteeringExpe
 
 
 class ExperiencesWithMetadata(BaseModel):
-    experiences: List[Experience]
+    experiences: Optional[List[Experience]]
     title_mismatch: bool
     most_likely_current_title: str
 
@@ -26,18 +26,18 @@ class ContactData(BaseModel):
     contact_job_title: str
     contact_company_name: str
     hook_name: str
-    messenger_campaign_instance: Optional[str] = None
     parsed_name: str
     company: CompanyData
     contact_profile_link: str
     linkedin_username: str
+    relevant_experiences: Optional[ExperiencesWithMetadata] = None
+    messenger_campaign_instance: Optional[str] = None
     bio: Optional[str] = None
     headline: Optional[str] = None
     industry: Optional[str] = None
     profile_picture: Optional[str] = None
     banner_picture: Optional[str] = None
     languages: Optional[List[str]] = None
-    relevant_experiences: Optional[ExperiencesWithMetadata] = None
     volunteer_work: Optional[List[VolunteeringExperience]] = None
     interviews_and_podcasts: List[dict] = Field(default_factory=list)
     nubela_response: Optional[NubelaResponse] = None

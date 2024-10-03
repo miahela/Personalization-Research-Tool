@@ -56,6 +56,7 @@ class SheetData(BaseModel):
 
 class SpreadsheetData(BaseModel):
     id: str
+    name: str = ''
     new_connections: SheetData
     pq_data: SheetData
     keywords: PqKeywords

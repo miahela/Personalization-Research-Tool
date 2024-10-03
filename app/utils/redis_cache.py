@@ -1,13 +1,9 @@
-import base64
 import logging
+from typing import Any
 
 import redis
-import zlib
-import json
 from flask import current_app
 from orjson import orjson
-
-from app.models.sheet_models import SheetData
 
 
 class RedisCache:
@@ -26,22 +22,19 @@ class RedisCache:
             cls._instance = cls()
         return cls._instance
 
-    def set(self, key: str, value: SheetData, expire: int = 10800) -> bool:
+    def set(self, key: str, value: Any, expire: int = 10800) -> bool:
         try:
-            serialized_value = orjson.dumps(value.dict())
-            encoded_value = base64.b64encode(serialized_value).decode('ascii')
-            return self.redis.set(key, encoded_value, ex=expire)
+            serialized_value = orjson.dumps(value)
+            return self.redis.set(key, serialized_value, ex=expire)
         except Exception as e:
             logging.error(f"Error serializing or setting Redis cache: {str(e)}")
             return False
 
-    def get(self, key: str) -> SheetData | None:
+    def get(self, key: str) -> Any | None:
         try:
             value = self.redis.get(key)
             if value:
-                decoded_value = base64.b64decode(value)
-                deserialized_value = orjson.loads(decoded_value)
-                return SheetData.parse_obj(deserialized_value)
+                return orjson.loads(value)
         except Exception as e:
             logging.error(f"Error retrieving or deserializing Redis cache: {str(e)}")
         return None

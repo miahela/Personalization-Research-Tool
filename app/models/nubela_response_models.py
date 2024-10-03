@@ -1,4 +1,4 @@
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime, timedelta
 
@@ -15,12 +15,12 @@ class Experience(BaseModel):
     starts_at: Optional[Date] = None
     ends_at: Optional[Date] = None
     company: Optional[str] = None
-    company_linkedin_profile_url: Optional[HttpUrl] = None
-    company_facebook_profile_url: Optional[HttpUrl] = None
+    company_linkedin_profile_url: Optional[str] = None
+    company_facebook_profile_url: Optional[str] = None
     title: Optional[str] = None
     description: Optional[str] = None
     location: Optional[str] = None
-    logo_url: Optional[HttpUrl] = None
+    logo_url: Optional[str] = None
 
     @property
     def is_current(self) -> bool:
@@ -28,15 +28,19 @@ class Experience(BaseModel):
 
     @property
     def duration(self) -> timedelta:
-        if self.starts_at is None:
+        start_date = self.get_start_date()
+        if start_date is None:
             return timedelta(0)
-        start_date = datetime(self.starts_at.year, self.starts_at.month, self.starts_at.day)
-        end_date = datetime.now() if self.ends_at is None else datetime(self.ends_at.year, self.ends_at.month,
-                                                                        self.ends_at.day)
+
+        end_date = self.get_end_date()
+        if end_date is None:
+            return datetime.now() - start_date
+
         return end_date - start_date
 
     def duration_str(self) -> str:
-        if self.starts_at is None:
+        start_date = self.get_start_date()
+        if start_date is None:
             return "Unknown duration"
         days = self.duration.days
         years, remaining_days = divmod(days, 365)
@@ -44,12 +48,33 @@ class Experience(BaseModel):
         return f"{years} years, {months} months"
 
     def matches_keywords(self, keywords: 'PqKeywords') -> bool:
+        if not self.title:
+            return False
+
         title_lower = self.title.lower()
         return (
                 (any(title.lower() in title_lower for title in keywords.titles) or
                  any(seniority.lower() in title_lower for seniority in keywords.seniority)) and
                 not any(keyword.lower() in title_lower for keyword in keywords.negative_keywords)
         )
+
+    def get_start_date(self) -> Optional[datetime]:
+        if self.starts_at and self.starts_at.year:
+            return datetime(
+                self.starts_at.year,
+                self.starts_at.month or 1,
+                self.starts_at.day or 1
+            )
+        return None
+
+    def get_end_date(self) -> Optional[datetime]:
+        if self.ends_at and self.ends_at.year:
+            return datetime(
+                self.ends_at.year,
+                self.ends_at.month or 1,
+                self.ends_at.day or 1
+            )
+        return None
 
     def __str__(self):
         return f"{self.title} at {self.company} ({self.duration_str()})"
@@ -61,10 +86,10 @@ class Education(BaseModel):
     field_of_study: Optional[str] = None
     degree_name: Optional[str] = None
     school: Optional[str] = None
-    school_linkedin_profile_url: Optional[HttpUrl] = None
-    school_facebook_profile_url: Optional[HttpUrl] = None
+    school_linkedin_profile_url: Optional[str] = None
+    school_facebook_profile_url: Optional[str] = None
     description: Optional[str] = None
-    logo_url: Optional[HttpUrl] = None
+    logo_url: Optional[str] = None
     grade: Optional[str] = None
     activities_and_societies: Optional[str] = None
 
@@ -87,7 +112,7 @@ class Publication(BaseModel):
     publisher: Optional[str] = None
     published_on: Optional[Date] = None
     description: Optional[str] = None
-    url: Optional[HttpUrl] = None
+    url: Optional[str] = None
 
 
 class HonourAward(BaseModel):
@@ -104,7 +129,7 @@ class Patent(BaseModel):
     description: Optional[str] = None
     application_number: Optional[str] = None
     patent_number: Optional[str] = None
-    url: Optional[HttpUrl] = None
+    url: Optional[str] = None
 
 
 class Course(BaseModel):
@@ -117,7 +142,7 @@ class Project(BaseModel):
     ends_at: Optional[Date] = None
     title: Optional[str] = None
     description: Optional[str] = None
-    url: Optional[HttpUrl] = None
+    url: Optional[str] = None
 
 
 class TestScore(BaseModel):
@@ -133,9 +158,9 @@ class VolunteeringExperience(BaseModel):
     title: Optional[str] = None
     cause: Optional[str] = None
     company: Optional[str] = None
-    company_linkedin_profile_url: Optional[HttpUrl] = None
+    company_linkedin_profile_url: Optional[str] = None
     description: Optional[str] = None
-    logo_url: Optional[HttpUrl] = None
+    logo_url: Optional[str] = None
 
 
 class Certification(BaseModel):
@@ -145,11 +170,11 @@ class Certification(BaseModel):
     license_number: Optional[str] = None
     display_source: Optional[str] = None
     authority: Optional[str] = None
-    url: Optional[HttpUrl] = None
+    url: Optional[str] = None
 
 
 class PeopleAlsoViewed(BaseModel):
-    link: Optional[HttpUrl] = None
+    link: Optional[str] = None
     name: Optional[str] = None
     summary: Optional[str] = None
     location: Optional[str] = None
@@ -157,29 +182,29 @@ class PeopleAlsoViewed(BaseModel):
 
 class Activity(BaseModel):
     title: Optional[str] = None
-    link: Optional[HttpUrl] = None
+    link: Optional[str] = None
     activity_status: Optional[str] = None
 
 
 class SimilarProfile(BaseModel):
     name: Optional[str] = None
-    link: Optional[HttpUrl] = None
+    link: Optional[str] = None
     summary: Optional[str] = None
     location: Optional[str] = None
 
 
 class Article(BaseModel):
     title: Optional[str] = None
-    link: Optional[HttpUrl] = None
+    link: Optional[str] = None
     published_date: Optional[Date] = None
     author: Optional[str] = None
-    image_url: Optional[HttpUrl] = None
+    image_url: Optional[str] = None
 
 
 class PersonGroup(BaseModel):
-    profile_pic_url: Optional[HttpUrl] = None
+    profile_pic_url: Optional[str] = None
     name: Optional[str] = None
-    url: Optional[HttpUrl] = None
+    url: Optional[str] = None
 
 
 class InferredSalary(BaseModel):
@@ -191,13 +216,13 @@ class PersonExtra(BaseModel):
     github_profile_id: Optional[str] = None
     facebook_profile_id: Optional[str] = None
     twitter_profile_id: Optional[str] = None
-    website: Optional[HttpUrl] = None
+    website: Optional[str] = None
 
 
 class NubelaResponse(BaseModel):
     public_identifier: Optional[str] = None
-    profile_pic_url: Optional[HttpUrl] = None
-    background_cover_image_url: Optional[HttpUrl] = None
+    profile_pic_url: Optional[str] = None
+    background_cover_image_url: Optional[str] = None
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     full_name: Optional[str] = None
