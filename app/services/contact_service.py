@@ -6,14 +6,17 @@ from typing import List, Optional
 from cleanco import basename
 from flask import current_app
 from orjson import orjson
+from sipbuild.generator.parser.tokens import keywords
 from tinydb import Query, TinyDB
 
-from app.models import ContactData, CompanyData, SheetRow, PqKeywords
+from app.models import ContactData, CompanyData, SheetRow, PqKeywords, SpreadsheetData
 from app.models.contact_models import ExperiencesWithMetadata
 from app.models.nubela_response_models import Experience, NubelaResponse
+from app.services.spreadsheet_service import SpreadsheetService
 from app.utils.cleaning_utils import clean_name
 from app.utils.external_apis import get_nubela_data_for_contact, search_person_interviews_podcasts, \
     search_company_case_studies, search_company_about_page
+from app.utils.image_manager import ImageManager
 
 
 class ContactService:
@@ -29,30 +32,16 @@ class ContactService:
             cls._instance = cls()
         return cls._instance
 
-    def get_contact(self, linkedin_username: str) -> Optional[ContactData]:
+    def get_or_create_contact(self, row: SheetRow, spreadsheet_id: str) -> ContactData:
+        linkedin_username = row.get('contact_profile_link', '').split('/')[-2]
+
         User = Query()
         # noinspection PyTypeChecker
         result = self.contacts.get(User.linkedin_username == linkedin_username)
         if result:
             return ContactData.model_validate(result)
-        return None
-
-    def create_or_update_contact(self, row: SheetRow, company_data: CompanyData, spreadsheet_id: str,
-                                 colored_cells: List[str]) -> ContactData:
-        contact_data = self._initialize_contact_data(row, company_data, spreadsheet_id, colored_cells)
-        self._add_company_links(contact_data)
-        self._add_media_links(contact_data)
-        self._add_nubela_data(contact_data)
-
-        existing_contact = self.get_contact(contact_data.linkedin_username)
-        if existing_contact:
-            # noinspection PyTypeChecker
-            self.contacts.update(contact_data.model_dump(), Query().linkedin_username == contact_data.linkedin_username)
         else:
-            # Create new contact
-            self.contacts.insert(contact_data.model_dump())
-
-        return contact_data
+            return self._create_contact(row, spreadsheet_id)
 
     def save_contact(self, contact: ContactData):
         User = Query()
@@ -65,9 +54,26 @@ class ContactService:
         else:
             self.contacts.insert(orjson.loads(contact.model_dump_json()))
 
-    @staticmethod
-    def _initialize_contact_data(row: SheetRow, company_data: CompanyData, spreadsheet_id: str,
-                                 colored_cells: List[str]) -> ContactData:
+    def delete_contact(self, linkedin_username: str):
+        User = Query()
+        # noinspection PyTypeChecker
+        deleted_user = self.contacts.remove(User.linkedin_username == linkedin_username)
+        if deleted_user:
+            ImageManager.get_instance().delete_images_by_contact(linkedin_username)
+
+    def _create_contact(self, row: SheetRow, spreadsheet_id: str) -> ContactData:
+        colored_cells = SpreadsheetService.get_instance().get_spreadsheet(spreadsheet_id).new_connections.colored_cells
+        contact_data = self._initialize_contact_data(row, spreadsheet_id, colored_cells)
+
+        self._add_company_links(contact_data)
+        self._add_media_links(contact_data)
+        self._add_nubela_data(contact_data)
+        self._add_relevant_experience(contact_data)
+
+        self.contacts.insert(contact_data.model_dump())
+        return contact_data
+
+    def _initialize_contact_data(self, row: SheetRow, spreadsheet_id: str, colored_cells: List[str]) -> ContactData:
         full_name = f"{row.get('contact_first_name', '')} {row.get('contact_last_name', '')}".strip()
         parsed_name = clean_name(full_name)
 
@@ -83,7 +89,7 @@ class ContactService:
             contact_company_name=basename(row.get('contact_company_name', '')),
             hook_name=row.get('hook_name', ''),
             messenger_campaign_instance=row.get('messenger_campaign_instance', ''),
-            company=company_data,
+            company=self._get_company_data(spreadsheet_id, row.get('contact_company_name', '')),
             contact_profile_link=linkedin_profile_url,
             linkedin_username=linkedin_username,
             profile_picture=row.get('contact_image_link'),
@@ -91,6 +97,18 @@ class ContactService:
             spreadsheet_id=spreadsheet_id,
             row_number=row.row_number
         )
+
+    @staticmethod
+    def _get_company_data(spreadsheet_id: str, company_name: str) -> CompanyData:
+        spreadsheet_data = SpreadsheetService.get_instance().get_spreadsheet(spreadsheet_id)
+        pq_row = spreadsheet_data.pq_data.get_row_by_text(company_name)
+
+        if pq_row:
+            company_website = pq_row.get('Website URL', '')
+            company_data = CompanyData(name=company_name, website=company_website)
+        else:
+            company_data = CompanyData(name=company_name)
+        return company_data
 
     @staticmethod
     def _add_company_links(contact_data: ContactData):
@@ -128,9 +146,10 @@ class ContactService:
                 contact_data.volunteer_work = nubela_data.volunteer_work
                 contact_data.nubela_response = nubela_data
 
-    def add_relevant_experience(self, contact_data: ContactData, keywords: PqKeywords) -> None:
+    def _add_relevant_experience(self, contact_data: ContactData) -> None:
+        keywords = SpreadsheetService.get_instance().get_spreadsheet(contact_data.spreadsheet_id).keywords
         if contact_data.nubela_response and contact_data.nubela_response.experiences:
-            contact_data.relevant_experiences = self._get_relevant_experience(
+            contact_data.relevant_experiences = self._filter_out_relevant_experience(
                 contact_data.nubela_response.experiences,
                 contact_data.contact_job_title,
                 contact_data.company.name,
@@ -139,8 +158,9 @@ class ContactService:
             print(contact_data.linkedin_username, contact_data.relevant_experiences)
 
     @staticmethod
-    def _get_relevant_experience(experiences_data: List[Experience], contact_job_title: str, current_company: str,
-                                 keywords: PqKeywords) -> ExperiencesWithMetadata:
+    def _filter_out_relevant_experience(experiences_data: List[Experience], contact_job_title: str,
+                                        current_company: str,
+                                        keywords: PqKeywords) -> ExperiencesWithMetadata:
         relevant_experiences = []
         most_likely_current_title = contact_job_title
         title_mismatch = False

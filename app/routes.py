@@ -3,9 +3,9 @@ from threading import Event
 from flask import render_template, request, jsonify, Response, stream_with_context
 
 from app import app
+from app.services.contact_service import ContactService
 from app.services.spreadsheet_service import SpreadsheetService
-from app.services.process_and_stream_contacts import process_and_stream_contacts
-from app.utils.file_manager import get_file_manager
+from app.services.contact_processor import stream_processed_contacts
 
 
 @app.route('/')
@@ -36,7 +36,7 @@ def process_sheets_stream():
         return jsonify({"error": "No spreadsheet IDs provided"}), 400
 
     def generate():
-        stream = process_and_stream_contacts(spreadsheet_ids, continue_event, small_batch_size, large_batch_size)
+        stream = stream_processed_contacts(spreadsheet_ids, continue_event, small_batch_size, large_batch_size)
         for item in stream:
             yield item
 
@@ -62,8 +62,8 @@ def save_data():
     row_number = data.get('row_number')
     entry_data = data.get('entry_data')
     username = data.get('username')
-    result = SpreadsheetService.get_instance().update_row(spreadsheet_id, "New Connections", row_number, entry_data)
 
-    file_manager = get_file_manager()
-    file_manager.delete_all_files_by_user(username)
+    result = SpreadsheetService.get_instance().update_row(spreadsheet_id, "New Connections", row_number, entry_data)
+    ContactService.get_instance().delete_contact(username)
+
     return jsonify(result)

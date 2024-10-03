@@ -97,13 +97,6 @@ class SpreadsheetService:
         return [self.get_spreadsheet(file['id'], file['name']) for file in all_files if
                 self.get_spreadsheet(file['id'], file['name'])]
 
-    @staticmethod
-    def calculate_unprocessed_rows_in_sheet(sheet: SheetData) -> List[SheetRow]:
-        return [
-            row for row in sheet.rows
-            if not row.get('by the way', '').strip() and not row.get('approved', '').strip()
-        ]
-
     def _load_keywords(self, spreadsheet_id: str, pq_data: Optional[SheetData]) -> PqKeywords:
         cache_key = f"keywords:{spreadsheet_id}"
         cached_keywords = self.cache.get(cache_key)
@@ -146,3 +139,10 @@ class SpreadsheetService:
                     row.update(new_data)
                     break
             self.cache.set(cache_key, sheet_data.model_dump(), expire=self.CACHE_EXPIRY)
+
+    @staticmethod
+    def calculate_unprocessed_rows_in_sheet(sheet: SheetData) -> List[SheetRow]:
+        return [
+            row for row in sheet.rows
+            if not row.get('by the way', '').strip() and not row.get('approved', '').strip()
+        ]

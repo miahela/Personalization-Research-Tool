@@ -12,21 +12,12 @@ from jiter.jiter import from_json
 import orjson
 
 from app.models.nubela_response_models import NubelaResponse
-from app.utils.file_manager import get_file_manager
+from app.utils.image_manager import ImageManager
 from app.models import ContactData, CompanyData
 from typing import List, Dict, Optional, Union, Any
 
 
 def perform_google_search(search_query: str, search_type: str, username: str, max_results: int = 5) -> Dict:
-    file_manager = get_file_manager()
-
-    filename = f'{username}_{search_type}_google.json'
-    existing_data = file_manager.load_json_file(filename)
-    if existing_data:
-        return existing_data
-
-    print('Searching for file ', filename)
-
     run_input = {
         "queries": search_query,
         "resultsPerPage": max_results,
@@ -44,9 +35,6 @@ def perform_google_search(search_query: str, search_type: str, username: str, ma
     results = {}
     for item in current_app.config['APIFY_CLIENT'].dataset(run["defaultDatasetId"]).iterate_items():
         results = item
-
-    # Save the results to a file
-    file_manager.save_file(results, filename, "json", username)
 
     return results
 
@@ -150,32 +138,9 @@ def determine_priority(result_date: Optional[datetime], current_date: datetime) 
 
 
 def get_nubela_data_for_contact(linkedin_profile_url: str) -> Optional[Union[Dict[str, Any], None]]:
-    SUB_FOLDER = 'nubela'
     API_ENDPOINT = "https://nubela.co/proxycurl/api/v2/linkedin"
     LINKEDIN_USERNAME = linkedin_profile_url.split('/')[-2] if linkedin_profile_url.endswith('/') else \
         linkedin_profile_url.split('/')[-1]
-
-    filename = f'{LINKEDIN_USERNAME}_nubela.json'
-    file_manager = get_file_manager()
-
-    # Check if we already have data for this user
-    existing_data = file_manager.load_json_file(filename)
-    if existing_data:
-        existing_data['local_profile_pic_url'] = get_or_download_image(existing_data.get('profile_pic_url'),
-                                                                       LINKEDIN_USERNAME, 'profile')
-        existing_data['local_banner_pic_url'] = get_or_download_image(existing_data.get('background_cover_image_url'),
-                                                                      LINKEDIN_USERNAME, 'banner')
-
-        # Convert the dictionary to JSON string, then to Pydantic model
-        nubela_response = NubelaResponse.model_validate_json(orjson.dumps(existing_data))
-
-        full_response = {
-            "nubela_response": nubela_response,
-            "local_profile_pic_url": existing_data['local_profile_pic_url'],
-            "local_banner_pic_url": existing_data['local_banner_pic_url'],
-        }
-
-        return full_response
 
     params = {
         "linkedin_profile_url": linkedin_profile_url,
@@ -190,12 +155,12 @@ def get_nubela_data_for_contact(linkedin_profile_url: str) -> Optional[Union[Dic
     if response.status_code == 200:
         data = response.json()
 
-        # Store the data locally
-        file_manager.save_file(data, filename, "json", LINKEDIN_USERNAME)
+        image_manager = ImageManager.get_instance()
 
-        local_profile_pic_url = get_or_download_image(data.get('profile_pic_url'), LINKEDIN_USERNAME, 'profile')
-        local_banner_pic_url = get_or_download_image(data.get('background_cover_image_url'), LINKEDIN_USERNAME,
-                                                     'banner')
+        local_profile_pic_url = image_manager.get_or_download_image(
+            data.get('profile_pic_url'), LINKEDIN_USERNAME, 'profile')
+        local_banner_pic_url = image_manager.get_or_download_image(
+            data.get('background_cover_image_url'), LINKEDIN_USERNAME, 'banner')
 
         # Convert the dictionary to JSON string, then to Pydantic model
         nubela_response = NubelaResponse.model_validate_json(orjson.dumps(data))
@@ -207,32 +172,4 @@ def get_nubela_data_for_contact(linkedin_profile_url: str) -> Optional[Union[Dic
         }
     else:
         logging.error(f"Failed to fetch Nubela data for {linkedin_profile_url}: {response.status_code}")
-        return None
-
-
-def get_or_download_image(image_url: Optional[str], username: str, image_type: str) -> Optional[str]:
-    if not image_url:
-        return None
-
-    file_manager = get_file_manager()
-    existing_image = file_manager.get_frontend_image_url(f'{username}_{image_type}.*')
-    if existing_image:
-        return existing_image
-
-    # If no existing file, download the image
-    response = requests.get(image_url)
-    if response.status_code == 200:
-        content_type = response.headers.get('Content-Type', '').split(';')[0]
-        ext = guess_extension(content_type)
-
-        if not ext:
-            logging.warning(
-                f"Couldn't determine file extension for {image_type} image of {username}. Defaulting to .jpg")
-            ext = '.jpg'
-
-        filename = f'{username}_{image_type}{ext}'
-        file_manager.save_file(response.content, filename, "image", username, is_frontend_image=True)
-        return file_manager.get_frontend_image_url(filename)
-    else:
-        logging.error(f"Failed to download {image_type} image for {username}")
         return None
